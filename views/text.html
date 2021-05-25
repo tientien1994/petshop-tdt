@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <div><a href="#" class="play-video">Play Video</a></div>
+<div><a href="#" class="stop-video">Stop Video</a></div>
+<div><a href="#" class="pause-video">Pause Video</a></div>
+
+<iframe class="youtube-video" width="560" height="315" src="https://www.youtube.com/embed/zFCgFQ4qWCU" frameborder="0" allowfullscreen></iframe>
+    <iframe class="youtube-video" width="80%" height="60%" src="https://www.youtube.com/embed/zFCgFQ4qWCU" ></iframe>
+    <script>
+        $('a.play-video').click(function(){
+          $('.youtube-video')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
+        });
+        
+        $('a.stop-video').click(function(){
+          $('.youtube-video')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+        });
+        
+        $('a.pause-video').click(function(){
+          $('.youtube-video')[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
+        });
+        </script>
+</body>
+</html>

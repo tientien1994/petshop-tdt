@@ -1,0 +1,316 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    color:var(--secondary-color);
+}
+
+.asp-tuongtu-bor {width: 40%;padding: 15px 0;}
+
+.asp-tuongtu-bor>h5 {
+    font-size: 25px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+
+
+.asp-tt-nd-text p:nth-child(2) {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.asp-tt-nd-text {
+    text-align: center;
+}
+
+.asp-tt-nd-text a {
+    background: var(--primary-color);
+    padding: 5px 20px;
+    margin-top: 15px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.asp-tt-nd-text p:first-child {
+    font-size: 16px;
+    font-weight: 600;
+    padding-bottom: 15px;
+}
+
+.asp-tuongtu-item {
+    padding: 15px;
+}
+
+.asp-tab-item {
+    display: none;
+    opacity: 0;
+    transition:0.5s;
+}
+
+.asp-tab-head {
+    border-bottom: 1px solid #aaa;
+}
+
+.asp-tab-head ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.asp-tab-head ul li {
+    background: #9999992b;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.asp-tuongtu {
+    /* width: 40%; */
+    column-count: 2;
+}
+
+.asp-tab {
+    width: 60%;
+    padding: 15px;
+}
+
+.chitietsp-bot {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+p.asp-hotline {
+    padding-top: 15px;
+    display: flex;
+    font-size: 20px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+p.asp-hotline i {
+    color: var(--primary-color);
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+p.asp-songuoimua {
+    font-size: 15px;
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+p.asp-loaiship {
+    margin-bottom: 5px;
+}
+
+p.asp-loaiship span {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+p.asp-loaiship a {
+    color: blue;
+    font-weight: bold;
+}
+
+.asp-soluong-input {
+    display: flex;
+    border: 1px solid #999;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+.asp-soluong-input input {
+    width: 40px;
+    text-align: center;
+}
+
+.asp-soluong-input p:first-child, .asp-soluong-input p:last-child {
+    background: var(--secondary-color);
+    width: 20px;
+    height: 20px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.asp-soluong-input p:last-child {
+    background: var(--primary-color);
+}
+
+.asp-soluong {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.asp-soluong label {
+    margin-right: 15px;
+}
+
+p.asp-tietkiem {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.chitietsp {
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+
+.asp-img {
+    width: 75%;
+    height: 100%;
+    margin: 15px;
+}
+
+.asp-galley-item {
+    /* padding: 15px; */
+    margin: 15px;
+    height: 100px;
+}
+
+.asp-galley-item img {
+    border: 1px solid #ddd;
+    cursor: pointer;
+    height: 100px;
+}
+
+.asp-galery {
+    display: flex;
+    /* column-count: 3; */
+    width: 25%;
+    flex-direction: column;
+}
+
+.asp-right {
+    width: 50%;
+    padding: 15px;
+}
+
+.asp-right .asp-thuonghieu span, .asp-right .asp-tietkiem span {
+    font-size: 16px;
+}
+
+.asp-right .asp-thuonghieu span:last-child, .asp-right .asp-tietkiem span:last-child {
+    color: var(--primary-color);
+    padding-left: 10px;
+}
+
+.asp-right .asp-ma span {
+    font-size: 16px;
+}
+
+.asp-right .asp-ma span:last-child {
+    color: var(--primary-color);
+    padding-left: 10px;
+}
+
+.asp-right .asp-ma {
+    margin-bottom: 10px;
+    /* margin-bottom: 15px; */
+}
+
+.asp-right .asp-sao {
+    margin-bottom: 15px;
+}
+
+.asp-right .asp-sao i {
+    color: #dddd00;
+}
+
+.asp-right .asp-sao span {
+    padding-left: 10px;
+}
+
+.asp-right .asp-gia {
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.asp-right .asp-gia span {
+    font-size: 24px;
+    color: #aaa;
+    text-decoration: line-through 3px;
+}
+
+.asp-right h3 {
+    color: var(--primary-color);
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.asp-left {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+}
+
+.chitietsp-top {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.asp-tab-head ul li.asp-active {
+    background: red;
+    color: #fff;
+    cursor: pointer;
+}
+
+.asp-tab-head ul li.asp-active p {
+    color: white;
+}
+
+.asp-tab-head ul li p {
+    position: relative;
+    z-index: 2;
+}
+
+.asp-tab-head ul li:hover p {
+    color: #fff;
+    transition: 0.5s;
+}
+
+.asp-tab-head ul li::before {
+    background: var(--primary-color);
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 0;
+    top: 0;
+    background: var(--primary-color);
+    transition: 0.5s;
+    z-index: 1;
+    left: 0;
+    opacity: 0;
+}
+
+.asp-tab-head ul li:hover::before {
+    opacity: 1;
+}
+
+.asp-tab-head ul li:hover::before {
+    height: 100%;
+}
+.asp-tab-item.asp-item-ative {
+    display: block;
+    opacity: 1;
+}

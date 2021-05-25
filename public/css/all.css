@@ -1,0 +1,28 @@
+.container{
+    width: 1200px;
+    margin: 0 auto;
+    max-width: 100%;
+}
+.container-fluid{
+    width: 100%;
+    margin: 0 auto;
+    max-width: 100%;
+    
+}
+:root{
+    --main-color:#f7444e;
+}
+img{
+    width: 100%;
+}
+ul{
+    list-style: none;
+}
+input, button{
+    border:none;
+    outline:none;
+    background-color: none;
+}
+a{
+    color:var(--secondary-color)
+}

@@ -1,0 +1,3 @@
+<p class="tintuc-p"></p>
+<img src="" class="tintuc-img">
+<p class="tintuc-p"><b></b></p>
