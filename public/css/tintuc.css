@@ -7,11 +7,29 @@
     color:var(--secondary-color);
 }
 
+.tintuc-nd-right h5 {
+   
+    font-size: 20px;
+    padding: 0 15px;
+    text-align:center;
+}
+.motsp-tenthuonghieu a h5{
+    font-size: 14px;
+    padding:0;
+}
+
 a.tintuc-xemthem {
     text-align: end;
     display: flex;
     justify-content: flex-end;
     padding: 0 15px;
+    align-items: center;
+    text-decoration: underline;
+}
+
+a.tintuc-xemthem i {
+    padding-left: 15px;
+    /* text-decoration: none; */
 }
 
 .tintuc-tuongtu-img {
@@ -211,10 +229,12 @@ h5 {}
     font-size: 14px;
     padding-left: 15px;
     text-transform: uppercase;
+    padding: 8px;
 }
 
 .noibat-item-img {
-    width: 40%;
+    width: 35%;
+    
 }
 
 .tintuc-noibat-right {
@@ -225,18 +245,18 @@ h5 {}
 .tintuc-noibat-left {
     padding: 15px;
     width: 50%;
-    height: 420px;
+    
 }
 
 .tintuc-noibat-right-item {
     /* padding: 15px; */
-    height: 130px;
+    
     display: flex;
     flex-direction: row;
     padding-bottom: 10px;
 }
 
-.tintuc-noibat-nd {display: flex;}
+.tintuc-noibat-nd {display: flex;flex-direction: row;flex-wrap: wrap;}
 
 .tintuc-noibat h4 {
     font-size: 16px;
@@ -393,4 +413,103 @@ h5 {}
     flex-direction: row;
     flex-wrap: wrap;
     padding-top: 60px;
+}
+@media screen and (max-width: 375px) {
+    .tintuc-noibat-left{width:100%}  .tintuc-noibat-right{width:100%}
+    .tintuc-muc{column-count: 1;}
+    .motsp-text{flex-direction:column}
+    .motsp-tenthuonghieu{text-align:center}
+    .giasao{text-align: center}
+    .motloaisanphamchinh{
+        display: inherit;
+        flex-direction: inherit;
+        flex-wrap: inherit;
+        column-count: 2;
+        column-gap:0;
+    }
+    .motloaisanphamchinh-nd{width:auto; display:inline-block;}
+    .tintuc-tuongtu-item{width:100%}
+}
+@media screen and (min-width: 375px) {
+    .tintuc-noibat-left{width:100%}  .tintuc-noibat-right{width:100%}
+    .tintuc-muc{column-count: 1;}
+    .motsp-text{flex-direction:column}
+    .motsp-tenthuonghieu{text-align:center}
+    .giasao{text-align: center}
+    .motloaisanphamchinh{
+        display: inherit;
+        flex-direction: inherit;
+        flex-wrap: inherit;
+        column-count: 2;
+        column-gap:0;
+    }
+    .motloaisanphamchinh-nd{width:auto; display:inline-block;}
+    .tintuc-tuongtu-item{width:100%}
+}
+@media screen and (min-width: 600px) {
+    .tintuc-noibat-left{width:53%}  .tintuc-noibat-right{width:47%}   
+    .tintuc-muc{column-count: 2;}
+    .motsp-text{flex-direction:row}
+    .motsp-tenthuonghieu{text-align:start}
+    .giasao{text-align: end}
+    .motloaisanphamchinh{
+        display: inherit;
+        flex-direction: inherit;
+        flex-wrap: inherit;
+        column-count: 2;
+        column-gap:0;
+    }
+    .motloaisanphamchinh-nd{width:auto; display:inline-block;}
+    .tintuc-tuongtu-item{width:100%}
+}
+@media screen and (min-width: 769px) {
+    .tintuc-noibat-left{width:52%}  .tintuc-noibat-right{width:48%}
+    .motspchinh{padding:15px;}
+    .motsp-text{flex-direction:column}
+    .motsp-tenthuonghieu{text-align:center}
+    .giasao{text-align: center}
+    .motloaisanphamchinh{
+        display: inherit;
+        flex-direction: inherit;
+        flex-wrap: inherit;
+        column-count: 2;
+        column-gap:0;
+    }
+    .motloaisanphamchinh-nd{width:auto; display:inline-block;}
+    .tintuc-tuongtu-item{width:33.33%}
+    
+}
+@media screen and (min-width: 1024px) {
+    .tintuc-noibat-left{width:53%}  .tintuc-noibat-right{width:47%}
+    .motspchinh{padding:15px;}
+    .motsp-text{flex-direction:column}
+    .motsp-tenthuonghieu{text-align:center}
+    .giasao{text-align: center}
+    .motloaisanphamchinh{
+        display: inherit;
+        flex-direction: inherit;
+        flex-wrap: inherit;
+        column-count: 2;
+        column-gap:0;
+    }
+    .motloaisanphamchinh-nd{width:auto; display:inline-block;}
+    .tintuc-tuongtu-item{width:33.33%}
+    
+}
+@media screen and (min-width: 1200px) {
+    .tintuc-noibat-left{width:53%}  .tintuc-noibat-right{width:47%}
+    .motspchinh{padding:15px;}
+    .motsp-text{flex-direction:column}
+    .motsp-tenthuonghieu{text-align:center}
+    .giasao{text-align: center}
+    
+    .motloaisanphamchinh{
+        display: inherit;
+        flex-direction: inherit;
+        flex-wrap: inherit;
+        column-count: 2;
+        column-gap:0;
+    }
+    .motloaisanphamchinh-nd{width:auto; display:inline-block;}
+    .tintuc-tuongtu-item{width:33.33%}
 }

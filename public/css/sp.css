@@ -135,7 +135,7 @@
     height: 550px;
 }
 
-.map-nd {
+#map-nd {
     width: 70%;
     padding: 0 15px;
 }
@@ -271,6 +271,30 @@
     background: #eee;
     padding: 15px;
     margin: 0 15px 0 15px;
+    display: flex;
+}
+
+.line-page p:nth-child(1) {
+    width: 80%;
+}
+
+.line-page p:nth-child(2) {
+    width: 20%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.line-page p:nth-child(2) i {
+    color: var(--primary-color);
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.line-page p:nth-child(2) input {
+    width: 100%;
+    padding: 3px;
 }
 
 .motsp-detail {
@@ -284,6 +308,8 @@
 .giasao>p {
     color: var(--primary-color);
     font-weight: 700;
+    font-size:14px;
+    width: max-content;
 }
 
 .giasao>div i {
@@ -292,7 +318,11 @@
 }
 
 .motsp-tenthuonghieu h5 {
-    font-size: 16px;
+    font-size: 14px;
+}
+
+.motsp-tenthuonghieu:hover .tendaydu {
+    display: block;
 }
 
 .motsp-tenthuonghieu p {
@@ -306,6 +336,7 @@
     justify-content: space-between;
     padding-top: 16px;
     padding-bottom: 15px;
+    position: relative;
 }
 
 .motsp {
@@ -351,9 +382,11 @@
 .sp-1-menu-tintuc-item-text p:nth-child(1) {
     font-weight: 700;
     /* padding: 10px; */
-    color: #fff;
+    color: var(--secondary-color);
     padding-bottom: 10px;
 }
+
+p {}
 
 .sp-1-menu-tintuc-item-text {
     width: 70%;
@@ -368,13 +401,26 @@
     padding-top: 10px;
 }
 
+.sp-1-menu-tintuc-item:hover {
+}
+
 .sp-1-menu, .sp-1-menu-gia, .sp-1-thuonghieu, .sp-1-menu-tintuc {
     background: #eee;
     padding: 15px;
 }
 
+.sp-1-menu-gia ul li, .sp-1-thuonghieu ul li {
+    cursor: pointer;
+}
+
+li.locgia.locgia-acc a i.fa::before {
+    content: "\f111";
+    font-family: 'FontAwesome';
+    color: var(--primary-color);
+}
+
 .sp-1-menu ul, .sp-1-menu-gia ul, .sp-1-thuonghieu ul, .sp-1-menu-tintuc ul {
-    padding-left: 15px;
+    /* padding-left: 15px; */
 }
 
 .sp-1-list-menu {
@@ -393,7 +439,15 @@
 }
 .sp-1-menu, .sp-1-menu-gia, .sp-1-thuonghieu, .sp-1-menu-tintuc {}
 
-.sp-1-list-menu .sp-1-menu ul li {}
+.sp-1-list-menu .sp-1-menu ul li:hover {
+    transition: 0.5s;
+    transform: translateX(10px);
+    /* color: var(--primary-color); */
+}
+
+.sp-1-list-menu .sp-1-menu ul li:hover a {
+    color: var(--primary-color);
+}
 
 .sp-1 {
     /* padding-top: 0; */
@@ -468,10 +522,7 @@
 }
 
 
-:root {
-    --primary-color: #f7444e;
-    --secondary-color: #002c3e;
-  }
+
   footer{
       margin-top: 0;
   }
@@ -503,4 +554,7 @@ header{
 }
 .header-nd{
     padding-top: 15px;
+}
+i.fa.fa-circle-o, i.fa.fa-circle{
+    padding-right: 10px;
 }

@@ -1,0 +1,119 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+a.asp-buton {
+    display: inline-block;
+    background: #ddd;
+    color: #000;
+    padding: 10px 30px;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+a.asp-buton p {
+    position: relative;
+    color: var(--secondary-color);
+    font-weight: 700;
+    transition: 0.5s;
+}
+
+.table-sp a.asp-buton::before, .table-thanhtoan a.asp-buton::before {
+    position: absolute;
+    content: "";
+    width: 110%;
+    height: 208%;
+    background: var(--secondary-color);
+    transition: 0.5s;
+    transform: scale(1.5) rotateZ(19deg);
+    top: 13px;
+    right: -132%;
+}
+
+.table-thanhtoan a.asp-buton::before {
+    background: var(--primary-color);
+}
+
+a.asp-buton:hover::before {
+    top: 0;
+    right: 0;
+    transform: scale(1.5) rotateZ(0deg);
+}
+
+a.asp-buton:hover p {
+    color: #fff;
+    transition: 0.5s;
+}
+
+a.asp-buton p {
+    /* color: #fff; */
+}
+
+.table-text {
+    padding-left: 15px;
+}
+
+.table-img-flex {
+    width: 20%;
+}
+
+.table-img-flex img {
+    border-radius: 4px;
+}
+
+.table-img-flex {
+    border: 1px solid #accc;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+table.table {
+    width: 100%;
+}
+
+table.table tbody tr td {
+    padding: 15px;
+}
+
+td.table-gia {
+    display: revert;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+td.table-gia form input {
+    padding: 5px;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    margin-left: 15px;
+}
+
+td.table-gia form {
+    display: flex;
+}
+
+table.table thead tr th:nth-child(1) {
+    width: 40%;
+    /* display: flex; */
+    /* flex-direction: row; */
+}
+
+table.table thead tr th {
+    text-align: start;
+    padding: 15px;
+}
+
+table.table thead tr th:nth-child(2), table.table thead tr th:nth-child(3),table.table thead tr th:nth-child(4) {
+    width: 20%;
+}
+
+.table-img {display: flex;flex-direction: row;/* display: flex; */align-items: center;}
+.table-thanhtoan>a.asp-buton::before{
+    color:red;
+}

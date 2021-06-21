@@ -1,0 +1,31 @@
+sp3<br> 
+<div class="gioithieusanpham">
+                                    <b>Phân tích thành phần</b>
+                                    <ul>
+                                        <li>Chất đạm thô: Trên 30.0%</li>
+                                        <li>Chất béo: Trên 12.0%</li>
+                                        <li>Chất xơ: Dưới 3.5%</li>
+                                        <li>Chất tro: Dưới 12.0%</li>
+                                        <li>Canxi : Dưới 0.8%</li>
+                                        <li>Photpho: Dưới 1.6%</li>
+                                    </ul>
+                                    <b>Công dụng</b>
+                                    <ul>
+                                        <li>Với đặc tính dễ tiêu, hạt Catsrang giúp mèo đi phân rắn và giảm thiểu mùi hôi khó chịu</li>
+                                        <li>Ngăn ngừa lông vón cục trong ruột mèo</li>
+                                        <li>Hàm lượng dinh dưỡng cân bằng, catsrang phù hợp trong việc cải thiện da lông, phòng tránh bệnh quáng gà ở mèo</li>
+                                        <li>Sử dụng protein cao cấp tốt cho hệ tiêu hóa</li>
+                                        <li>Đặc biệt, sản phẩm không sử dụng chất bảo quản, chất kháng sinh, phẩm màu hay hương liệu nhân tạo khác. </li>
+                                    </ul>
+                                    <b>Ưu điểm sản phẩm </b>
+                                    <ul>
+                                        <li>Không chất bảo quản</li>
+                                        <li>Không chất kháng sinh</li>
+                                        <li>Không chất tạo mùi</li>
+                                        <li>Không chất tạo màu</li>
+                                        <li>Không hương liệu nhân tạo</li>
+                                        <li>Không chất chống mốc</li>
+                                    </ul>
+                                    <img src="https://www.petcity.vn/media/lib/4338_catsrang-5-kg-1581587183.jpg" alt="">
+                                    
+                                </div>

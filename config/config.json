@@ -1,23 +1,37 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "znkmgskecdbvmy",
+    "password": "e9a20632e5562f8b7f744a7cee4591a8e55660524b82faef5ec95eb695adb510",
+    "database": "debh6t3hilcu70",
+    "host": "ec2-3-214-136-47.compute-1.amazonaws.com",
+    "dialect": "postgres",
+    "port":"5432",
+    "dialectOptions":{
+      "ssl":{
+        "require":true,
+        "rejectUnauthorized": false
+      }
+    }
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "postgres",
+    "password": "12345678",
+    "database": "petshop",
+    "host": "localhost",
+    "dialect": "postgres"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "znkmgskecdbvmy",
+    "password": "e9a20632e5562f8b7f744a7cee4591a8e55660524b82faef5ec95eb695adb510",
+    "database": "debh6t3hilcu70",
+    "host": "ec2-3-214-136-47.compute-1.amazonaws.com",
+    "dialect": "postgres",
+    "port":"5432",
+    "dialectOptions":{
+      "ssl":{
+        "require":true,
+        "rejectUnauthorized": false
+      }
+    }
   }
 }

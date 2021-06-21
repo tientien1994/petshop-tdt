@@ -1,3 +1,4 @@
+
 $(function(){
     $(window).scroll(function(e){
       var y=$('html, body').scrollTop();
@@ -68,7 +69,8 @@ $(function(){
           $('.nd7').addClass('nd7-ani');
         }
         if(y>$('.nd9').offset().top-600){
-          $('.nd9').addClass('nd9-ani');
+          $('.nd9').addClass('nd9-ani')
+           
         }
         if(y>$('.nd10').offset().top-600){
           $('.nd10').addClass('nd10-ani');

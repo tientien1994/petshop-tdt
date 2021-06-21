@@ -7,16 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ</title>
-    <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/sp.css">
-    <link rel="stylesheet" href="css/tintuc.css">
-    <link rel="stylesheet" href="css/media.css">
-    <link rel="stylesheet" href="font/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" type="text/css" href="js/slick-1.8.1/slick/slick.css"/>
-
-<link rel="stylesheet" type="text/css" href="js/slick-1.8.1/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/sp.css">
+    
+    <link rel="stylesheet" href="/css/sploaichinh.css">
+    <link rel="stylesheet" href="/css/tintuc.css">
+    <link rel="stylesheet" href="/css/media.css">
+    <link rel="stylesheet" href="/css/motsp.css">
+    <link rel="stylesheet" href="/font/font-awesome-4.7.0/css/font-awesome.min.css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Pangolin&family=Roboto:ital,wght@0,100;0,300;1,100&display=swap" rel="stylesheet">
 </head>
@@ -29,9 +28,9 @@
         <div class="container">
             <div class="line-page">
                 <p>
-                    <span>San pham</span>
-                    <span>/San pham cho cho</span>
-                    <span>/Thuc an</span>
+                    <span><a href="/">Trang chủ</a></span>
+                    <span><a href="/tintuc">/Tin tức</a></span>
+                    <span><a href="/tintuc/theloaitt{{mottheloai.id}}">/{{mottheloai.tentheloai}}</a></span>
                 </p>
             </div>
             <div class="tintuc">
@@ -41,248 +40,100 @@
                         <div class="tintuc-noibat">
                             <h4>Tin noi bat</h4>
                             <div class="tintuc-noibat-nd">
+                                {{#each toptintuc}}
+                                {{#if (sosanh @index 0)}}
                                 <div class="tintuc-noibat-left">
-                                    <img src="img/cho1.jpg" alt="">
-                                </div>
+                                    <a href="/tintuc/theloaitt{{tlbaivietId}}/{{id}}"><img src="/img/tintuc/{{chialaydu id}}.jpg" alt=""></a>
+                                </div>                          
                                 <div class="tintuc-noibat-right">
+                                    {{else}}
                                     <div class="tintuc-noibat-right-item">
                                         <div class="noibat-item-img">
-                                            <a href=""><img src="img/cho1.jpg" alt=""></a>
+                                            <a href=""><img src="/img/tintuc/{{chialaydu id}}.jpg" alt=""></a>
                                         </div>  
                                         <div class="noibat-item-text">
-                                            <a href="">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, ab.</a>
+                                            <a href="">{{name}}</a>
                                             
                                         </div>  
                                     </div>
-                                    <div class="tintuc-noibat-right-item">
-                                        <div class="noibat-item-img">
-                                            <a href=""><img src="img/cho1.jpg" alt=""></a>
-                                        </div>  
-                                        <div class="noibat-item-text">
-                                            <a href="">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, ab.</a>
-                                            
-                                        </div>  
-                                    </div>
-                                    <div class="tintuc-noibat-right-item">
-                                        <div class="noibat-item-img">
-                                            <a href=""><img src="img/cho1.jpg" alt=""></a>
-                                        </div>  
-                                        <div class="noibat-item-text">
-                                            <a href="">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, ab.</a>
-                                            
-                                        </div>  
-                                    </div>
-                                </div>
-                            </div>                   
+                                    {{/if}}
+                                    {{/each}}
+                                </div>  
+                                
+                            </div>                     
                         </div>
                         <div class="mottintuc">
+                            
+                            {{#with mottheloai}}
+                            {{#each Baiviets}}
                             <div class="mottt-nd">
                                 <div class="mottt-item">
                                     <div class="mottt-img">
-                                        <a href=""><img src="img/cho2.jpg" alt=""></a>
+                                        <a href="/tintuc/theloaitt{{../id}}/{{id}}"><img src="/img/tintuc/{{chialaydu id}}.jpg" alt=""></a>
                                     </div>
                                     <div class="mottt-text">
-                                        <a href=""><h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, ut.</h5></a>
-                                        <p>Ngay gio 13h00</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex quibusdam ullam rerum itaque libero quasi praesentium maiores molestiae soluta sit minus, quo dolorum delectus, tempora, velit placeat aliquam molestias laudantium.</p>
+                                        <a href="/tintuc/theloaitt{{../id}}/{{id}}"><h5>{{name}}</h5></a>
+                                        <p>Ngày đăng: {{ngaythang createdAt}}</p>
+                                        
                                         <p>
-                                            <span><i class="fa fa-home"></i></span>
-                                            <span>Luot xem: 100</span>
+                                            <span><i class="fa fa-eye"></i>
+                                            
+                                            
+                                            </span>
+                                            <span>Lượt xem: {{luotxem}}</span><br>
+                                            
                                         </p>
+                                        <p>{{title}}</p>
                                     </div>
                                 </div>
                                 
                             </div>
-                            <div class="mottt-nd">
-                                <div class="mottt-item">
-                                    <div class="mottt-img">
-                                        <a href=""><img src="img/cho2.jpg" alt=""></a>
-                                    </div>
-                                    <div class="mottt-text">
-                                        <a href=""><h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, ut.</h5></a>
-                                        <p>Ngay gio 13h00</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex quibusdam ullam rerum itaque libero quasi praesentium maiores molestiae soluta sit minus, quo dolorum delectus, tempora, velit placeat aliquam molestias laudantium.</p>
-                                        <p>
-                                            <span><i class="fa fa-home"></i></span>
-                                            <span>Luot xem: 100</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="mottt-nd">
-                                <div class="mottt-item">
-                                    <div class="mottt-img">
-                                        <a href=""><img src="img/cho2.jpg" alt=""></a>
-                                    </div>
-                                    <div class="mottt-text">
-                                        <a href=""><h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, ut.</h5></a>
-                                        <p>Ngay gio 13h00</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex quibusdam ullam rerum itaque libero quasi praesentium maiores molestiae soluta sit minus, quo dolorum delectus, tempora, velit placeat aliquam molestias laudantium.</p>
-                                        <p>
-                                            <span><i class="fa fa-home"></i></span>
-                                            <span>Luot xem: 100</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="mottt-nd">
-                                <div class="mottt-item">
-                                    <div class="mottt-img">
-                                        <a href=""><img src="img/cho2.jpg" alt=""></a>
-                                    </div>
-                                    <div class="mottt-text">
-                                        <a href=""><h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, ut.</h5></a>
-                                        <p>Ngay gio 13h00</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex quibusdam ullam rerum itaque libero quasi praesentium maiores molestiae soluta sit minus, quo dolorum delectus, tempora, velit placeat aliquam molestias laudantium.</p>
-                                        <p>
-                                            <span><i class="fa fa-home"></i></span>
-                                            <span>Luot xem: 100</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="mottt-nd">
-                                <div class="mottt-item">
-                                    <div class="mottt-img">
-                                        <a href=""><img src="img/cho2.jpg" alt=""></a>
-                                    </div>
-                                    <div class="mottt-text">
-                                        <a href=""><h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, ut.</h5></a>
-                                        <p>Ngay gio 13h00</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex quibusdam ullam rerum itaque libero quasi praesentium maiores molestiae soluta sit minus, quo dolorum delectus, tempora, velit placeat aliquam molestias laudantium.</p>
-                                        <p>
-                                            <span><i class="fa fa-home"></i></span>
-                                            <span>Luot xem: 100</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="mottt-nd">
-                                <div class="mottt-item">
-                                    <div class="mottt-img">
-                                        <a href=""><img src="img/cho2.jpg" alt=""></a>
-                                    </div>
-                                    <div class="mottt-text">
-                                        <a href=""><h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, ut.</h5></a>
-                                        <p>Ngay gio 13h00</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex quibusdam ullam rerum itaque libero quasi praesentium maiores molestiae soluta sit minus, quo dolorum delectus, tempora, velit placeat aliquam molestias laudantium.</p>
-                                        <p>
-                                            <span><i class="fa fa-home"></i></span>
-                                            <span>Luot xem: 100</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="mottt-nd">
-                                <div class="mottt-item">
-                                    <div class="mottt-img">
-                                        <a href=""><img src="img/cho2.jpg" alt=""></a>
-                                    </div>
-                                    <div class="mottt-text">
-                                        <a href=""><h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, ut.</h5></a>
-                                        <p>Ngay gio 13h00</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex quibusdam ullam rerum itaque libero quasi praesentium maiores molestiae soluta sit minus, quo dolorum delectus, tempora, velit placeat aliquam molestias laudantium.</p>
-                                        <p>
-                                            <span><i class="fa fa-home"></i></span>
-                                            <span>Luot xem: 100</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="mottt-nd">
-                                <div class="mottt-item">
-                                    <div class="mottt-img">
-                                        <a href=""><img src="img/cho2.jpg" alt=""></a>
-                                    </div>
-                                    <div class="mottt-text">
-                                        <a href=""><h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, ut.</h5></a>
-                                        <p>Ngay gio 13h00</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex quibusdam ullam rerum itaque libero quasi praesentium maiores molestiae soluta sit minus, quo dolorum delectus, tempora, velit placeat aliquam molestias laudantium.</p>
-                                        <p>
-                                            <span><i class="fa fa-home"></i></span>
-                                            <span>Luot xem: 100</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                
-                            </div>
+                            {{/each}}
+                            {{/with}}
+                            
                         </div>
                     </div>
                     <div class="tintuc-nd-right">
-                        <div class="qc-sp">
-                            <div class="qc-sp-item">
-                                <div class="qc-sp-item-nd">
-                                    <img src="img/cho.jpg" alt="">
-                                    <div class="qc-sp-item-nd-text">
-                                        <p>Ten san pham</p>
-                                        <p>100000 d</p>
-                                        <a href="">Xem ngay</a>
+                        <h5>Sản phẩm được quan tâm nhiều nhất</h5>
+                        <div class="motloaisanphamchinh">
+                            {{#each luotxemcaonhat}}
+                             
+                                  <div class="motloaisanphamchinh-nd">
+                                <div class="motspchinh">
+                                    <div class="motsp-img">
+                                       <img src="/img/sp/{{loaitong}}/{{loaichinh}}/{{chialaydu id}}.jpg" alt=""></a>
+                                    
+                                    <div class="motspchinhbtn">
+                                        <div class="motspbtn-p">
+                                            <p><a href="/sanpham/{{loaitong}}/{{loaichinh}}/{{loaisanpham}}/{{id}}"><i class="fa fa-eye"></i></a></p>
+                                            <p><a><i class="fa fa-cart-plus"></i></a></p>
+                                        </div>                             
+                                    </div>
+                                    </div>
+                                    <div class="motsp-text">
+                                    <div class="motsp-tenthuonghieu">
+                                        <a href="/sanpham/{{loaitong}}/{{loaichinh}}/{{loaisanpham}}/{{id}}"><h5>{{name}} {{id}}</h5></a>
+                                        {{#with Thuonghieu}}
+                                        <p>{{name}}</p>
+                                        {{/with}}
+                                    </div>
+                                    <div class="giasao">
+                                        <p>{{tien gia}} d</p>
+                                        <div>
+                                            <i class="fa fa-home"></i>
+                                            <i class="fa fa-home"></i>
+                                            <i class="fa fa-home"></i>
+                                            <i class="fa fa-home"></i>
+                                            <i class="fa fa-home"></i>   
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
-
+                              </div>
+                             
+                            
+                            {{/each}}
                             </div>
-                            <div class="qc-sp-item">
-                                <div class="qc-sp-item-nd">
-                                    <img src="img/cho.jpg" alt="">
-                                    <div class="qc-sp-item-nd-text">
-                                        <p>Ten san pham</p>
-                                        <p>100000 d</p>
-                                        <a href="">Xem ngay</a>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="qc-sp-item">
-                                <div class="qc-sp-item-nd">
-                                    <img src="img/cho.jpg" alt="">
-                                    <div class="qc-sp-item-nd-text">
-                                        <p>Ten san pham</p>
-                                        <p>100000 d</p>
-                                        <a href="">Xem ngay</a>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="qc-sp-item">
-                                <div class="qc-sp-item-nd">
-                                    <img src="img/cho.jpg" alt="">
-                                    <div class="qc-sp-item-nd-text">
-                                        <p>Ten san pham</p>
-                                        <p>100000 d</p>
-                                        <a href="">Xem ngay</a>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="qc-sp-item">
-                                <div class="qc-sp-item-nd">
-                                    <img src="img/cho.jpg" alt="">
-                                    <div class="qc-sp-item-nd-text">
-                                        <p>Ten san pham</p>
-                                        <p>100000 d</p>
-                                        <a href="">Xem ngay</a>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="qc-sp-item">
-                                <div class="qc-sp-item-nd">
-                                    <img src="img/cho.jpg" alt="">
-                                    <div class="qc-sp-item-nd-text">
-                                        <p>Ten san pham</p>
-                                        <p>100000 d</p>
-                                        <a href="">Xem ngay</a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
                     </div>
                       
                 </div>
@@ -295,12 +146,9 @@
     </section>
 
     
-    <script src="js/jquery-3.5.1.min.js"></script>
-    <script src="js/gsap.min.js"></script>
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <script src="/js/gsap.min.js"></script>
     
-    
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="js/slick-1.8.1/slick/slick.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="/js/index.js"></script>
 </body>
 </html>

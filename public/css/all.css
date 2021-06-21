@@ -1,17 +1,31 @@
 .container{
-    width: 1200px;
+    max-width: 1200px;
     margin: 0 auto;
-    max-width: 100%;
+    
+
 }
 .container-fluid{
-    width: 100%;
-    margin: 0 auto;
     max-width: 100%;
-    
+    margin: 0 auto;
+    overflow: hidden;
 }
-:root{
-    --main-color:#f7444e;
+:root {
+    --primary-color: #f40058;
+    --secondary-color: #161b40;
+    --thir-color:#43bee5;
+    --four-color:#efa500;
+    --five-color:#41b853;
+    --text-color: #bdbab4;
+    --hover-color:#98dbc6;
+    --font-header-large:40px;
+    --font-header-medium:30px;
+    --font-header-small:25px;
+    --text-large:18px;
+    --text-medium:16px;
+    --text-small:14px;
+
 }
+
 img{
     width: 100%;
 }

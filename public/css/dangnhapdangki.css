@@ -1,0 +1,370 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.form-dangnhap h3, .form-dangki h3 {
+    text-align: center;
+}
+
+form {}
+
+.input input {
+    width: 100%;
+    height: 38px;
+    border: 1px solid var(--primary-color);
+    padding: 5px;
+    border-radius: 3px;
+    margin: 10px 0;
+}
+
+.form-dangnhap, .form-dangki {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-dangnhap form input[type='checkbox'], .form-dangki form input[type='checkbox'] {
+    margin-right: 9px;
+    cursor: pointer;
+}
+
+
+
+.form-dangnhap form input[type='submit'] {
+    background: #fff;
+    color: #000;
+    padding: 9px 24px;
+    font-size: 15px;
+    border-radius: 4px;
+    border: 1px solid var(--primary-color);
+    transition: 0.5s;
+    cursor: pointer;
+}
+.form-dangki form input[type='submit'] {
+    background: #fff;
+    color: #000;
+    padding: 9px 24px;
+    font-size: 15px;
+    border-radius: 4px;
+    border: 1px solid var(--secondary-color);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.form-dangki form input[type='submit']:hover {
+    background: var(--secondary-color);
+}
+
+.form-dangnhap form input[type='submit']:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+.form-dangki form input[type='submit']:hover {
+    background: var(--secondary-color);
+    color: #fff;
+}
+
+.form-dangnhap form, .form-dangki form {
+    width: 100%;
+    padding: 0 25%;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.dangnhapdangki {
+    background: url(../img/bg/dkbg.jpg);
+    padding: 30px 0;
+    transition:0.5s;
+    margin:60px 0;
+    height: 900px;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dangnhapdangki.dndk-acc {background: url(../img/bg/dnbg.jpg);background-size: cover;}
+
+.hienthi {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    box-shadow: 0 5px 45px var(--primary-color);
+    padding:30px 0;
+}
+
+.container {
+    position: relative;
+}
+
+.dangki {
+    width: 50%;
+    height: 550px;
+}
+
+.dangnhap {
+    width: 50%;
+    height: 550px;
+}
+.dangki h2{
+    color: #fff
+}
+
+.dangnhap-bg {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 30px;
+    /* height: 550px; */
+}
+
+.dangnhap-bg .dangnhap h2 {
+    color: #fff;
+}
+
+.dangnhap-bg .dangnhap, .dangnhap-bg .dangki{
+    background:var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dangnhap-bg .dangnhap button, .dangnhap-bg .dangki button {
+    background: var(--primary-color);
+    margin: 30px;
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 2px solid #fff;
+    color: #fff;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.dangnhap-bg .dangki button {
+    background: var(--secondary-color);
+}
+
+.dangnhap-bg .dangki button:hover {
+    background: #fff;
+    color: var(--secondary-color);
+}
+
+.dangnhap-bg .dangnhap button:hover {
+    background: #fff;
+    color: #000;
+}
+.form-dangnhap.form-dangnhap-acc{
+    display:none;
+}
+.form-dangki{
+    display:none;
+}
+.form-dangki.form-dangki-acc{
+    display:inherit;
+}
+
+.form-dangki input {
+    border: 1px solid var(--secondary-color);
+}
+
+
+.input-submit {
+    text-align: end;
+}
+.dangnhap-bg .dangki{
+    background:var(--secondary-color)
+}
+.hienthi.dndk-acc {
+    left: 50%;
+    box-shadow: 0 5px 45px var(--secondary-color);
+}
+@media screen and (max-width: 375px) {
+    .dangnhap, .dangki{
+        width: 100%;
+        height:320px;
+    }
+    .hienthi.dndk-acc {
+        left: 0%;
+        top:40%;
+    }
+    .hienthi {
+        width: 100%;
+        height:490px;
+    }
+    .container.ars{
+        width: 100%;
+        height:550px;
+    }
+    .dangnhap-bg .dangnhap{
+        justify-content: flex-start;
+        padding-top: 30px;
+        
+    }
+    .dangnhap-bg .dangki{
+        justify-content: flex-end;
+        
+    }
+   
+}
+@media screen and (min-width: 375px) {
+    .dangnhap, .dangki{
+        width: 100%;
+        height:320px;
+    }
+    .hienthi.dndk-acc {
+        left: 0%;
+        top:40%;
+    }
+    .hienthi {
+        width: 100%;
+        height:490px;
+    }
+    .container.ars{
+        width: 100%;
+        
+        height:550px;
+    }
+    .dangnhap-bg .dangnhap{
+        justify-content: flex-start;
+        padding-top: 30px;
+        
+    }
+    .dangnhap-bg .dangki{
+        justify-content: flex-end;
+        
+    }
+   
+}
+@media screen and (min-width: 600px) {
+    .dangnhap, .dangki{
+        width: 100%;
+        height:320px;
+    }
+    .hienthi.dndk-acc {
+        left: 0%;
+        top:40%;
+    }
+    .hienthi {
+        width: 100%;
+        height:490px;
+    }
+    .container.ars{
+        width: 100%;
+        height: 550px;
+    }
+    .dangnhap-bg .dangnhap{
+        padding-top: 30px;
+        justify-content: flex-start;
+        
+    }
+    .dangnhap-bg .dangki{
+        justify-content: flex-end;
+        
+    }
+    
+}
+@media screen and (min-width: 769px) {
+    .dangnhap, .dangki{
+        width: 50%;
+        height:550px;
+    }
+    .hienthi.dndk-acc {
+        left: 50%;
+        top:0%;
+    }
+    .hienthi {
+        width: 50%;
+        height:100%;
+    }
+    .container.ars{
+        width: 100%;
+        height:auto;
+    }
+    .dangnhap-bg  .dangnhap{
+        padding-top: 0;
+        justify-content: center;
+        
+    }
+    .dangnhap-bg  .dangki{
+    justify-content: center;
+        
+    }
+    
+    
+}
+@media screen and (min-width: 1024px) {
+    .dangnhap, .dangki{
+        width: 50%;
+        height:550px;
+    }
+    .hienthi.dndk-acc {
+        left: 50%;
+        top:0%;
+    }
+    .hienthi {
+        width: 50%;
+        height:100%;
+    }
+    .container.ars{
+        width: 100%;
+        height:auto;
+    }
+    .dangnhap-bg  .dangnhap{
+        justify-content: center;
+        padding-top: 0;
+        
+    }
+    .dangnhap-bg  .dangki{
+    justify-content: center;
+        
+    }
+    
+    
+}
+@media screen and (min-width: 1200px) {
+    
+    
+.dangnhap, .dangki{
+    width: 50%;
+    height:550px;
+}
+.hienthi.dndk-acc {
+    left: 50%;
+    top:0%;
+}
+.hienthi {
+    width: 50%;
+    height:100%;
+}
+.container.ars{
+    width: 100%;
+    height:auto;
+}
+.dangnhap-bg  .dangnhap{
+    padding-top: 0;
+    justify-content: center;
+    
+}
+.dangnhap-bg  .dangki{
+justify-content: center;
+    
+}
+
+    
+}

@@ -1,0 +1,152 @@
+    
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/sp.css">
+    <link rel="stylesheet" href="/css/motsp.css">
+    <link rel="stylesheet" href="/css/media.css">
+    <link rel="stylesheet" href="/css/giohang.css">
+    <link rel="stylesheet" href="/font/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Pangolin&family=Roboto:ital,wght@0,100;0,300;1,100&display=swap" rel="stylesheet">
+</head>
+<body>
+       
+    <section class="container-fluid main-2">
+        {{>header}}
+    <section class="container-fluid">
+        {{>slideBanner}}
+        <div class="container">
+            <div class="line-page">
+                <p>
+                    <span>Sản phẩm</span>
+                    <span>/Giỏ hàng</span>
+                </p>
+            </div>
+            {{#with cart}}
+           
+            <div class="tintuc" id="khungsanpham">
+                
+                <div class="table-reponsive" >
+                     {{#if items.length}}
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Sản phẩm</th>
+                                <th>Giá tiền</th>
+                                <th>Số lượng</th>
+                                <th>Tổng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each items}}
+                            <tr class='table-motsp' id='item{{item.id}}'>
+                                <td class='table-sp'>
+                                    <div class="table-img">
+                                        <div class="table-img-flex">
+                                            <img src="/img/sp/{{item.loaitong}}/{{item.loaichinh}}/{{chialaydu item.id}}.jpg" alt="">
+                                        </div>
+                                        <div class="table-text">
+                                            <p>{{item.name}} {{item.id}}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="table-gia">{{tien item.gia}} vnd</td>
+                                <td class="table-soluong">
+                                    <div class="asp-soluong">
+                                        <label for="">Số lượng</label>
+                                        <div class="asp-soluong-input">
+                                            <p class="inputc" onclick="
+                                            var result = document.getElementById('sll{{item.id}}'); 
+                                            var sll = result.value; 
+                                            if( !isNaN( sll )) result.value++; 
+                                            suasanpham({{item.id}}, result.value); 
+                                            return false;
+                                            ">+</p>
+                                            <input type="text" class='inputsl' value="{{soluong}}" readonly id="sll{{item.id}}">
+                                            <p class="inputt" onclick="
+                                            var result = document.getElementById('sll{{item.id}}'); 
+                                            var sll = result.value; 
+                                            if( !isNaN( sll ) &amp;&amp; sll > 1||(sll==1) &amp;&amp; confirm('Bạn muốn xóa luôn mặt hàng này không :')) 
+                                            result.value--;
+                                            suasanpham({{item.id}}, result.value);
+                                            return false;">-</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class='table-tongtien' id='tonggia{{item.id}}'>{{tonggiaformat}} vnd</td>
+                            </tr>
+                            {{/each}}
+                            <tr class='table-motsp'>
+                                <td class='table-sp'>
+                                    <a href="" class="asp-buton" onclick="xoahetgiohang()">
+                                        <p class="asp-buton">Xóa tất cả</p>
+                                    </a>
+                                </td>
+                                <td class="table-gia" colspan="2">
+                                    <form action="">
+                                        <label for="">Mã giảm giá</label>
+                                        <input type="text" placeholder="Nhập mã giảm giá">
+                                    </form>
+                                </td>
+                                
+                                <td class='table-tongtien'>
+                                    Tổng tiền: <p class="table-sum" id="toanbogia">
+                                        {{toanbogiaformat}} vnd</p>
+                                </td>
+                            </tr>
+                            <tr class='table-motsp'>
+                                <td class='table-sp'>
+                                   
+                                </td>
+                                <td class="table-gia">
+                                    
+                                </td>
+                                <td class=table-soluong>
+                                    
+                                    
+                                </td>
+                                <td class='table-thanhtoan'>
+                                    <a href="" class="asp-buton">
+                                        <p class="asp-buton">Thanh toán</p>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    {{else}}
+                <div class='saukhixoahetsanpham'>Giỏ hàng trống, <a href='/'>Quay về trang chủ và chọn sản phẩm</a></div>
+                {{/if}}
+                </div>
+                
+            </div>
+            
+            {{/with}}
+        </div>
+    </section>
+   
+        
+
+        {{>footer}}
+        
+        
+    </section>
+
+    
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <script src="/js/gsap.min.js"></script>
+    
+    
+    
+    <script src="/js/index.js"></script>
+    <script src="/js/giohang.js"></script> 
+</body>
+</html>

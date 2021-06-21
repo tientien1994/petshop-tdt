@@ -7,16 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ</title>
-    <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/sp.css">
-    <link rel="stylesheet" href="css/media.css">
-    <link rel="stylesheet" href="font/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/sp.css">
+    <link rel="stylesheet" href="/css/media.css">
+    <link rel="stylesheet" href="/font/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" type="text/css" href="js/slick-1.8.1/slick/slick.css"/>
-
-<link rel="stylesheet" type="text/css" href="js/slick-1.8.1/slick/slick-theme.css"/>
-<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Pangolin&family=Roboto:ital,wght@0,100;0,300;1,100&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -29,39 +25,19 @@
             <div class="lh">
                 <div class="lh-chinhanh">
                     <h4>Hệ thống Siêu thị PetCity trên toàn quốc</h4>
+                    {{#each diachi}}
                     <div class="lh-chinhanh-tinh">
-                        <h5>Tp.HCM:</h5>
+                        <h5>{{name}}</h5>
+                        {{#each Chinhanhs}}
                         <div class="lh-chinhanh-item">
-                            <h5>1/ Số 10 Hàm Long, Hoàn Kiếm, Hà Nội (Flagship store)</h5>
-                            <p>Tel:  024 39332727 - 1900 2214( <a href="">Tìm cửa hàng</a> )</p>
+                            <h5>{{stt @index}}/ {{name}} - {{diachi}}</h5>
+                            <p>Tel:  012 3456789 - 1900 1234( <a href="/bando/cn{{../id}}-{{id}}">Tìm cửa hàng</a> )</p>
                         </div>
-                        <div class="lh-chinhanh-item">
-                            <h5>2/ Số 10 Hàm Long, Hoàn Kiếm, Hà Nội (Flagship store)</h5>
-                            <p>Tel:  024 39332727 - 1900 2214( <a href="">Tìm cửa hàng</a> )</p>
-                        </div>
+                        {{/each}}
+                        
                     </div>
-                    <div class="lh-chinhanh-tinh">
-                        <h5>Tp.HCM:</h5>
-                        <div class="lh-chinhanh-item">
-                            <h5>1/ Số 10 Hàm Long, Hoàn Kiếm, Hà Nội (Flagship store)</h5>
-                            <p>Tel:  024 39332727 - 1900 2214( <a href="">Tìm cửa hàng</a> )</p>
-                        </div>
-                        <div class="lh-chinhanh-item">
-                            <h5>2/ Số 10 Hàm Long, Hoàn Kiếm, Hà Nội (Flagship store)</h5>
-                            <p>Tel:  024 39332727 - 1900 2214( <a href="">Tìm cửa hàng</a> )</p>
-                        </div>
-                    </div>
-                    <div class="lh-chinhanh-tinh">
-                        <h5>Tp.HCM:</h5>
-                        <div class="lh-chinhanh-item">
-                            <h5>1/ Số 10 Hàm Long, Hoàn Kiếm, Hà Nội (Flagship store)</h5>
-                            <p>Tel:  024 39332727 - 1900 2214( <a href="">Tìm cửa hàng</a> )</p>
-                        </div>
-                        <div class="lh-chinhanh-item">
-                            <h5>2/ Số 10 Hàm Long, Hoàn Kiếm, Hà Nội (Flagship store)</h5>
-                            <p>Tel:  024 39332727 - 1900 2214( <a href="">Tìm cửa hàng</a> )</p>
-                        </div>
-                    </div>
+                    {{/each}}
+                    
                 </div>
                 <div class="lh-form">
                     <h5>Quý khách vui lòng gửi thông tin theo form sau :</h5>
@@ -143,12 +119,9 @@
     </section>
 
     
-    <script src="js/jquery-3.5.1.min.js"></script>
-    <script src="js/gsap.min.js"></script>
-    
-    
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="js/slick-1.8.1/slick/slick.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <script src="/js/gsap.min.js"></script>
+
+    <script src="/js/index.js"></script>
 </body>
 </html>

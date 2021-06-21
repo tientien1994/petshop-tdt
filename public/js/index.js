@@ -1,21 +1,17 @@
 $(function(){
-    
-
-
     $('.nav-nut').click(function(e){
         $('.nav').addClass('nav-apper');
         $('.nav-nav').addClass('nav-nav-apper');
         $('.main').addClass('scale_300');
         $('.main-2').addClass('scale_300');
-        
     })
+
     $('.nav').click(function(e){
         $('.nav').removeClass('nav-apper');
         $('.nav-nav').removeClass('nav-nav-apper');
         $('.main').removeClass('scale_300');
         $('.main-2').removeClass('scale_300');
     })
-   
 })
 
     $(function(){
@@ -36,11 +32,7 @@ $(function(){
         })
     })
     
-   
-    
-   
-
-
+  
 
 $(function(){
     $(window).scroll(function(e){
@@ -50,13 +42,13 @@ $(function(){
                 
             })
             $('.main.container-fluid').addClass('bienmat')
-                $('.container-fluid.main-2').addClass('main-2-fix')
+            //$('.container-fluid.main-2').addClass('main-2-fix')
         }
         else{
             $('.first').removeClass('disapper').one("webkitTransitionEnd", function(){
                 
             })
-            $('.container-fluid.main-2').removeClass('main-2-fix')
+            //$('.container-fluid.main-2').removeClass('main-2-fix')
                 $('.main.container-fluid').removeClass('bienmat')
         }
         
@@ -77,13 +69,6 @@ $(function(){
    })
 })
 
-// $(function(){
-//     setInterval(function(){
-//         i=0;
-//         $('.nd6-num').html('<p>'+i+'</p>')
-//         i++;
-//     },100)
-// })
 var myVar = setInterval(myTimer, 0.01);
 i=1;
 function myTimer() {
@@ -157,25 +142,23 @@ $(document).ready(function(){
       
     })
   })
+  
   $(function(){
     $(window).scroll(function(e){
       var vt=$('html').scrollTop();
       //console.log(vt);
       if(vt>300){
         $('.nav-main').addClass('nav-bar-fix')
+        
+        setTimeout(function(){
+          $('.main-2').removeAttr('style');
+        }, 6800)
       }
       else{
         $('.nav-main').removeClass('nav-bar-fix')
       }
     })
   });
-
-
-
-
-
-
-
 
   /////////////////////////////////////////////////////////
   const slide=(reponsive, slideParent, SlideConatiner,slideItem, interval, transitionTime, next, prev,node, nodeContainer)=>{
@@ -185,31 +168,13 @@ $(document).ready(function(){
     const prevBtn=document.getElementById(prev)
     const stickNavContainer=document.querySelector(nodeContainer)
     let stickNavItem=document.querySelectorAll(node)
-    // console.log(slideContainer)
-    // console.log(slide)
-    // console.log(nextBtn)
-    // console.log(prevBtn)
+    
     let slides=document.querySelectorAll(slideItem);
     
     let auto;
-    //console.log(slides)
-    let index=1;
-    //console.log(index+'index la');
-    // const firstClone=slides[0].cloneNode(true);//de tao ra mot node moi giong node slides[0]
-    // //console.log(firstClone)
-    // const lastClone=slides[slides.length-1].cloneNode(true)
-    // irstClone.id='first-clone'
-    // lastClone.id='last-clone'
-    // //console.log(firstClone)
-    // slide.append(firstClone)
-    // slide.prepend(lastClone)
     
-    // reponsive=[//
-    //   {breakPoint:{width:0, item:1}},//
-    //   {breakPoint:{width:600, item:2}},//
-    //   {breakPoint:{width:1024, item:3}},//
-    //   {breakPoint:{width:1200, item:4}}//
-    // ]//
+    let index=1;
+    
     let item=0;//
     const load=()=>{
       for(let i=0;i< reponsive.length;i++){//
@@ -233,8 +198,8 @@ $(document).ready(function(){
          
        }
        slides=document.querySelectorAll(slideItem)
-       slides[0].id='last-clone';
-       slides[slides.length-item].id='first-clone'
+       //slides[0].id='last-clone';--------------------------------
+       //slides[slides.length-item].id='first-clone'---------------------------------
     }
     console.log(slides.length)
     addClone();
@@ -243,20 +208,7 @@ $(document).ready(function(){
      const getSlides=()=>document.querySelectorAll(slideItem)
 
 
-    // const firstClone=slides[0].cloneNode(true);//de tao ra mot node moi giong node slides[0]
-    // //console.log(firstClone)
-    // const lastClone=slides[slides.length-1].cloneNode(true)
-    // firstClone.id='first-clone'
-    // lastClone.id='last-clone'
-    // //console.log(firstClone)
-    // slide.append(firstClone)
-    // slide.prepend(lastClone)
-
-
-
-    // console.log(window.innerWidth)//
-    // console.log(slideContainer.clientWidth)//
-    // console.log(item)//
+    
     const start=()=>{
       slides=document.querySelectorAll(slideItem);//
     for(let i=0;i<slides.length;i++){//
@@ -327,13 +279,13 @@ $(document).ready(function(){
       // console.log('max trans: '+maxTranslate)
      
       //console.log("index "+index)
-      if(index===slides.length-item){
+      if(index>=slides.length-item){
         //if(slides[index].id==='first-clone'){
         slide.style.transition="none";
         index=item;
         slide.style.transform=`translateX(${-slideWidth*index}px)`;
       }
-      if(index===item-1){     
+      if(index<=item-1){     
         slide.style.transition="none";
         //index=slides.length-item-1;
         //index=item+1;
@@ -342,9 +294,6 @@ $(document).ready(function(){
       }
     })
     }
-      
-      
-    
     const moveToNextSlide=()=>{
       //slides=getSlides();
       if(index>=slides.length-1) return;
@@ -356,15 +305,15 @@ $(document).ready(function(){
     }
     const moveToPrevSlide=()=>{
       //slides=getSlides();
-      if(index===0){
+      if(index<=0){
         index=slides.length-item*2;
         //console.log("chi so cua item" +item)
         slide.style.transform=`translateX(${-slideWidth*index}px)`;
-        slide.style.transition=transitionTime
+        slide.style.transition='none';
       }else{
         index--;
       slide.style.transform=`translateX(${-slideWidth*index}px)`;
-      slide.style.transition=transitionTime
+      slide.style.transition=transitionTime;
       }
       stickMove()
       
@@ -381,7 +330,7 @@ $(document).ready(function(){
 
     
     //console.log(stickNavItem)
-    if($('node').length>0){
+    if($(node).length>0){
       for(i=0;i<=slides.length-item*2-2; i++){
         stickNavContainer.append(stickNavItem[0].cloneNode(true))
       }
@@ -412,25 +361,28 @@ $(document).ready(function(){
   }
 
 
-
-if($('.nd9-slides').length!=0){
-  reponsiv=[//
-    {breakPoint:{width:0, item:1}},//
-   {breakPoint:{width:600, item:2}},//
-    {breakPoint:{width:1024, item:3}},//
-    {breakPoint:{width:1200, item:4}}//
-]
-let slideParent='.nd9-nd'
-let slideItem='.box'
-let slideContainer='.nd9-slides'
-let interval=3000;
-let tranTime='0.3s'
-let nextbtn='next-btn'
- let prevbtn='prev-btn'
- let node='.nd9-node'
- let nodeContainer='.nd9-slide-node'
-slide(reponsiv,slideParent, slideContainer, slideItem, interval, tranTime, nextbtn, prevbtn, node,nodeContainer);
+function slideNhanvien(){
+  if($('.nd9-slides').length!=0){
+    reponsiv=[//
+      {breakPoint:{width:0, item:1}},//
+     {breakPoint:{width:600, item:2}},//
+      {breakPoint:{width:1024, item:3}},//
+      {breakPoint:{width:1200, item:4}}//
+  ]
+  let slideParent='.nd9-nd'
+  let slideItem='.box'
+  let slideContainer='.nd9-slides'
+  let interval=1000;
+  let tranTime='0.3s'
+  let nextbtn='next-btn'
+   let prevbtn='prev-btn'
+   let node='.nd9-node'
+   let nodeContainer='.nd9-slide-node'
+  slide(reponsiv,slideParent, slideContainer, slideItem, interval, tranTime, nextbtn, prevbtn, node,nodeContainer);
+  }
 }
+slideNhanvien();
+
     
  if($('.nd9-slides-2').length!=0){
   reponsiv_2=[//
@@ -509,4 +461,28 @@ slide(reponsiv,slideParent, slideContainer, slideItem, interval, tranTime, nextb
     }
     
   })
+
+
+  const rutgontext=(selector, dodaichuoi)=>{
+    $(document).ready(function() {
+      $(selector).each(function() {
+      var text = $(this).html();
+      if(text.length > dodaichuoi){
+      text = text.substring(0,dodaichuoi);
+      $(this).html(text+' ...');
+      }
+  })
+  })
+  }
+
+  rutgontext('.nav-bar nav ul li a h5', 10)
+  rutgontext('.nav-chitiet-col-item ul.a li a', 15)
+  rutgontext('.tintuc-hot-text p', 100)
+  rutgontext('.nd13-col-nd-detail p', 30)
+ rutgontext('.sp-1-menu-tintuc-item-text>p', 30)
+
+
+
+
+
 

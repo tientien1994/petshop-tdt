@@ -7,15 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ</title>
-    <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/sp.css">
-    <link rel="stylesheet" href="css/media.css">
-    <link rel="stylesheet" href="font/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" type="text/css" href="js/slick-1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/sp.css">
+    <link rel="stylesheet" href="/css/media.css">
+    <link rel="stylesheet" href="/font/font-awesome-4.7.0/css/font-awesome.min.css">
+   
+    
 
-<link rel="stylesheet" type="text/css" href="js/slick-1.8.1/slick/slick-theme.css"/>
+
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Pangolin&family=Roboto:ital,wght@0,100;0,300;1,100&display=swap" rel="stylesheet">
 </head>
@@ -23,12 +23,14 @@
        
     <section class="container-fluid main-2">
         {{>header}}
-    {{>slideBanner}}
+        {{>slideBanner}}
     <section class="container-fluid">
         <div class="container">
             <div class="line-page">
                 <p>
-                    <span>Sản phẩm</span>
+                    {{#each motsanpham}}
+                    <span>{{name}}</span>
+                    {{/each}}
                     <span>/Sản phẩm cho {{loaipage}}</span>
                     <span>/Thức ăn</span>
 
@@ -73,7 +75,7 @@
                         <h5>Tin tuc</h5>
                         <div class="sp-1-menu-tintuc-item">
                             <div class="sp-1-menu-tintuc-item-img">
-                                <img src="img/cho.jpg" alt="">
+                                <img src="/img/cho.jpg" alt="">
                             </div>
                             <div class="sp-1-menu-tintuc-item-text">
                                 <p>Lorem, ipsum dolor.</p>
@@ -83,7 +85,7 @@
                         </div>
                         <div class="sp-1-menu-tintuc-item">
                             <div class="sp-1-menu-tintuc-item-img">
-                                <img src="img/cho.jpg" alt="">
+                                <img src="/img/cho.jpg" alt="">
                             </div>
                             <div class="sp-1-menu-tintuc-item-text">
                                 <p>Lorem, ipsum dolor.</p>
@@ -93,7 +95,7 @@
                         </div>
                         <div class="sp-1-menu-tintuc-item">
                             <div class="sp-1-menu-tintuc-item-img">
-                                <img src="img/cho.jpg" alt="">
+                                <img src="/img/cho.jpg" alt="">
                             </div>
                             <div class="sp-1-menu-tintuc-item-text">
                                 <p>Lorem, ipsum dolor.</p>
@@ -103,7 +105,7 @@
                         </div>
                         <div class="sp-1-menu-tintuc-item">
                             <div class="sp-1-menu-tintuc-item-img">
-                                <img src="img/cho.jpg" alt="">
+                                <img src="/img/cho.jpg" alt="">
                             </div>
                             <div class="sp-1-menu-tintuc-item-text">
                                 <p>Lorem, ipsum dolor.</p>
@@ -139,7 +141,7 @@
                 <div class="sp-1-sp">
                     <div class="motsp">
                         <div class="motsp-img">
-                            <img src="img/cho.jpg" alt="">
+                            <img src="/img/cho.jpg" alt="">
                         </div>
                         <div class="motsp-text">
                             <div class="motsp-tenthuonghieu">
@@ -163,7 +165,7 @@
                     </div>
                     <div class="motsp">
                         <div class="motsp-img">
-                            <img src="img/cho1.jpg" alt="">
+                            <img src="/img/cho1.jpg" alt="">
                         </div>
                         <div class="motsp-text">
                             <div class="motsp-tenthuonghieu">
@@ -187,7 +189,7 @@
                     </div>
                     <div class="motsp">
                         <div class="motsp-img">
-                            <img src="img/cho2.jpg" alt="">
+                            <img src="/img/cho2.jpg" alt="">
                         </div>
                         <div class="motsp-text">
                             <div class="motsp-tenthuonghieu">
@@ -211,7 +213,7 @@
                     </div>
                     <div class="motsp">
                         <div class="motsp-img">
-                            <img src="img/cho.jpg" alt="">
+                            <img src="/img/cho.jpg" alt="">
                         </div>
                         <div class="motsp-text">
                             <div class="motsp-tenthuonghieu">
@@ -235,7 +237,7 @@
                     </div>
                     <div class="motsp">
                         <div class="motsp-img">
-                            <img src="img/cho.jpg" alt="">
+                            <img src="/img/cho.jpg" alt="">
                         </div>
                         <div class="motsp-text">
                             <div class="motsp-tenthuonghieu">
@@ -259,7 +261,7 @@
                     </div>
                     <div class="motsp">
                         <div class="motsp-img">
-                            <img src="img/cho.jpg" alt="">
+                            <img src="/img/cho.jpg" alt="">
                         </div>
                         <div class="motsp-text">
                             <div class="motsp-tenthuonghieu">
@@ -283,7 +285,7 @@
                     </div>
                     <div class="motsp">
                         <div class="motsp-img">
-                            <img src="img/cho.jpg" alt="">
+                            <img src="/img/cho.jpg" alt="">
                         </div>
                         <div class="motsp-text">
                             <div class="motsp-tenthuonghieu">
@@ -307,7 +309,7 @@
                     </div>
                     <div class="motsp">
                         <div class="motsp-img">
-                            <img src="img/cho.jpg" alt="">
+                            <img src="/img/cho.jpg" alt="">
                         </div>
                         <div class="motsp-text">
                             <div class="motsp-tenthuonghieu">
@@ -331,7 +333,7 @@
                     </div>
                     <div class="motsp">
                         <div class="motsp-img">
-                            <img src="img/cho.jpg" alt="">
+                            <img src="/img/cho.jpg" alt="">
                         </div>
                         <div class="motsp-text">
                             <div class="motsp-tenthuonghieu">
@@ -355,7 +357,7 @@
                     </div>
                     <div class="motsp">
                         <div class="motsp-img">
-                            <img src="img/cho.jpg" alt="">
+                            <img src="/img/cho.jpg" alt="">
                         </div>
                         <div class="motsp-text">
                             <div class="motsp-tenthuonghieu">
@@ -400,12 +402,11 @@
     </section>
 
     
-    <script src="js/jquery-3.5.1.min.js"></script>
-    <script src="js/gsap.min.js"></script>
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <script src="/js/gsap.min.js"></script>
     
     
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="js/slick-1.8.1/slick/slick.min.js"></script>
-    <script src="js/index.js"></script>
+    
+    <script src="/js/index.js"></script>
 </body>
 </html>

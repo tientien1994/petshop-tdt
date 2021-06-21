@@ -11,31 +11,39 @@ $(function() {
     })
 })
 $(function() {
-    var inputsl=$('#inputsl');
-    var inputcong=$('#inputc')
-    var inputtru=$('#inputt')
+    //var inputsl=$('#inputsl');
+    var inputcong=$('.inputc')
+    var inputtru=$('.inputt')
     //console.log(inputsl)
+
     inputcong.click(function(){
-        let inputmun=parseInt(inputsl.val())
+        let inputmun=parseInt($(this).next().val())
         
         
-        inputsl.val(function(){
+        $(this).next().val(function(){
             return inputmun+1;
         });
         
     })
     inputtru.click(function(){
-        let inputmun=parseInt(inputsl.val())
+        let inputmun=parseInt($(this).prev().val())
         if(inputmun>0){
-            inputsl.val(function(){
+            $(this).prev().val(function(){
                 return inputmun-1;
             });
         }
         else{
-            inputsl.val(function(){
+            $(this).prev().val(function(){
                 return 0;
             });
         }
         
     })
 })
+$(function(){
+
+    
+})
+
+        
+ 

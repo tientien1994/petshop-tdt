@@ -1,0 +1,123 @@
+    
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập, đăng kí</title>
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/sp.css">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/dangnhapdangki.css">
+    <link rel="stylesheet" href="font/font-awesome-4.7.0/css/font-awesome.min.css">
+    
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Pangolin&family=Roboto:ital,wght@0,100;0,300;1,100&display=swap" rel="stylesheet">
+</head>
+<body>
+       
+    <section class="container-fluid main-2">
+        {{>header}}
+    <section class="container-fluid">
+        <div class="dangnhapdngki-banner">
+            <img src="/img/banner-sp.jpg" alt="">
+        </div>
+        
+        <div class="dangnhapdangki {{#if thongbao}}{{hientrang}}{{/if}}">
+        
+            <div class="container ars">
+                <div class="dangnhap-bg">
+                    <div class="dangnhap">
+                        <h2>Bạn đã có tài khoản</h2>
+                        <button class="dangnhap-btn">Đăng nhập</button>
+                    </div>
+                    <div class="dangki">
+                        <h2>Bạn chưa có tài khoản</h2>
+                        <button class='dangki-btn'>Đăng kí</button>
+                    </div>
+                </div>
+                
+                <div class="hienthi {{#if thongbao}}{{hientrang}}{{/if}}">
+                    
+                    
+                    <div class="form-dangnhap {{#if thongbao}}{{vitriformdangnhap}}{{/if}}">
+                        
+                        <form action="/dndk" method="post">
+                            <h3>Đăng nhập</h3>
+                            {{#if thongbao}}
+                            <div class="thongbaodangki {{type}}">
+                                {{thongbao}}
+                            </div>
+                            {{/if}}
+                            <input type="hidden" value="dn" name="dkdn">
+                            <div class="input">
+                                
+                                <input type="text" placeholder="Tên đăng nhập của bạn" name="name">
+                            </div>
+                            <div class="input">
+                                
+                                <input type="password" placeholder="nhập mật khẩu" name="matkhau">
+                                
+                            </div>
+                            <input type="checkbox" name='giudangnhap'><label for="dangnhapchecked">Giữ trạng thái đăng nhập?</label>
+                            <div class="input-submit">
+                                 <br>
+                                <input type="submit" value='Đăng nhập'><br>
+                                <a class='quanmatkhau'>Quên mật khẩu?</a>
+                            </div>
+                            
+                        </form>
+                    </div>
+                    
+                    <div class="form-dangki {{#if thongbao}}{{vitriformdangki}}{{/if}}">
+                    
+                        <form action="/dndk" method="post">
+                            <h3>Đăng kí</h3>
+                            {{#if thongbao}}
+                            <div class="thongbaodangki {{type}}">
+                                {{thongbao}}
+                            </div>
+                            {{/if}}
+                            <input type="hidden" value="dk" name="dkdn">
+                            <div class="input">
+                                <input type="email" placeholder="Nhập email của bạn" name='name'>
+                            </div>
+                            <div class="input">
+                                <input type="text" placeholder="Nhập tên của bạn" name='fullname'>
+                            </div>
+                            <div class="input">
+                                <input type="password" placeholder="Nhập mật khẩu" name='matkhau'>
+                            </div>
+                            <div class="input">
+                                <input type="password" placeholder="Nhập lại mật khẩu" name='nhaplaimatkhau'>
+                            </div>
+                            
+                            
+                            <div class="input-submit">
+                                 <br>
+                                <input type="submit" value='Đăng kí'><br>
+                                
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+        {{>footer}}
+        
+        
+    </section>
+
+    
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/dangnhapdangki.js"></script>
+</body>
+</html>
