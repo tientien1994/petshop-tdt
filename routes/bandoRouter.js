@@ -38,7 +38,8 @@ router.get('/cn:idvung?-:idcn?', (req, res, next)=>{
     })
     .then((data)=>{
         res.locals.vung=data
-        //res.send(req.params.idvung)
+        
+        //res.send(res.locals.diachi)
         res.render('map')
     })
     .catch(err =>{next(err)})

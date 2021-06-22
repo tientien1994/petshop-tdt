@@ -1,11 +1,11 @@
 let express=require('express')
 let router=express.Router()
 let dkdnController=require('../controllers/dkdnController')
-
+let menuController=require('../controllers/menuController')
 
 router.get('/', (req, res, next) => {
     req.session.returnpage=req.query.returnpage
-        let menuController=require('../controllers/menuController')
+        
         menuController
         .menu()
         .then((data)=>{
@@ -35,8 +35,13 @@ router.post('/', (req, res, next) => {
                 vitriformdangki:'form-dangki-acc'
             })
         }
-        dkdnController
-        .laybangemail(name)
+        menuController
+        .menu()
+        .then(data=>{
+            res.locals.menu=data
+            return dkdnController
+            .laybangemail(name)
+        })
         .then(user=>{
             if(user){
                 return res.render('dangnhapdangki',{
@@ -80,9 +85,13 @@ router.post('/', (req, res, next) => {
         let matkhau=req.body.matkhau
         let giudangnhap=req.body.giudangnhap
         //console.log("giu dng nhap la ::::" + giudangnhap)
-
-        dkdnController
-        .laybangemail(name)
+        menuController
+        .menu()
+        .then(data=>{
+            res.locals.menu=data
+            return dkdnController
+            .laybangemail(name)
+        })
         .then(nguoidung=>{
             if(nguoidung){
                 if(dkdnController.mahoanguocpass(matkhau, nguoidung.matkhau)){

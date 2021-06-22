@@ -76,6 +76,12 @@ let hbs=expressHbs.create({
             }
             return false
 
+        },
+        notvung: function(a,b){
+            if(a==null&&b==null){
+                return true
+            }
+            return false
         }
 
     }
