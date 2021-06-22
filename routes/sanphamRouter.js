@@ -69,6 +69,7 @@ router.get('/:loaitong',(req, res, next)=>{
     .then(data=>{
         res.locals.toptintuc=data
         res.render('loaispchinh');
+        //res.send(res.locals.menu)
     })
     .catch(err=>{next(err)})
 
@@ -260,7 +261,7 @@ router.get('/:loaitong/:loaichinh/:loaisanpham/:idsp',(req, res, next)=>{
     .then(data =>{
         res.locals.comment=data
         res.render('motsanpham')
-        //res.send(data)
+        //res.send(res.locals.motsanpham.file)
     })
     .catch(err=>{next(err)}) 
     

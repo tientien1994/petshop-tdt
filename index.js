@@ -168,12 +168,12 @@ app.use('/randomsp',(req, res)=>{
     })
 })
 app.use('/update',(req, res)=>{
-    models.Sanpham
+    models.Loaitong
     .update(
         {
-            loaisanpham:'kichducto'
+            link:'chomeo'
         },{
-            where:{loaisanphamId:54}
+            where:{id:2}
         }
     )
     .then(function(sanpham){

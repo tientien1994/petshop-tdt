@@ -6,12 +6,14 @@ module.exports = {
       await queryInterface.bulkInsert('Loaitongs', [
         {
           name:"cho chó",
+          link:'chocho',
           createdAt: new Date(),
           updatedAt: new Date()
 
         },
         {
           name:"cho mèo",
+          link:'chomeo',
           createdAt: new Date(),
           updatedAt: new Date()
 
