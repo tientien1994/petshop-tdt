@@ -1,6 +1,6 @@
-function chuyendoi() {}
+function initMap() {}
 $(() => {
-chuyendoi=function(){
+    initMap=function(){
     var latd;
     var longd;
     if($('#latlong').length>0){
