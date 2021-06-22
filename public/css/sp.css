@@ -177,8 +177,6 @@
     padding-bottom: 10px;
 }
 
-.lh-chinhanh-item p {}
-
 .lh-chinhanh-item p a {
     color: var(--primary-color);
 }
@@ -386,8 +384,6 @@
     padding-bottom: 10px;
 }
 
-p {}
-
 .sp-1-menu-tintuc-item-text {
     width: 70%;
 }
@@ -399,9 +395,6 @@ p {}
     flex-direction: row;
     padding-bottom: 10px;
     padding-top: 10px;
-}
-
-.sp-1-menu-tintuc-item:hover {
 }
 
 .sp-1-menu, .sp-1-menu-gia, .sp-1-thuonghieu, .sp-1-menu-tintuc {
@@ -419,10 +412,6 @@ li.locgia.locgia-acc a i.fa::before {
     color: var(--primary-color);
 }
 
-.sp-1-menu ul, .sp-1-menu-gia ul, .sp-1-thuonghieu ul, .sp-1-menu-tintuc ul {
-    /* padding-left: 15px; */
-}
-
 .sp-1-list-menu {
     padding: 15px;
     width: 25%;
@@ -434,10 +423,7 @@ li.locgia.locgia-acc a i.fa::before {
     text-transform: uppercase;
     padding-bottom: 15px;
 }
-.dem-banner-item {
-    /* padding: 0 15px 0 0; */
-}
-.sp-1-menu, .sp-1-menu-gia, .sp-1-thuonghieu, .sp-1-menu-tintuc {}
+
 
 .sp-1-list-menu .sp-1-menu ul li:hover {
     transition: 0.5s;

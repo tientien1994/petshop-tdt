@@ -1583,7 +1583,7 @@ h3.nd12-title {
     justify-content: center;
     padding-top: 120px;
     border-right: 1px solid #aaa;
-    text-align: ;
+   
 }
 
 .nd6-bor {
@@ -2667,11 +2667,7 @@ section.main.container.scale_300 {
     z-index: 6;
     
 }
-section.container-fluid.main-2.main-2-fix {
-    /* transform: translateY(-80vh); */
-    /* z-index: 100; */
-    /* transition: 0.5s; */
-}
+
 section.container-fluid.main-2.main-2-fix.scale_300 {
     transform: translate(300px, -80vh);
 }
@@ -2853,11 +2849,6 @@ ul.a li {
 
 ul.a li:hover .nav-tendaydu-item {
     display: inline-block;
-}
-
-.nav-chitiet-col-item ul.a p.nav-tendaydu-item {
-    /* background: var(--secondary-color); */
-    /* position: absolute; */
 }
 
 p.nav-tendaydu-item {

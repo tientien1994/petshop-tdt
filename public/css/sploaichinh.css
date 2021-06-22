@@ -22,10 +22,6 @@
     font-size: 13px;
 }
 
-.motsp-tenthuonghieu a {
-    /* position: relative; */
-}
-
 .tendaydu {
     position: absolute;
     /* width: 100%; */
@@ -111,13 +107,6 @@ li.locgia.locgia-acc a i.fa::before {
     background: var(--secondary-color);
     /* transition: 0.5s; */
     transform: scale(1.5);
-}
-
-.motspchinhbtn a {
-    /* background: var(--primary-color); */
-    /* width: 69px; */
-    /* height: 40px; */
-    /* padding: 15px; */
 }
 
 .motspchinhbtn a i {
