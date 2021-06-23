@@ -7,7 +7,9 @@
     <title>Trang chủ</title>
     <link rel="stylesheet" href="/css/all.css">
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/tintuc.css">
     <link rel="stylesheet" href="/css/media.css">
+    <link rel="stylesheet" href="/css/index-main.css">
     <link rel="stylesheet" href="/font/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     
@@ -661,7 +663,9 @@
                     <div class="nd13-col">
                         {{#each topbaiviet}}
                         <div class="nd13-col-item">
-                            <img src="/img/tintuc/{{chialaydu id}}.jpg" alt="">
+                            <div class="tintuc-tuongtu-img">
+                                            <img src="/img/tintuc/{{chialaydu id}}.jpg" alt="">
+                                        </div>
                             
                             <div class="nd12-wiew">
                                 <ul>
@@ -719,7 +723,7 @@ MỌI TIN TỨC
         
         {{>footer}}
     </section>
-
+    <button id="back-to-top" title="Go to top"><i class="fa fa-arrow-up"></i></button>   
     
     <script src="/js/jquery-3.5.1.min.js"></script>
     <script src="/js/gsap.min.js"></script>

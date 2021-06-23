@@ -111,7 +111,7 @@
                         {{#each toptintuc}}
                         <div class="sp-1-menu-tintuc-item">
                             <div class="sp-1-menu-tintuc-item-img">
-                                <a href="/tintuc/theloaitt{{tlbaivietId}}/{{id}}"><img src="/img/cho.jpg" alt=""></a>
+                                <a href="/tintuc/theloaitt{{tlbaivietId}}/{{id}}"><img src="/img/tintuc/{{chialaydu id}}.jpg" alt=""></a>
                             </div>
                             <div class="sp-1-menu-tintuc-item-text">
                                 <a href="/tintuc/theloaitt{{tlbaivietId}}/{{id}}"><p>{{name}}</p></a>
@@ -146,41 +146,7 @@
 
                                 {{#each (each6 Sanphams)}}
 
-                                <div class="motloaisanphamchinh-nd">
-                                    <div class="motspchinh">
-                                        <div class="motsp-img">
-                                            <img src="/img/sp/{{loaitong}}/{{loaichinh}}/{{chialaydu id}}.jpg" alt=""></a>
-
-                                            <div class="motspchinhbtn">
-                                                <div class="motspbtn-p">
-                                                    <p><a href="/sanpham/{{loaitong}}/{{loaichinh}}/{{loaisanpham}}/{{id}}"><i class="fa fa-eye"></i></a></p>
-                                                    <p class="themvaogiohang" data-id='{{id}}'><a ><i class="fa fa-cart-plus"></i></a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="motsp-text">
-                                            <div class="motsp-tenthuonghieu">
-                                                <a href="/sanpham/{{loaitong}}/{{loaichinh}}/{{loaisanpham}}/{{id}}">
-                                                    <h5>{{name}} {{id}}</h5>
-                                                    <p class="tendaydu">{{name}} {{id}}</p>
-                                                </a>
-                                                {{#with Thuonghieu}}
-                                                <p>{{name}}</p>
-                                                {{/with}}
-                                            </div>
-                                            <div class="giasao">
-                                                <p>{{tien gia}} d</p>
-                                                <div>
-                                                    <i class="fa fa-home"></i>
-                                                    <i class="fa fa-home"></i>
-                                                    <i class="fa fa-home"></i>
-                                                    <i class="fa fa-home"></i>
-                                                    <i class="fa fa-home"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                {{>sanpham}}
 
                                 {{/each}}
 
@@ -210,6 +176,7 @@
 
 
     </section>
+    <button id="back-to-top" title="Go to top"><i class="fa fa-arrow-up"></i></button>   
 <script src="/js/jquery-3.5.1.min.js"></script>
     <script>
         

@@ -1,0 +1,19 @@
+@media screen and (max-width: 375px) {
+    #map-nd{width: 100%;order:2; height:350px} .map-list{width: 100%;order:1; height:auto}
+}
+@media screen and (min-width: 375px) {
+    #map-nd{width: 100%;order:2; height:400px} .map-list{width: 100%;order:1; height:auto}
+}
+@media screen and (min-width: 600px) {
+    #map-nd{width: 100%;order:2; height:550px} .map-list{width: 100%;order:1; height:auto}
+}
+@media screen and (min-width: 769px) {
+    #map-nd{width: 100%;order:2; height:550px} .map-list{width: 100%;order:1; height:auto}
+}
+@media screen and (min-width: 1024px) {
+    #map-nd{width: 70%; order:1; height:550px} .map-list{width: 30%;order:2; height:550px}
+    
+}
+@media screen and (min-width: 1200px) {
+    #map-nd{width: 70%; order:1; height:550px} .map-list{width: 30%;order:2; height:550px}
+}

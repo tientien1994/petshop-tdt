@@ -51,6 +51,19 @@ $(function(){
             //$('.container-fluid.main-2').removeClass('main-2-fix')
                 $('.main.container-fluid').removeClass('bienmat')
         }
+        if(x>200){
+          $('.giohang').addClass('giohang-fixed')
+        }
+        else{
+          $('.giohang').removeClass('giohang-fixed')
+        }
+        if(x>800){
+          $('#back-to-top').css({"display":"block"})
+        }
+        else{
+          $('#back-to-top').css({"display":"none"})
+        }
+        
         
     })
 })
@@ -481,7 +494,18 @@ slideNhanvien();
   rutgontext('.nd13-col-nd-detail p', 30)
  rutgontext('.sp-1-menu-tintuc-item-text>p', 30)
 
-
+ $(document).ready(function(){
+  $("#back-to-top").on('click', function(event){
+    event.preventDefault();
+    $('body,html').animate({
+    scrollTop: 1 ,
+    }, 3000
+    );
+    });
+    
+ })
+ 
+  
 
 
 

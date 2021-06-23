@@ -1174,7 +1174,7 @@ footer {
 }
 
 .nd13-col-item img {
-    filter: brightness(0.5);
+    
     border-radius: 10px;
     height: auto;
 }
@@ -2533,7 +2533,7 @@ section.main {
     height: 100%;
 }
 
-section.main.container-fluid.bienmat {visibility: hidden;/* display: none; */position: fixed;z-index: -1;}
+section.main.container-fluid.bienmat {visibility: hidden;/* display: none; */position: fixed;}
 
 section.main.container.bienmat {
     transform: translateY(100%);
@@ -3239,4 +3239,59 @@ ul.a li:hover p.nav-tendaydu-item{
     width: max-content;
     
 }
+.a li{
+    line-height:24px;
+}
+.giohang.giohang-fixed {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--primary-color); 
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    z-index: 1001;
+}
+
+.giohang.giohang-fixed i {
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.giohang.giohang-fixed:hover{
+    background: var(--secondary-color); 
+}
+.giohang.giohang-fixed div {
+    top: -8px;
+    right: -18px;
+}
+.giohang.giohang-fixed:hover div{
+    background: var(--primary-color); 
+}
+#back-to-top {
+    display: none;
+    position: fixed;
+    bottom: 110px;
+    right: 36px;
+    z-index: 1000;
+    border: none;
+    outline: none;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
+    transition:0.5s;
+}
+
+button#back-to-top i {
+    color: #fff;
+    font-size: 20px;
+}
+#back-to-top:hover {
+    background-color: var(--secondary-color);
+  }
 

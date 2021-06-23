@@ -61,7 +61,7 @@ a.tintuc-xemthem i {
     transition: 0.5s;
 }
 
-.tintuc-tuongtu-item:hover .tintuc-tuongtu-img:before, .tintuc-tuongtu-item:hover .tintuc-tuongtu-img:after {
+.tintuc-tuongtu-item:hover .tintuc-tuongtu-img:before, .tintuc-tuongtu-item:hover .tintuc-tuongtu-img:after,.nd13-col-item:hover .tintuc-tuongtu-img:before, .nd13-col-item:hover .tintuc-tuongtu-img:after {
     top: 0;
     left: 0;
 }

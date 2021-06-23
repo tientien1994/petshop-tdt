@@ -72,10 +72,10 @@
                             {{#if (sosanh @index 0)}}
                                 <div class="tintuc-muc-nd-hot">
                                     <div class="tintuc-hot-img">
-                                        <img src="img/tintuc/{{chialaydu id}}.jpg" alt="">
+                                        <a href="/tintuc/theloaitt{{../id}}/{{id}}"><img src="img/tintuc/{{chialaydu id}}.jpg" alt=""></a>
                                     </div>
                                     <div class="tintuc-hot-text">
-                                        <h5>{{name}}</h5>
+                                        <a href="/tintuc/theloaitt{{../id}}/{{id}}"><h5>{{name}}</h5></a>
                                         <p>{{title}}</p>
                                     </div>
                                 </div>
@@ -100,38 +100,7 @@
                         <div class="motloaisanphamchinh">
                             {{#each luotxemcaonhat}}
                              
-                                  <div class="motloaisanphamchinh-nd">
-                                <div class="motspchinh">
-                                    <div class="motsp-img">
-                                       <img src="/img/sp/{{loaitong}}/{{loaichinh}}/{{chialaydu id}}.jpg" alt=""></a>
-                                    
-                                    <div class="motspchinhbtn">
-                                        <div class="motspbtn-p">
-                                            <p><a href="/sanpham/{{loaitong}}/{{loaichinh}}/{{loaisanpham}}/{{id}}"><i class="fa fa-eye"></i></a></p>
-                                            <p><a><i class="fa fa-cart-plus"></i></a></p>
-                                        </div>                             
-                                    </div>
-                                    </div>
-                                    <div class="motsp-text">
-                                    <div class="motsp-tenthuonghieu">
-                                        <a href="/sanpham/{{loaitong}}/{{loaichinh}}/{{loaisanpham}}/{{id}}"><h5>{{name}} {{id}}</h5></a>
-                                        {{#with Thuonghieu}}
-                                        <p>{{name}}</p>
-                                        {{/with}}
-                                    </div>
-                                    <div class="giasao">
-                                        <p>{{tien gia}} d</p>
-                                        <div>
-                                            <i class="fa fa-home"></i>
-                                            <i class="fa fa-home"></i>
-                                            <i class="fa fa-home"></i>
-                                            <i class="fa fa-home"></i>
-                                            <i class="fa fa-home"></i>   
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                              </div>
+                                  {{>sanpham}}
                              
                             
                             {{/each}}
@@ -152,5 +121,6 @@
     <script src="/js/gsap.min.js"></script>
 
     <script src="/js/index.js"></script>
+    <script src="/js/giohang.js"></script>
 </body>
 </html>

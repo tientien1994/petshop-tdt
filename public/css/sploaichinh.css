@@ -40,6 +40,7 @@
     align-items: center;
     top: 53%;
     transition: 0.5s;
+    z-index: 1000;
 }
 
 p.tendaydu::before {
@@ -214,6 +215,9 @@ li.locgia.locgia-acc a i.fa::before {
 }
 .sp-1-list-menu .sp-1-menu ul li a{
     font-size: 13px;
+}
+.motloaisanphamchinh:hover .giasao>p {
+    color: #fff;
 }
 @media screen and (max-width: 375px) {
     .sanphamchinh{width: 100%;}

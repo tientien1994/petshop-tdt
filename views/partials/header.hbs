@@ -10,25 +10,25 @@
                     <form action="">
                         <input type="text">
                         <button type="submit">
-                            <i class="fa fa-home"></i>
+                            <i class="fa fa-search"></i>
                         </button>
                     </form>
                 </div>
                 <div class="ktdonhang">
                     <a href="">
-                        <i class='fa fa-home'></i>
+                        <i class='fa fa-list-alt'></i>
                         <p>Kiểm tra <br> đơn hàng</p>
                     </a>
 
                 </div>
                 <div class="giohang" id="giohang">
-                    <i class='fa fa-home'></i>
+                    <i class='fa fa-cart-plus'></i>
                     <div >
                         <p id='sluong'>{{toanbosoluong}}</p>
                     </div>
                 </div>
                 <div class="onl">
-                    <i class="fa fa-home"></i>
+                    <i class="fa fa-volume-control-phone"></i>
                     <div>
                         <p class="text">hotline</p>
                         <p class="num">09090909</p>
@@ -45,7 +45,6 @@
             <nav>
                 <ul>
                     <li><a href="/">
-
                             <p>Trang chủ</p>
                         </a></li>
                     
@@ -78,13 +77,7 @@
                         </div>
                         {{/each}}
                     </li>
-                    
-                    <li><a href="/khuyenmai">
-
-                            <p>khuyến mãi</p>
-                        </a></li>
                     <li><a href="/tintuc">
-
                             <p>Tin tức</p>
                         </a></li>
                     <li><a href="/bando">
@@ -128,51 +121,39 @@
             </div>
             <nav>
                 <div class="nutx">
-                    <i class="fa fa-home"></i>
+                    <i class="fa fa-times"></i>
                 </div>
                 <ul>
+                    <li class="left-logo">
+                        <a >LOGO</a>
+                    </li>
                     <li>
                         <a href="/">Trang chủ</a>
                     </li>
+                    {{#each menu}}
                     <li>
-                        <a href="/gioithieu">Giới thiệu</a>
-                    </li>
-                    <li>
-                        <a href="/sanphamchocho">Shop cho chó</a>
-                        <i class="fa fa-home"></i>
+                        <a href="/sanpham/{{link}}">Shop {{name}}</a>
+                        <i class="fa fa-chevron-down"></i>
                         <div class="nav-chitiet2">
                             <ul>
-                                <li><a href="">Thức ăn chó chó</a></li>
-                                <li><a href="">Áo quần chó chó</a></li>
-                                <li><a href="">Thức ăn chó chó</a></li>
-                                <li><a href="">Áo quần chó chó</a></li>
-                                <li><a href="">Thức ăn chó chó</a></li>
-                                <li><a href="">Áo quần chó chó</a></li>
+                                {{#each Loaichinhs}}
+                                <li><a href="/sanpham/{{../link}}/{{link}}">{{name}}</a></li>
+                                
+                                 {{/each}}
                             </ul>
                         </div>
                     </li>
-                    <li>
-                        <a href="/sanphamchomeo">Shop cho mèo</a>
-                        <i class="fa fa-home"></i>
-                        <div class="nav-chitiet2">
-                            <ul>
-                                <li><a href="">Thức ăn cho meof</a></li>
-                                <li><a href="">Áo quần cho meof</a></li>
-                                <li><a href="">Thức ăn cho meof</a></li>
-                                <li><a href="">Áo quần cho meof</a></li>
-                                <li><a href="">Thức ăn cho meof</a></li>
-                                <li><a href="">Áo quần cho meof</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="/khuyenmai">Khuyến mãi</a>
-                    </li>
+                    {{/each}}
+                    
+                    
                     <li>
                         <a href="/tintuc">Tin tức</a>
                     </li>
                     <li>
                         <a href="/bando">Liên hệ</a>
+                    </li>
+                    <li>
+                        <a href="/dndk">Đăng nhập</a>
                     </li>
                 </ul>
             </nav>

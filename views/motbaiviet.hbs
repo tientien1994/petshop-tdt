@@ -74,7 +74,7 @@
                                 <div class="tintuc-tuongtu-item-nd">
                                     {{#each tinlienquan}}
                                     <div class="tintuc-tuongtu-item">
-                                        <a href=""><div class="tintuc-tuongtu-img">
+                                        <a href="/tintuc/theloaitt{{tlbaivietId}}/{{id}}"><div class="tintuc-tuongtu-img">
                                             <img src="/img/tintuc/{{chialaydu id}}.jpg" alt="">
                                         </div>
                                         
@@ -92,38 +92,7 @@
                         <h5>Sản phẩm được quan tâm nhiều nhất</h5>
                        <div class="motloaisanphamchinh">
                             {{#each luotxemcaonhat}}     
-                                  <div class="motloaisanphamchinh-nd">
-                                <div class="motspchinh">
-                                    <div class="motsp-img">
-                                       <img src="/img/sp/{{loaitong}}/{{loaichinh}}/{{chialaydu id}}.jpg" alt=""></a>
-                                    
-                                    <div class="motspchinhbtn">
-                                        <div class="motspbtn-p">
-                                            <p><a href="/sanpham/{{loaitong}}/{{loaichinh}}/{{loaisanpham}}/{{id}}"><i class="fa fa-eye"></i></a></p>
-                                            <p><a><i class="fa fa-cart-plus"></i></a></p>
-                                        </div>                             
-                                    </div>
-                                    </div>
-                                    <div class="motsp-text">
-                                    <div class="motsp-tenthuonghieu">
-                                        <a href="/sanpham/{{loaitong}}/{{loaichinh}}/{{loaisanpham}}/{{id}}"><h5>{{name}} {{id}}</h5></a>
-                                        {{#with Thuonghieu}}
-                                        <p>{{name}}</p>
-                                        {{/with}}
-                                    </div>
-                                    <div class="giasao">
-                                        <p>{{tien gia}} d</p>
-                                        <div>
-                                            <i class="fa fa-home"></i>
-                                            <i class="fa fa-home"></i>
-                                            <i class="fa fa-home"></i>
-                                            <i class="fa fa-home"></i>
-                                            <i class="fa fa-home"></i>   
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                              </div>
+                                {{>sanpham}}
                              
                             
                             {{/each}}
@@ -147,7 +116,7 @@
     <script src="/js/jquery-3.5.1.min.js"></script>
     <script src="/js/gsap.min.js"></script>
     
-    
+    <script src="/js/giohang.js"></script>
     <script src="/js/index.js"></script>
 </body>
 </html>
