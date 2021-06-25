@@ -7,7 +7,7 @@
     text-align: center;
 }
 
-form {}
+
 
 .input input {
     width: 100%;
@@ -210,6 +210,7 @@ form {}
     .container.ars{
         width: 100%;
         height:550px;
+        margin-top: -17%;
     }
     .dangnhap-bg .dangnhap{
         justify-content: flex-start;
@@ -239,6 +240,7 @@ form {}
         width: 100%;
         
         height:550px;
+        margin-top: -17%;
     }
     .dangnhap-bg .dangnhap{
         justify-content: flex-start;
@@ -267,6 +269,7 @@ form {}
     .container.ars{
         width: 100%;
         height: 550px;
+        margin-top: -17%;
     }
     .dangnhap-bg .dangnhap{
         padding-top: 30px;
@@ -295,6 +298,7 @@ form {}
     .container.ars{
         width: 100%;
         height:auto;
+        margin-top: -0%;
     }
     .dangnhap-bg  .dangnhap{
         padding-top: 0;
@@ -324,6 +328,7 @@ form {}
     .container.ars{
         width: 100%;
         height:auto;
+        margin-top: -0%;
     }
     .dangnhap-bg  .dangnhap{
         justify-content: center;
@@ -355,6 +360,7 @@ form {}
 .container.ars{
     width: 100%;
     height:auto;
+    margin-top: -0%;
 }
 .dangnhap-bg  .dangnhap{
     padding-top: 0;

@@ -6,6 +6,194 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+.hoanthanh-button {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hoanthanh-button .table-thanhtoan:first-child a::before {
+    background: var(--secondary-color);
+}
+
+tr {
+    border: none;
+    outline: none;
+}
+
+.hoanthanh thead tr th {
+    background: var(--light-primary-color);
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.hoanthanh-thongtin {
+    padding: 15px;
+}
+
+.hoanthanh-thongtin p {
+    padding: 5px 0;
+}
+
+.hoanthanh-hang .table tr span {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.hoanthanh-hang .table tr td:nth-child(2),.hoanthanh-hang .table tr th:nth-child(2) {
+    text-align: end;
+}
+
+.hoanthanh-hang, .hoanthanh-thongtin {
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.hoanthanh {
+    width: 600px;
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 15px;
+}
+
+.hoanthanh.thanhtoanthanhcong {
+    text-align: center;
+    border: 1px solid var(--five-color);
+    background: var(--light-five-color);
+    border-radius: 5px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 15px auto;
+}
+
+.hoanthanh.thanhtoanthanhcong i {
+    color: var(--five-color);
+    font-size: 80px;
+    margin: 15px;
+}
+
+.hoanthanh.thanhtoanthanhcong p {
+    color: var(--five-color);
+    margin: 15px;
+    font-size: var(--text-large);
+}
+
+.hoanthanh>h5 {
+    text-align: center;
+    font-size: var(--text-large);
+    padding: 15px;
+}
+
+.saukhixoahetsanpham {
+    padding: 15px;
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--five-color);
+    border-radius: 5px;
+    background: var(--light-five-color);
+}
+
+.all-tien-text, .all-tien-number {
+    font-size: var(--text-medium);
+    /* font-size: 16px; */
+    font-weight: bold;
+}
+
+.all-tien-number {
+    color: var(--primary-color);
+}
+
+.all-tien {
+    display: flex;
+    padding: 15px;
+    justify-content: space-between;
+}
+
+.danhsachhang-soluong, .danhsachhang-tonggia {
+    font-size: var(--text-small);
+    font-weight: 600;
+}
+
+.danhsachhang-soluong {
+    color: var(--primary-color);
+}
+
+.danhsachhang-item-bor {
+    padding: 0px 15px 15px 15px;
+}
+
+.thanhtoan-nd h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.danhsachhang-nd {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 10px 15px;
+}
+
+.danhsachhang-nd h5 {font-size: var(--text-medium);font-weight: normal;}
+
+.danhsachhang-img {
+    width: 20%;
+}
+
+.danhsachhang-item {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    /* margin-bottom: 15px; */
+}
+
+.thanhtoan-form, .thanhtoan-bill {
+    width: 50%;
+    padding: 15px;
+}
+
+.thanhtoan-bill .table-thanhtoan {width: 100%;display: flex;justify-content: flex-end;margin-top: 15px;}
+
+.thanhtoan-form {
+    background: var(--light-primary-color);
+    height: fit-content;
+
+}
+
+.thanhtoan-form button {
+    background: no-repeat;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.thanhtoan-form input, .thanhtoan-form textarea, .thanhtoan-form select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    margin: 10px 0 20px 0;
+    resize: none;
+    outline: none;
+}
+
+.thanhtoan {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding:15px;
+}
+
 a.asp-buton {
     display: inline-block;
     background: #ddd;
@@ -14,6 +202,7 @@ a.asp-buton {
     border-radius: 5px;
     position: relative;
     overflow: hidden;
+    width: max-content;
 }
 
 a.asp-buton p {
@@ -39,6 +228,10 @@ a.asp-buton p {
     background: var(--primary-color);
 }
 
+.thanhtoan-bill .table-thanhtoan a.asp-buton::before {
+    background: var(--secondary-color);
+}
+
 a.asp-buton:hover::before {
     top: 0;
     right: 0;
@@ -50,9 +243,7 @@ a.asp-buton:hover p {
     transition: 0.5s;
 }
 
-a.asp-buton p {
-    /* color: #fff; */
-}
+
 
 .table-text {
     padding-left: 15px;
@@ -80,6 +271,28 @@ table.table tbody tr td {
     padding: 15px;
 }
 
+.hoanthanh tr {
+    border-bottom: 1px solid #aaa;
+}
+
+.hoanthanh tr:last-child {
+    border: none;
+}
+
+.hoanthanh tr:last-child td:first-child,.hoanthanh tr:last-child td:last-child {
+    font-weight: 700;
+}
+
+.hoanthanh tr:last-child td:last-child {
+    color: var(--primary-color);
+}
+
+.hoanthanh table.table tbody tr td {
+    padding: 10px;
+}
+
+
+
 td.table-gia {
     display: revert;
     flex-direction: row;
@@ -87,14 +300,14 @@ td.table-gia {
     align-items: center;
 }
 
-td.table-gia form input {
+td.table-gia input {
     padding: 5px;
     border: 1px solid var(--primary-color);
     border-radius: 4px;
     margin-left: 15px;
 }
 
-td.table-gia form {
+td.table-gia {
     display: flex;
 }
 
@@ -116,4 +329,15 @@ table.table thead tr th:nth-child(2), table.table thead tr th:nth-child(3),table
 .table-img {display: flex;flex-direction: row;/* display: flex; */align-items: center;}
 .table-thanhtoan>a.asp-buton::before{
     color:red;
+}
+.nd9{
+    opacity: 1;
+}
+.danhsachhang-nd-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.asp-buton{
+    cursor: pointer;
 }

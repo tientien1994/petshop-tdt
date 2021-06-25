@@ -21,18 +21,17 @@ function themvaogiohang(){
                     $('#sluong').html(result.toanbosoluong);
                 }
             }) 
-        }
-        
+        }     
 }
 function suasanpham(id, soluong){
-        if(soluong==0){
+        if(soluong<=0){
             xoakhoigiohang(id)
         }
         else{
             capnhatgiohang(id, soluong)
         }
     }
-    function xoakhoigiohang(id){
+function xoakhoigiohang(id){
         $.ajax({
             url: '/giohang',
             type: 'DELETE',
@@ -40,7 +39,7 @@ function suasanpham(id, soluong){
             success: function(result){
                 $('#sluong').html(result.toanbosoluong+" vnd");
                 $('#toanbogia').html(result.toanbogiaformat+" vnd");
-                if(result.toanbosoluong>0){
+                if(result.toanbosoluong>1){
                     $(`#item${id}`).remove();
                 }
                 else{
@@ -50,7 +49,7 @@ function suasanpham(id, soluong){
             }
         })
     }
-    function capnhatgiohang(id,soluong){
+function capnhatgiohang(id,soluong){
         console.log(soluong)
         $.ajax({
             url: '/giohang',
@@ -64,12 +63,13 @@ function suasanpham(id, soluong){
             }
         })
     }
-    function xoahetgiohang(){
+function xoahetgiohang(){
         if(confirm('Bạn có muốn xóa hết giỏ hàng không???')){
             $.ajax({
                 url: '/giohang/all',
                 type: 'DELETE',
                 success: function(){
+                    
                     $('#sluong').html(0);
                     $('#khungsanpham').html("<div class='saukhixoahetsanpham'>Giỏ hàng được dọn dẹp, <a href='/'>Quay về trang chủ và chọn sản phẩm</a></div>");   
                 }
@@ -86,11 +86,8 @@ $(document).ready(function() {
     var image=$('#asp-img')
     var crschinh=image.find('img').attr('src')
     
-        galery.mouseover(function(){
-            //console.log($(this).find('img').attr('src'));
-            //console.log($('img', this).attr('src'));
+        galery.mouseover(function(){     
             image.find('img').attr('src',$(this).find('img').attr('src'))
-            //console.log(obj); 
         })
         galery.mouseout(function(){
             image.find('img').attr('src',crschinh)
@@ -171,5 +168,16 @@ $(document).ready(function() {
     }
 })
 })
+function isNumber(n) { return !isNaN(parseFloat(n)) && !isNaN(n - 0) }
+function kiemtragiatri() {
+    let x = document.forms["formthongtin"]["sodienthoai"].value;
 
-    
+    if (isNumber(x)&& x.length==10) {
+      
+      return true;
+    }
+    else{
+        alert("Số điện thoai chưa đúng");
+        return false;
+    }
+  }

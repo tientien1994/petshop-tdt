@@ -4,9 +4,13 @@ module.exports = function Cart(oldCart) {
     this.items = oldCart.items || {};
     this.toanbosoluong = oldCart.toanbosoluong || 0;
     this.toanbogia = oldCart.toanbogia || 0;
-    this.diachi = oldCart.diachi || {};
+    this.diachi = oldCart.diachi || "";
     this.phuongthucgiaohang = oldCart.phuongthucgiaohang || "COD";
     this.toanbogiaformat=oldCart.toanbogiaformat||"0";
+    this.email=oldCart.email||"";
+    this.ghichu=oldCart.ghichu||"";
+    this.tennguoinhan=oldCart.tennguoinhan||"";
+    this.sodienthoai=oldCart.sodienthoai||"";
 
     this.format=(n)=> {
         return (Math.round(parseInt(n)/1000)*1000).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
@@ -101,6 +105,10 @@ module.exports = function Cart(oldCart) {
             diachi: this.diachi,
             phuongthucgiaohang: this.phuongthucgiaohang,
             toanbogiaformat: this.toanbogiaformat,
+            email:this.email,
+            ghichu:this.ghichu,
+            tennguoinhan:this.tennguoinhan,
+            sodienthoai:this.sodienthoai,
         };
         return cart;
     }
@@ -111,6 +119,10 @@ module.exports = function Cart(oldCart) {
             toanbosoluong: this.toanbosoluong,
             toanbogia: this.toanbogia,
             toanbogiaformat: this.toanbogiaformat,
+            email:this.email,
+            ghichu:this.ghichu,
+            tennguoinhan:this.tennguoinhan,
+            sodienthoai:this.sodienthoai,
         }
         return cartItem;
     }

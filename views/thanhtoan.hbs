@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>thanh toan</title>
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/sp.css">
+    <link rel="stylesheet" href="/css/motsp.css">
+    <link rel="stylesheet" href="/css/media.css">
+    <link rel="stylesheet" href="/css/giohang.css">
+    <link rel="stylesheet" href="/font/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Pangolin&family=Roboto:ital,wght@0,100;0,300;1,100&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <section class="container-fluid main-2">
+        {{>header}}
+        <section class="container-fluid">
+            {{>slideBanner}}
+            <div class="container">
+                <div class="line-page">
+                    <p>
+                        <span><a href="/giohang">Giỏ hàng</a></span>
+                        <span><a href="/thanhtoan">/Thanh toán</a></span>
+                    </p>
+                </div>
+                
+<form name="formthongtin" action="/thanhtoan/hoanthanh" method="post" onsubmit="return kiemtragiatri()">
+                <div class="thanhtoan">
+                    {{#with cart}}
+                    <div class="thanhtoan-form">
+                        <h3>Thông tin thanh toán</h3>
+                        
+                            <label for="" >Họ và tên người nhận: </label>
+                            <input type="text" name="hotenkhachhang" required placeholder="Họ và tên" value="{{tennguoinhan}}"><br>
+
+                            <label for="">Số điện thoại:</label>
+                            <input type="text" name="sodienthoai" required placeholder="Nhập số điện thoại" value="{{sodienthoai}}"><br>
+
+                            <label for="">Email:</label>
+                            <input type="email" name="emailnguoinhan" required placeholder="Email" value="{{email}}"><br>
+
+                            <label for="">Địa chỉ giao hàng:</label>
+                            <input type="text" name="diachigiaohang" required placeholder="Địa chỉ giao hàng" value="{{diachi}}">
+
+                            <label for="">Phương thức giao hàng:</label><br>
+                            <select name="phuongthucgiaohang" id=""><br>
+                                    <option value="Tiền mặt" >Tiền mặt</option>
+                                    <option value="Chuyển khoản" >Chuyển khoản</option>
+                            </select>
+                            <label for="">Ghi chú</label>
+                            <textarea placeholder="Ghi chú" name="ghichu" cols="30" rows="3"  value="">{{ghichu}}</textarea>
+                            <button type="submit"><div class='table-thanhtoan'>
+                                    <a class="asp-buton">
+                                        <p class="asp-buton">Thanh toán</p>
+                                    </a>
+                                </div>
+                            </button>
+                        
+                    </div>
+                    
+                    <div class="thanhtoan-bill">
+                        <div class="thanhtoan-nd">
+                            <h3>Danh sách hàng</h3>
+                            <div class="thanhtoan-danhsachhang">
+                                {{#each items}}
+                                <div class="danhsachhang-item-bor">
+                                     <div class="danhsachhang-item">
+                                    <div class="danhsachhang-img">
+                                        <img src="/img/sp/{{item.loaitong}}/{{item.loaichinh}}/{{chialaydu item.id}}.jpg" alt="">
+                                    </div>
+                                    <div class="danhsachhang-nd">
+                                        <h5><a href="/sanpham/{{item.loaitong}}/{{item.loaichinh}}/{{item.loaisanpham}}/{{item.id}}"><p>{{item.name}} {{item.id}}</p></a></h5>
+                                        <div class="danhsachhang-nd-text">
+                                            <div class="danhsachhang-tonggia">Số lượng: {{soluong}}</div>
+                                            <div class="danhsachhang-soluong">Giá: {{tonggiaformat}} vnđ</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                {{/each}}
+                                
+                               
+                                
+                                <div class="all-tien">
+                                    <div class="all-tien-text">Tổng tiền:</div>
+                                    <div class="all-tien-number">{{toanbogiaformat}} vnđ</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='table-thanhtoan'>
+                                    <a href='/giohang' class="asp-buton">
+                                        <p class="asp-buton">Chỉnh sửa</p>
+                                    </a>
+                                </div>
+                    </div>
+                    
+                    {{/with}}
+                </div>
+</form>
+               
+            </div>
+        </section>
+
+
+
+
+
+        {{>footer}}
+
+
+    </section>
+    
+
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <script src="/js/gsap.min.js"></script>
+
+
+
+    <script src="/js/index.js"></script>
+    <script src="/js/giohang.js"></script>
+
+
+</body>
+
+</html>

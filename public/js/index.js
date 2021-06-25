@@ -174,214 +174,185 @@ $(document).ready(function(){
   });
 
   /////////////////////////////////////////////////////////
-  const slide=(reponsive, slideParent, SlideConatiner,slideItem, interval, transitionTime, next, prev,node, nodeContainer)=>{
+  const slide=(reponsive, slideParent, SlideConatiner,slideItem, interval, transitionTime, next, prev,node, nodeContainer, bien)=>{
     const slideContainer=document.querySelector(slideParent)
     const slide = document.querySelector(SlideConatiner)
     const nextBtn=document.getElementById(next)
     const prevBtn=document.getElementById(prev)
     const stickNavContainer=document.querySelector(nodeContainer)
-    let stickNavItem=document.querySelectorAll(node)
+    let stickNavItem=document.querySelectorAll(node) 
+    const getSlides=()=>document.querySelectorAll(slideItem)
+    let slides=getSlides()
+    let node2=$(node) 
     
-    let slides=document.querySelectorAll(slideItem);
+    
+    
+    
     
     let auto;
-    
+    let p=new Promise((resolve, reject) =>{
+
+    })
     let index=1;
     
     let item=0;//
+
+    
+   
+    //tim so item theo man hinh
     const load=()=>{
-      for(let i=0;i< reponsive.length;i++){//
-        if(window.innerWidth>reponsive[i].breakPoint.width){//
-          item=reponsive[i].breakPoint.item//
-          //
-        }//
+      
+        for(let i=0;i< reponsive.length;i++){//
+          if(window.innerWidth>reponsive[i].breakPoint.width){//
+            item=reponsive[i].breakPoint.item
+          }    
+        }
+      
         
-      }//
-      //console.log('so item:  ' +item)
-      return item;
+        return item;
     }
     item=load();
     index=item;
-    // tao div copy
-    console.log(slides)
-    const addClone=()=>{
-      for(i=0;i<item;i++){
-        slide.append(slides[i].cloneNode(true))
-       slide.prepend(slides[slides.length-1-i].cloneNode(true))
-         
-       }
-       slides=document.querySelectorAll(slideItem)
-       //slides[0].id='last-clone';--------------------------------
-       //slides[slides.length-item].id='first-clone'---------------------------------
-    }
-    console.log(slides.length)
-    addClone();
-    //slides[i].cloneNode(true).id='first-clone'
-     //slides[slides.length-1-i].cloneNode(true).id='last-clone'
-     const getSlides=()=>document.querySelectorAll(slideItem)
-
-
-    
     const start=()=>{
-      slides=document.querySelectorAll(slideItem);//
-    for(let i=0;i<slides.length;i++){//
-      //if(slideContainer.clientWidth>1200){
-        console.log(slideContainer.clientWidth+ '   clien')
-        slides[i].style.minWidth=slideContainer.clientWidth/item+'px';//
-        
-        
-      //}
-      // else{
-      //   console.log(window.innerWidth+'cua so')
-      //   slides[i].style.minWidth=window.innerWidth/item+'px';//
-      // }
-      
-      
-    }//
-  }
-  start()
+        slides=getSlides();
+          for(let i=0;i<slides.length;i++){//
+            slides[i].style.minWidth=slideContainer.clientWidth/item+'px'; 
+        }       
+    }
+    start()
     
-
-    //const slideWidth=window.innerWidth/item;
-
-
-
-    const slideWidth=slideContainer.clientWidth/item;
-    console.log("slide   " + slides[index].clientWidth)
-    
-
-    console.log(slideWidth +' slide width')
-    slide.style.transform=`translateX(${-slideWidth*index}px)`;
-    const startSlide=()=>{
-      auto=setInterval(()=>{
+ 
+    const tinhtoan=()=>{
+      const addClone=()=>{
+        for(i=0;i<item;i++){
+          slide.append(slides[i].cloneNode(true))
+         slide.prepend(slides[slides.length-1-i].cloneNode(true))
+           
+         }
+         slides=getSlides();
+         //slides[0].id='last-clone';--------------------------------
+         //slides[slides.length-item].id='first-clone'---------------------------------
+      }
+      addClone();
+      const slideWidth=slideContainer.clientWidth/item;
+      slide.style.transform=`translateX(${-slideWidth*index}px)`;
+      const startSlide=()=>{
+        auto=setInterval(()=>{
+          index++;
+          slide.style.transform=`translateX(${-slideWidth*index}px)`;
+          slide.style.transition=transitionTime
+          //console.log(slides[index].id + 'id cua index')
+          //console.log([index] + ' index')
+  
+          allslide()
+          stickMove()
+        },interval);
+      }
+      startSlide();
+      slideContainer.addEventListener('mouseenter',()=>{
+        clearInterval(auto);
+      })
+      slideContainer.addEventListener('mouseleave',()=>{
+        startSlide();
+      })
+      slides=getSlides();
+  
+      const allslide=()=>{
+      slide.addEventListener('transitionend',()=>{
+        if(index>=slides.length-item){
+          //if(slides[index].id==='first-clone'){
+          slide.style.transition="none";
+          index=item;
+          slide.style.transform=`translateX(${-slideWidth*index}px)`;
+        }
+        if(index<=item-1){     
+          slide.style.transition="none";
+          //index=slides.length-item-1;
+          //index=item+1;
+          index=slides.length-item*2;
+          slide.style.transform=`translateX(${-slideWidth*index}px)`;
+        }
+      })
+      }
+      const stickMove=()=>{
+          
+          $(node).removeClass('nd9-active')
+          
+          $(node).eq(index%(item+1)-item).addClass('nd9-active')  
+      }
+      const moveToNextSlide=()=>{
+        //slides=getSlides();
+        if(index>=slides.length-1) return;
         index++;
         slide.style.transform=`translateX(${-slideWidth*index}px)`;
         slide.style.transition=transitionTime
-        //console.log(slides[index].id + 'id cua index')
         //console.log([index] + ' index')
-
-        allslide()
         stickMove()
-      },interval);
-    }
-    startSlide();
-    slideContainer.addEventListener('mouseenter',()=>{
-      clearInterval(auto);
-    })
-    slideContainer.addEventListener('mouseleave',()=>{
-      startSlide();
-    })
-    slides=getSlides();
-
-    const allslide=()=>{
-        //console.log($('.nd9-slides').css('transform').split(',')[4])
-      // let maxTranslate = parseInt($(slideContainer).css('transform').split(',')[4]);
-      // console.log('max trans: '+maxTranslate)
-    // if(maxTranslate>slideWidth*(slides.length-item||maxTranslate<0)){
-    //   slide.style.transition="none";
-    //   index=item;
-    //   slide.style.transform=`translateX(${-slideWidth*index}px)`;
-    // }
-    
-    slide.addEventListener('transitionend',()=>{
-      //console.log('haha')
-      //slides=getSlides();
-      
-      //console.log($('.nd9-slides').css('transform').split(',')[4])
-      // let maxTranslate = parseInt($(slideContainer).css('transform').split(',')[4]);
-      // console.log('max trans: '+maxTranslate)
-     
-      //console.log("index "+index)
-      if(index>=slides.length-item){
-        //if(slides[index].id==='first-clone'){
-        slide.style.transition="none";
-        index=item;
+      }
+      const moveToPrevSlide=()=>{
+        //slides=getSlides();
+        if(index<=0){
+          index=slides.length-item*2;
+          //console.log("chi so cua item" +item)
+          slide.style.transform=`translateX(${-slideWidth*index}px)`;
+          slide.style.transition='none';
+        }else{
+          index--;
         slide.style.transform=`translateX(${-slideWidth*index}px)`;
-      }
-      if(index<=item-1){     
-        slide.style.transition="none";
-        //index=slides.length-item-1;
-        //index=item+1;
-        index=slides.length-item*2;
-        slide.style.transform=`translateX(${-slideWidth*index}px)`;
-      }
-    })
-    }
-    const moveToNextSlide=()=>{
-      //slides=getSlides();
-      if(index>=slides.length-1) return;
-      index++;
-      slide.style.transform=`translateX(${-slideWidth*index}px)`;
-      slide.style.transition=transitionTime
-      //console.log([index] + ' index')
-      stickMove()
-    }
-    const moveToPrevSlide=()=>{
-      //slides=getSlides();
-      if(index<=0){
-        index=slides.length-item*2;
-        //console.log("chi so cua item" +item)
-        slide.style.transform=`translateX(${-slideWidth*index}px)`;
-        slide.style.transition='none';
-      }else{
-        index--;
-      slide.style.transform=`translateX(${-slideWidth*index}px)`;
-      slide.style.transition=transitionTime;
-      }
-      stickMove()
-      
-      //console.log([index] + ' index')
-    }
-    if(nextBtn){
-      nextBtn.addEventListener('click', moveToNextSlide)
-    }
-    if(prevBtn){
-      prevBtn.addEventListener('click', moveToPrevSlide)
-    }
-    
-    
-
-    
-    //console.log(stickNavItem)
-    if($(node).length>0){
-      for(i=0;i<=slides.length-item*2-2; i++){
-        stickNavContainer.append(stickNavItem[0].cloneNode(true))
-      }
-  
-      stickNavItem=document.querySelectorAll(node)
-      stickNavItem[0].classList.add('nd9-active');  
-    $(node).click(function(){
-      $(node).removeClass('nd9-active')
-      $(this).addClass('nd9-active')
-      let stt=$(this).index()
-      index=stt+item;
-      slide.style.transform=`translateX(${-slideWidth*index}px)`;
-      slide.style.transition=transitionTime
-    })
-    }
-    
-    const stickMove=()=>{
-        let stt=$(this).index()
-        $(node).removeClass('nd9-active')
+        slide.style.transition=transitionTime;
+        }
+        stickMove()
         
-        $(node).eq(index%(item+1)-item).addClass('nd9-active')  
+        //console.log([index] + ' index')
+      }
+      if(nextBtn){
+        nextBtn.addEventListener('click', moveToNextSlide)
+      }
+      if(prevBtn){
+        prevBtn.addEventListener('click', moveToPrevSlide)
+      }
+      
+  
+      if(node){
+        for(i=0;i<=slides.length-item*2-2; i++){
+          stickNavContainer.append(node2[0].cloneNode(true))
+        }
+    
+        stickNavItem=$(node)
+        stickNavItem[0].classList.add('nd9-active');  
+        $(node).click(function(){
+        $(node).removeClass('nd9-active')
+        $(this).addClass('nd9-active')
+        let stt=$(this).index()
+        index=stt+item;
+        slide.style.transform=`translateX(${-slideWidth*index}px)`;
+        slide.style.transition=transitionTime
+      })
+      }
+      
+      
     }
+    tinhtoan()
+    
+    
     
     
 
 
 
   }
+  
+  
 
-
+  reponsiv=[//
+    {breakPoint:{width:0, item:1}},//
+   {breakPoint:{width:375, item:2}},//
+    {breakPoint:{width:600, item:3}},//
+    {breakPoint:{width:1200, item:4}}//
+]
 function slideNhanvien(){
   if($('.nd9-slides').length!=0){
-    reponsiv=[//
-      {breakPoint:{width:0, item:1}},//
-     {breakPoint:{width:600, item:2}},//
-      {breakPoint:{width:1024, item:3}},//
-      {breakPoint:{width:1200, item:4}}//
-  ]
+    
   let slideParent='.nd9-nd'
   let slideItem='.box'
   let slideContainer='.nd9-slides'
@@ -391,10 +362,21 @@ function slideNhanvien(){
    let prevbtn='prev-btn'
    let node='.nd9-node'
    let nodeContainer='.nd9-slide-node'
-  slide(reponsiv,slideParent, slideContainer, slideItem, interval, tranTime, nextbtn, prevbtn, node,nodeContainer);
+  slide(reponsiv,slideParent, slideContainer, slideItem, interval, tranTime, nextbtn, prevbtn, node,nodeContainer,bien);
   }
 }
-slideNhanvien();
+
+let bien=false;
+  slideNhanvien();
+  $(window).bind('resize', function () { 
+    
+  });
+
+
+
+
+
+
 
     
  if($('.nd9-slides-2').length!=0){
@@ -413,7 +395,8 @@ slideNhanvien();
     let prevbtn_2='prev-btn-2'
     let node_2='.nd9-node-2'
     let nodeContainer_2='.nd9-slide-node-2'
-   slide(reponsiv_2,slideParent_2, slideContainer_2, slideItem_2, interval_2, tranTime_2, nextbtn_2, prevbtn_2, node_2,nodeContainer_2);
+     slide(reponsiv_2,slideParent_2, slideContainer_2, slideItem_2, interval_2, tranTime_2, nextbtn_2, prevbtn_2, node_2,nodeContainer_2, bien); 
+   
  }
  if($('.dem-banber-slider').length!=0){
   reponsiv_3=[//
@@ -431,7 +414,7 @@ slideNhanvien();
     let prevbtn_3=null
     let node_3=null
     let nodeContainer_3=null
-   slide(reponsiv_3,slideParent_3, slideContainer_3, slideItem_3, interval_3, tranTime_3, nextbtn_3, prevbtn_3, node_3,nodeContainer_3);
+   slide(reponsiv_3,slideParent_3, slideContainer_3, slideItem_3, interval_3, tranTime_3, nextbtn_3, prevbtn_3, node_3,nodeContainer_3,bien);
  }
 
 

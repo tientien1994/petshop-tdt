@@ -1,7 +1,7 @@
 let express=require('express')
 let router=express.Router()
 
-router.get('/', (req, res)=>{
+router.get('/', (req, res, next) => {
     var cart=req.session.cart;
     res.locals.cart=cart.getCart();
     var menuController=require('../controllers/menuController')
@@ -9,12 +9,19 @@ router.get('/', (req, res)=>{
     .menu()
     .then(data=>{
         res.locals.menu=data
+        
+        let nhanvienController = require('../controllers/nhanvienController')
+    
+        return nhanvienController.layhetnhanvien()
+    })
+    .then((data)=>{
+        res.locals.nhanviens=data;
+        
         res.render('giohang'); 
-        //res.send(cart)
     })
     .catch(error=>next(error));
 })
-router.get('/abc', (req, res)=>{
+router.get('/abc', (req, res, next)=>{
     var cart=req.session.cart;
     res.locals.cart=cart.getCart();
     var menuController=require('../controllers/menuController')

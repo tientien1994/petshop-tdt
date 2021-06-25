@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/sp.css">
     <link rel="stylesheet" href="css/media.css">
     <link rel="stylesheet" href="css/dangnhapdangki.css">
+    <link rel="stylesheet" href="css/dndk-fixed.css">
     <link rel="stylesheet" href="font/font-awesome-4.7.0/css/font-awesome.min.css">
     
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -22,9 +23,16 @@
     <section class="container-fluid main-2">
         {{>header}}
     <section class="container-fluid">
-        <div class="dangnhapdngki-banner">
-            <img src="/img/banner-sp.jpg" alt="">
-        </div>
+        <div class="dem">
+            <div class="container">
+                <div class="dem-nd">
+{{>banner}}
+
+                </div>
+                </div>
+                </div>
+        
+        
         
         <div class="dangnhapdangki {{#if thongbao}}{{hientrang}}{{/if}}">
         

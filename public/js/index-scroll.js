@@ -50,7 +50,7 @@ $(function(){
                 clearInterval(per_interval)
               }
             },3000/per)
-            console.log("per: "+ per)
+            //console.log("per: "+ per)
             $('.wedo-label').addClass('wedo-label-trans')
             
             $('.wedo-percent').addClass('wedo-percent-trans')

@@ -27,8 +27,8 @@
         <div class="container">
             <div class="line-page">
                 <p>
-                    <span>Sản phẩm</span>
-                    <span>/Giỏ hàng</span>
+                    
+                    <span><a href="/giohang">Giỏ hàng</a></span>
                 </p>
             </div>
             {{#with cart}}
@@ -40,6 +40,7 @@
                     <table class="table">
                         <thead>
                             <tr>
+                                
                                 <th>Sản phẩm</th>
                                 <th>Giá tiền</th>
                                 <th>Số lượng</th>
@@ -55,7 +56,7 @@
                                             <img src="/img/sp/{{item.loaitong}}/{{item.loaichinh}}/{{chialaydu item.id}}.jpg" alt="">
                                         </div>
                                         <div class="table-text">
-                                            <p>{{item.name}} {{item.id}}</p>
+                                            <a href="/sanpham/{{item.loaitong}}/{{item.loaichinh}}/{{item.loaisanpham}}/{{item.id}}"><p>{{item.name}} {{item.id}}</p></a>
                                         </div>
                                     </div>
                                 </td>
@@ -78,6 +79,7 @@
                                             if( !isNaN( sll ) &amp;&amp; sll > 1||(sll==1) &amp;&amp; confirm('Bạn muốn xóa luôn mặt hàng này không :')) 
                                             result.value--;
                                             suasanpham({{item.id}}, result.value);
+                                            capnhatgiohang({{item.id}}, result.value);
                                             return false;">-</p>
                                         </div>
                                     </div>
@@ -115,7 +117,7 @@
                                     
                                 </td>
                                 <td class='table-thanhtoan'>
-                                    <a href="" class="asp-buton">
+                                    <a href="/thanhtoan" class="asp-buton">
                                         <p class="asp-buton">Thanh toán</p>
                                     </a>
                                 </td>
@@ -132,6 +134,8 @@
             {{/with}}
         </div>
     </section>
+   
+
    
         
 

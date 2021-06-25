@@ -121,6 +121,7 @@ app.use((req, res, next)=>{
     next();
 })
 app.use('/giohang',require('./routes/giohangRouter'))
+app.use('/thanhtoan',require('./routes/thanhtoanRouter'))
 
 app.use('/', require('./routes/indexRouter'))
 
