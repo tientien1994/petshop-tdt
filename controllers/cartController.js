@@ -84,13 +84,18 @@ module.exports = function Cart(oldCart) {
         this.items = {};
         this.toanbosoluong = 0;
         this.toanbogia = 0;
-        this.toanbogiaformat="0"
+        this.toanbogiaformat="0";
+        this.diachi="",
+        this.email="";
+        this.ghichu="";
+        this.tennguoinhan="";
+        this.sodienthoai="";
     };
 
     this.generateArray = () => {
         var arr = [];
         for (var id in this.items) {
-            //this.items[id].item.gia = parseFloat(this.items[id].item.gia).toFixed(2);
+            
             this.items[id].tonggia = parseFloat(this.items[id].tonggia).toFixed(2);
             arr.push(this.items[id]);
         }
@@ -119,6 +124,7 @@ module.exports = function Cart(oldCart) {
             toanbosoluong: this.toanbosoluong,
             toanbogia: this.toanbogia,
             toanbogiaformat: this.toanbogiaformat,
+            diachi: this.diachi,
             email:this.email,
             ghichu:this.ghichu,
             tennguoinhan:this.tennguoinhan,

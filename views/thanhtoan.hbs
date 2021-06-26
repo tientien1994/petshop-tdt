@@ -35,7 +35,7 @@
                     </p>
                 </div>
                 
-<form name="formthongtin" action="/thanhtoan/hoanthanh" method="post" onsubmit="return kiemtragiatri()">
+<form name="formthongtin" action="/thanhtoan/nuahoanthanh" method="post" onsubmit="return kiemtragiatri()">
                 <div class="thanhtoan">
                     {{#with cart}}
                     <div class="thanhtoan-form">
@@ -61,7 +61,7 @@
                             <label for="">Ghi chú</label>
                             <textarea placeholder="Ghi chú" name="ghichu" cols="30" rows="3"  value="">{{ghichu}}</textarea>
                             <button type="submit"><div class='table-thanhtoan'>
-                                    <a class="asp-buton">
+                                    <a class="asp-buton thanhtoan">
                                         <p class="asp-buton">Thanh toán</p>
                                     </a>
                                 </div>

@@ -50,7 +50,7 @@ function xoakhoigiohang(id){
         })
     }
 function capnhatgiohang(id,soluong){
-        console.log(soluong)
+        
         $.ajax({
             url: '/giohang',
             type: 'PUT',
@@ -181,3 +181,22 @@ function kiemtragiatri() {
         return false;
     }
   }
+
+//   $('.thanhtoan').click(function(){
+//     $.ajax({
+//         url: '/thanhtoan/hoanthanh',
+//         type: 'UPDATE',
+//         data: {  },
+//         success: function(result){
+//             $('#sluong').html(result.toanbosoluong+" vnd");
+//             $('#toanbogia').html(result.toanbogiaformat+" vnd");
+//             if(result.toanbosoluong>1){
+//                 $(`#item${id}`).remove();
+//             }
+//             else{
+//                 $('#khungsanpham').html("<div class='saukhixoahetsanpham'>Giỏ hàng được dọn dẹp, <a href='/'>Quay về trang chủ và chọn sản phẩm</a></div>");
+//             }
+            
+//         }
+//     })
+//   })
