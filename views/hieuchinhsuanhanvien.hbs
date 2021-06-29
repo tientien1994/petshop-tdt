@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>thanh toan</title>
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/sp.css">
+    <link rel="stylesheet" href="/css/motsp.css">
+    <link rel="stylesheet" href="/css/media.css">
+    <link rel="stylesheet" href="/css/giohang.css">
+    <link rel="stylesheet" href="/css/hieuchinh.css">
+    <link rel="stylesheet" href="/font/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Pangolin&family=Roboto:ital,wght@0,100;0,300;1,100&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <section class="container-fluid main-2">
+        {{>header}}
+        <section class="container-fluid">
+            {{>slideBanner}}
+            <div class="container">
+                <div class="line-page">
+                    <p>
+                        <span><a href="/giohang">Giỏ hàng</a></span>
+                        <span><a href="/thanhtoan">/Thanh toán</a></span>
+                    </p>
+                </div>
+                
+<form name="formsuanhanvien" action="/hieuchinh/nhanvien/sua-{{nhanvien.id}}" method="POST" onsubmit="return kiemtragiatri()" id='manv-{{nhanvien.id}}' enctype="multipart/form-data">
+                <div class="thanhtoan">
+                    {{#if nhanvien}}
+                    {{#with nhanvien}}
+                    <div class="thanhtoan-form">
+                        <h3>Chỉnh sửa thông tin nhân viên</h3>
+                        
+                            <label for="">Id nhân viên:</label>
+                            <input type="text" name="idnv" required placeholder="Không thể sử id" value="{{id}}" readonly>
+
+                            <label for="" >Họ và tên nhân viên: </label>
+                            <input type="text" name="hotennhanvien" required placeholder="Họ và tên" value="{{name}}"><br>
+
+                            <label for="">Số điện thoại:</label>
+                            <input type="text" name="sodienthoainhanvien" required placeholder="Nhập số điện thoại" value="{{phone}}"><br>
+
+                            <label for="">Lương nhân viên:</label>
+                            <input type="text" name="luongnhanvien" required placeholder="Lương nhân viên" value="{{luong}}"><br>
+
+                            
+                            <label for="">File ảnh(đuôi jpg):</label>
+                            <input id="fileanh" type="file" name="fileanh" placeholder="Link của tấm ảnh"><br>
+                            
+                            <label for="">Vị trí: </label><br>
+                            <select name="vitriid" id="{{../nhanvien.vitriId}}"><br>
+                                    {{#each ../vitri}}
+                                    {{#if (sosanhso id ../../nhanvien.vitriId)}}
+                                    <option value="{{id}}" selected>{{tenchucvu}}</option>
+                                    {{else}}
+                                    <option value="{{id}}">{{tenchucvu}}</option>
+                                    {{/if}}
+                                    {{/each}}
+                                    
+                            </select>
+                            <label for="">Chi nhánh: </label><br>
+                            <select name="chinhanhid" id="{{chinhanhId}}"><br>
+                                    {{#each ../chinhanh}}
+                                    {{#if (sosanh id ../../nhanvien.chinhanhId)}}
+                                    <option value="{{id}}" selected>{{name}}</option>
+                                    {{else}}
+                                    <option value="{{id}}">{{name}}</option>
+                                    {{/if}}
+                                    {{/each}}
+                            </select>
+                            
+                            <button type="submit">
+                                <div class='table-thanhtoan'>
+                                    <a class="asp-buton thanhtoan">
+                                        <p class="asp-buton">Sửa</p>
+                                    </a>
+                                </div>
+                            </button>
+                        
+                    </div>
+                    {{/with}}
+                    {{else}}
+
+                    <div class="baodong">Không có nhân viên này</div>
+                    {{/if}}
+                </div>
+</form>
+               
+            </div>
+        </section>
+
+
+
+
+
+        {{>footer}}
+
+
+    </section>
+    <div class="row">
+            <div class="col-sm-12">
+                <div class="preview-images"></div>
+            </div>
+        </div>
+
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/giohang.js"></script>
+    {{!-- <script>
+        $(document).ready(function() {
+            // Multiple images preview in browser - trungquandev.com
+            let imagesPreview = function(input, placeToInsertImagePreview) {
+                if (input.files) {
+                    let filesAmount = input.files.length;
+                    for (i = 0; i < filesAmount; i++) {
+                        let reader = new FileReader();
+                        reader.onload = function(event) {
+                            $($.parseHTML("<img>")).attr("src", event.target.result).appendTo(placeToInsertImagePreview);
+                        }
+                        reader.readAsDataURL(input.files[i]);
+                    }
+                }
+            };
+            $("#fileanh").on("change", function() {
+                imagesPreview(this, "div.preview-images");
+            });
+        });
+    </script> --}}
+
+
+</body>
+
+</html>

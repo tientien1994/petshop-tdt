@@ -129,7 +129,7 @@ app.use('/sanpham',require('./routes/sanphamRouter'))
 
 app.use('/comment', require('./routes/commentRouter'))
 
-
+app.use('/hieuchinh', require('./routes/hieuchinhRouter'))
 
 app.use('/tintuc', require('./routes/tintucRouter'))
 

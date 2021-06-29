@@ -23,10 +23,11 @@
                 </div>
                 <div class="giohang" id="giohang">
                     <a href="/giohang"><i class='fa fa-cart-plus'></i>
-                    <div >
-                        <p id='sluong'>{{toanbosoluong}}</p>
-                    </div></a>
-                    
+                        <div>
+                            <p id='sluong'>{{toanbosoluong}}</p>
+                        </div>
+                    </a>
+
                 </div>
                 <div class="onl">
                     <i class="fa fa-volume-control-phone"></i>
@@ -48,8 +49,8 @@
                     <li><a href="/">
                             <p>Trang chủ</p>
                         </a></li>
-                    
-                        {{#each menu}}
+
+                    {{#each menu}}
                     <li><a href="/sanpham/{{link}}">
                             <i class='fa fa-chevron-down'></i>
                             <p>Shop {{name}}</p>
@@ -60,20 +61,20 @@
                                 {{#each Loaichinhs}}
                                 <div class="nav-chitiet-col-item">
                                     <a href="/sanpham/{{../link}}/{{link}}" class="jfc-start">
-                                    <h5>{{name}}</h5>
-                                    <p class="nav-tendaydu">{{name}}</p>
+                                        <h5>{{name}}</h5>
+                                        <p class="nav-tendaydu">{{name}}</p>
                                     </a>
                                     <ul class="a">
                                         {{#each Loaisanphams}}
                                         <li><a href="/sanpham/{{../../link}}/{{../link}}/{{link}}">{{name}}</a>
-                                        <p class="nav-tendaydu-item">{{name}}</p>
+                                            <p class="nav-tendaydu-item">{{name}}</p>
                                         </li>
-                                        
+
                                         {{/each}}
                                     </ul>
                                 </div>
                                 {{/each}}
-                               
+
                             </div>
                         </div>
                         {{/each}}
@@ -85,23 +86,94 @@
 
                             <p>liên hệ</p>
                         </a></li>
-                        {{#if trangthaidangnhap}}
-                         <li class="nguoidung"><a>
-                            <p>{{tenuser}}</p></a>
-                            <div>
-                                <ul>
-                                    <li><a href="/dndk/dangxuat">Đăng xuất</a></li>
-                                    {{#if isadmin}}
-                                    <li><a href="/dndk/dangxuat">Them san pham</a></li>
-                                    {{/if}}
-                                </ul>
+                    {{#if trangthaidangnhap}}
+                    <li class="nguoidung"><a>
+                        <i class='fa fa-chevron-down'></i>
+                            <p>{{tenuser}}</p>
+                        </a>
+
+                        {{!--
+                    <li><a href="/dndk/dangxuat">Đăng xuất</a></li> --}}
+                    {{#if isadmin}}
+                        <div class="nav-chitiet">
+                            <div class="nav-chitiet-col">
+                                <div class="nav-chitiet-col-item">
+                                    <a href="/hieuchinh/nhanvien" class="jfc-start">
+                                        <h5>Nhân viên</h5>
+                                        <p class="nav-tendaydu">Thêm, sửa, xóa nhân viên</p>
+                                    </a>
+                                </div>
+                                <div class="nav-chitiet-col-item">
+                                    <a href="/hieuchinh/sanpham" class="jfc-start">
+                                        <h5>Sản phẩm</h5>
+                                        <p class="nav-tendaydu">Thêm sửa xóa sản phẩm</p>
+                                    </a>
+                                </div>
+                                <div class="nav-chitiet-col-item">
+                                    <a href="/hieuchinh/tintuc" class="jfc-start">
+                                        <h5>Tin tức</h5>
+                                        <p class="nav-tendaydu">Thêm, sửa, xóa tin tức</p>
+                                    </a>
+                                </div>
+                                <div class="nav-chitiet-col-item">
+                                    <a href="/hieuchinh/chinhanh" class="jfc-start">
+                                        <h5>Chi nhánh</h5>
+                                        <p class="nav-tendaydu">Thêm, sửa, xóa chi nhánh</p>
+                                    </a>
+                                </div>
+                                <div class="nav-chitiet-col-item">
+                                    <a href="/dndk/dangxuat" class="jfc-start">
+                                        <h5>Đăng xuất</h5>
+                                        <p class="nav-tendaydu">Đăng xuất khỏi tài khoản admin</p>
+                                    </a>
+                                </div>
                             </div>
-                        </li>
-                        {{else}}
-                        <li><a href="/dndk">
+                        </div>
+                    
+                    {{/if}}
+                    </li>
+                    {{else}}
+                    <li><a href="/dndk">
                             <p>Đăng nhập</p>
-                        </a></li>
-                        {{/if}}
+                        </a>
+                        {{!-- //////////////////////////////// --}}
+                        <div class="nav-chitiet">
+                            <div class="nav-chitiet-col">
+                                <div class="nav-chitiet-col-item">
+                                    <a href="/hieuchinh/nhanvien" class="jfc-start">
+                                        <h5>Nhân viên</h5>
+                                        <p class="nav-tendaydu">Thêm, sửa, xóa nhân viên</p>
+                                    </a>
+                                </div>
+                                <div class="nav-chitiet-col-item">
+                                    <a href="/hieuchinh/sanpham" class="jfc-start">
+                                        <h5>Sản phẩm</h5>
+                                        <p class="nav-tendaydu">Thêm sửa xóa sản phẩm</p>
+                                    </a>
+                                </div>
+                                <div class="nav-chitiet-col-item">
+                                    <a href="/hieuchinh/tintuc" class="jfc-start">
+                                        <h5>Tin tức</h5>
+                                        <p class="nav-tendaydu">Thêm, sửa, xóa tin tức</p>
+                                    </a>
+                                </div>
+                                <div class="nav-chitiet-col-item">
+                                    <a href="/hieuchinh/chinhanh" class="jfc-start">
+                                        <h5>Chi nhánh</h5>
+                                        <p class="nav-tendaydu">Thêm, sửa, xóa chi nhánh</p>
+                                    </a>
+                                </div>
+                                <div class="nav-chitiet-col-item">
+                                    <a href="/dndk/dangxuat" class="jfc-start">
+                                        <h5>Đăng xuất</h5>
+                                        <p class="nav-tendaydu">Đăng xuất khỏi tài khoản admin</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {{!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ --}}
+                        </li>
+                    {{/if}}
 
 
                 </ul>
@@ -126,7 +198,7 @@
                 </div>
                 <ul>
                     <li class="left-logo">
-                        <a >LOGO</a>
+                        <a>LOGO</a>
                     </li>
                     <li>
                         <a href="/">Trang chủ</a>
@@ -139,14 +211,13 @@
                             <ul>
                                 {{#each Loaichinhs}}
                                 <li><a href="/sanpham/{{../link}}/{{link}}">{{name}}</a></li>
-                                
-                                 {{/each}}
+                                {{/each}}
                             </ul>
                         </div>
                     </li>
                     {{/each}}
-                    
-                    
+
+
                     <li>
                         <a href="/tintuc">Tin tức</a>
                     </li>

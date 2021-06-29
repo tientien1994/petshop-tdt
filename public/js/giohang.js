@@ -170,7 +170,7 @@ $(document).ready(function() {
 })
 function isNumber(n) { return !isNaN(parseFloat(n)) && !isNaN(n - 0) }
 function kiemtragiatri() {
-    let x = document.forms["formthongtin"]["sodienthoai"].value;
+    let x = document.forms["formsuanhanvien"]["sodienthoainhanvien"].value;
 
     if (isNumber(x)&& x.length==10) {
       

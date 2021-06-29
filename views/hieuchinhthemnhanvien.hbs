@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>thanh toan</title>
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/sp.css">
+    <link rel="stylesheet" href="/css/motsp.css">
+    <link rel="stylesheet" href="/css/media.css">
+    <link rel="stylesheet" href="/css/giohang.css">
+    <link rel="stylesheet" href="/css/hieuchinh.css">
+    <link rel="stylesheet" href="/font/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Pangolin&family=Roboto:ital,wght@0,100;0,300;1,100&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <section class="container-fluid main-2">
+        {{>header}}
+        <section class="container-fluid">
+            {{>slideBanner}}
+            <div class="container">
+                <div class="line-page">
+                    <p>
+                        <span><a href="/hieuchinh">Hiệu chỉnh</a></span>
+                        <span><a href="/hieuchinh/nhanvien">/Hiệu chỉnh nhân viên</a></span>
+                        <span><a href="/hieuchinh/nhanvien/themnhanvien">/Thêm nhân viên</a></span>
+                    </p>
+                </div>
+                
+<form name="formsuanhanvien" action="/hieuchinh/nhanvien/themnhanvien" method="POST" onsubmit="return kiemtragiatri()" enctype="multipart/form-data">
+                <div class="thanhtoan">
+                    
+                    
+                    <div class="thanhtoan-form">
+                        <h3>Thêm một nhân viên</h3>
+                            <label for="" >Họ và tên nhân viên: </label>
+                            <input type="text" name="hotennhanvien" required placeholder="Họ và tên" value=""><br>
+
+                            <label for="">Số điện thoại:</label>
+                            <input type="text" name="sodienthoainhanvien" required placeholder="Nhập số điện thoại" value=""><br>
+
+                            <label for="">Lương nhân viên:</label>
+                            <input type="text" name="luongnhanvien" required placeholder="Lương nhân viên" value=""><br>
+
+                            
+                            <label for="">File ảnh(đuôi jpg, png):</label>
+                            <input id="fileanh" type="file" name="fileanh" placeholder="Link của tấm ảnh"><br>
+                            
+                            <label for="">Vị trí: </label><br>
+                            <select name="vitriid"><br>
+                                    {{#each vitri}}
+                                    <option value="{{id}}">{{tenchucvu}}</option>
+                                    {{/each}}
+                                    
+                            </select>
+                            <label for="">Chi nhánh: </label><br>
+                            <select name="chinhanhid" id="{{chinhanhId}}"><br>
+                                    {{#each chinhanh}}
+                                    <option value="{{id}}">{{name}}</option>
+                                    {{/each}}
+                            </select>
+                            
+                            <button type="submit">
+                                <div class='table-thanhtoan'>
+                                    <a class="asp-buton thanhtoan">
+                                        <p class="asp-buton">Thêm</p>
+                                    </a>
+                                </div>
+                            </button>
+                        
+                    </div>
+                    
+                   
+                </div>
+</form>
+               
+            </div>
+        </section>
+
+
+
+
+
+        {{>footer}}
+
+
+    </section>
+
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/giohang.js"></script>
+    {{!-- <script>
+        $(document).ready(function() {
+            // Multiple images preview in browser - trungquandev.com
+            let imagesPreview = function(input, placeToInsertImagePreview) {
+                if (input.files) {
+                    let filesAmount = input.files.length;
+                    for (i = 0; i < filesAmount; i++) {
+                        let reader = new FileReader();
+                        reader.onload = function(event) {
+                            $($.parseHTML("<img>")).attr("src", event.target.result).appendTo(placeToInsertImagePreview);
+                        }
+                        reader.readAsDataURL(input.files[i]);
+                    }
+                }
+            };
+            $("#fileanh").on("change", function() {
+                imagesPreview(this, "div.preview-images");
+            });
+        });
+    </script> --}}
+
+
+</body>
+
+</html>

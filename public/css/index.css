@@ -3286,6 +3286,14 @@ ul.a li:hover p.nav-tendaydu-item{
     border-radius: 50%;
     transition:0.5s;
 }
+    
+.nav-main {
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+}
+.nav-bar-fix {
+    border:none;
+}
 
 button#back-to-top i {
     color: #fff;

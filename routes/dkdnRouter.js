@@ -15,7 +15,9 @@ router.get('/', (req, res, next) => {
         .catch(err=>{next(err)}) 
 })
 router.post('/', (req, res, next) => {
-    
+    req.session.suanhanvien=false
+    req.session.themnhanvien=false;
+    req.session.xoanhanvien=false;
     //console.log('return----' +req.session.returnpage)
     if(req.body.dkdn=='dk'){
         let fullname= req.body.fullname
