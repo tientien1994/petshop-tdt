@@ -1,0 +1,45 @@
+<div class="motloaisanphamchinh-nd">
+    <div class="motspchinh">
+        <div class="motsp-img">
+            {{#if (tinhlength loaitong)}}
+            <img src="{{loaitong}}" alt=""></a>
+            {{else}}
+            <img src="/img/sp/{{Loaitong.link}}/{{Loaichinh.link}}/{{chialaydu id}}.jpg" alt=""></a>
+            {{/if}}
+
+            <div class="motspchinhbtn">
+                <div class="motspbtn-p">
+                    <p><a href="/hieuchinh/sanpham/sua-{{id}}"><i class="fa fa-gear"></i></a></p>
+                    <p><a class="xoasanpham" data-href="/hieuchinh/sanpham/xoa-{{id}}" data-name="{{name}}"
+                            data-id="{{id}}"><i class="fa fa-times"></i></a></p>
+                </div>
+            </div>
+        </div>
+        <div class="motsp-text">
+            <div class="motsp-tenthuonghieu">
+                <a href="/sanpham/{{Loaitong.link}}/{{Loaichinh.link}}/{{Loaisanpham.link}}/{{id}}">
+                    {{#if (sosanh name 'Sản phẩm thứ')}}
+                    <h5>{{name}} {{id}}</h5>
+                    <p class="tendaydu">{{name}} {{id}}</p>
+                    {{else}}
+                    <h5>{{name}}</h5>
+                    <p class="tendaydu">{{name}}</p>
+                    {{/if}}
+                </a>
+                {{#with Thuonghieu}}
+                <p>{{name}}</p>
+                {{/with}}
+            </div>
+            <div class="giasao">
+                <p class="giasaogia">{{tien gia}} d</p>
+                <div>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-empty"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

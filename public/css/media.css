@@ -113,7 +113,7 @@
     .header-nd .lo{width: 30%; display: block;}
     .header-nd .find{width: 50%; display: block;}
     .header-nd .ktdonhang{display: none;}
-    .header-nd .giohang{display: block;}
+    .header-nd .giohang{display: block;margin-right: 21px;}
     .header-nd .onl{display: none}
     .sp-1-list-menu{display:none}
     .sp-1-list-menu{display:none;width: 100%;}
@@ -181,7 +181,7 @@
     .header-nd .lo{width: 30%; display: block;}
     .header-nd .find{width: 40%; display: block;}
     .header-nd .ktdonhang{display: none;}
-    .header-nd .giohang{display: block;}
+    .header-nd .giohang{display: block;margin-right: 38px;}
     .header-nd .onl{display: none}
     .sp-1-list-menu{display:none;width: 100%;}
     .sp-1-otpmenu{display:block;width: 100%;}
@@ -248,7 +248,7 @@
     .header-nd .lo{width: 20%; display: block;}
     .header-nd .find{width: 30%; display: block;}
     .header-nd .ktdonhang{display: block;}
-    .header-nd .giohang{display: block;}
+    .header-nd .giohang{display: block;margin-right: 38px;}
     .header-nd .onl{display: none}
     .sp-1-list-menu{display:block;width: 25%;}
     .sp-1-otpmenu{display:none;width: 25%;}
@@ -315,7 +315,7 @@
     .header-nd .find{width: 30%; display: block;}
     .header-nd .ktdonhang{display: block;}
     .header-nd .giohang{display: block;}
-    .header-nd .onl{display: block}
+    .header-nd .onl{display: flex;}
     .sp-1-list-menu{display:block;width: 25%;}
     .sp-1-otpmenu{display:none;width: 25%;}
     .sp-1-sp{width: 75%;}
@@ -381,8 +381,8 @@
     .header-nd .lo{width: 20%; display: block;}
     .header-nd .find{width: 30%; display: block;}
     .header-nd .ktdonhang{display: block;}
-    .header-nd .giohang{display: block;}
-    .header-nd .onl{display: block}
+    .header-nd .giohang{display: block;padding-right: 0;}
+    .header-nd .onl{display: flex;}
     .sp-1-list-menu{display:block;width: 25%;}
     .sp-1-otpmenu{display:none;width: 25%;}
     .sp-1-sp{width: 75%;}

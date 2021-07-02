@@ -1,0 +1,200 @@
+    
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/sp.css">
+    <link rel="stylesheet" href="/css/media.css">
+    <link rel="stylesheet" href="/css/sploaichinh.css">
+    <link rel="stylesheet" href="/css/hieuchinh.css">
+    <link rel="stylesheet" href="/font/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Pangolin&family=Roboto:ital,wght@0,100;0,300;1,100&display=swap" rel="stylesheet">
+<script>
+    if({{suasp}}==true){
+            alert('Sửa sản phẩm thành công')
+            }
+        
+            if({{themsp}}==true){
+            alert('Thêm sản phẩm thành công, xem sản phẩm vừa thêm ngay')
+            }
+        if({{xoasp}}==true){
+            alert('Xóa sản phẩm thành công')
+            }
+</script>
+
+</head>
+
+
+<body>
+       
+    <section class="container-fluid main-2">
+       {{>header}}
+        {{>slideBanner}}
+    
+    <section class="container-fluid">
+        <div class="container">
+            
+            
+            <div class="line-page">
+                <p>   
+                    <span><a href="/hieuchinh/sanpham">Hiệu chỉnh sản phẩm</a></span> 
+                </p>
+                <p>
+                        <input type="text" id='search' placeholder="Tìm kiếm sản phẩm">
+                        <i class="fa fa-search"></i>
+                    </p>
+                    <p>
+                        <select name="" id="selectsp">
+                            <option value='name'>Sắp xếp theo tên</option>
+                            <option value='viewDESC' selected>Sắp xếp lượt xem giảm</option>
+                             <option value='viewASC'>Sắp xếp lượt xem tăng</option>
+                            
+                            <option value='DESC'>Giá giảm dần</option>
+                            <option value='ASC'>Giá tăng dần</option>
+                        </select>
+                    </p>
+            </div>
+            
+            <div class="sp-1">
+                
+                   
+                <div class="sanphamchinh">
+                    <h5 class="hieuchinhsanphamtitle">Hiệu chỉnh sản phẩm</h5>
+                    <div class="nutthemsanpham">
+                            <a href="/hieuchinh/sanpham/themsanpham">Thêm một sản phẩm</a>
+                    </div>
+                    
+                    <div class="sanphamchinhitem">
+                        <div class="motloaisanphamchinh">
+                          
+                                {{#if sanpham}}
+                              {{#each sanpham}}      
+                              {{>sanphamhieuchinh}}
+                              
+                              {{/each}}
+                              {{else}}
+                              <div class="motsp-error">Không có sản phẩm theo yêu cầu này</div>
+                              {{/if}}
+                        </div>
+                        
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            <div class="sp-pagination">
+                <ul>
+                    <li><a href="">1</a></li>
+                    <li><a href="">2</a></li>
+                    <li><a href="">3</a></li>
+                    <li><a href="">4</a></li>
+                </ul>
+            </div>
+            
+            
+            
+        </div>
+
+    </section>
+        
+
+        {{>footer}}
+        
+        
+    </section>
+<script src="/js/jquery-3.5.1.min.js"></script>
+    <script>
+        
+        function addParameterToURL(key, value, url) {
+            key = encodeURI(key); value = encodeURI(value);
+            var kvp = url
+           
+            var toanbolink=url.toString().split('?')
+            
+            var link=toanbolink[0]
+            var i = 0;
+            
+            
+            if(toanbolink[1]!=undefined){
+                var kvp = toanbolink[1].toString().split('&');
+                for(;i<kvp.length; i++){
+                var x; 
+                x = kvp[i].split('=');
+                if (x[0] == key) 
+                {
+                    x[1] = value;
+                    kvp[i] = x.join('=');
+                    break;
+                }
+            }
+            }
+            else{
+                var kvp=[]
+            }
+            
+             
+
+            
+            if(i==kvp.length) {kvp[kvp.length] = [key,value].join('=');}
+            
+            //if(kvp[0].toString().length==0){
+                //kvp.shift()
+            //}
+            
+            urls=link+'?'+kvp.join('&')
+            console.log(urls)
+            return urls
+        }
+        function addthuonghieu(key, value, url){
+            let linkthuonghieu=addParameterToURL(key, value, url)
+            
+            location.href=linkthuonghieu
+            
+        }
+        function addParammaxmin(max,min, url) {
+           var link1=addParameterToURL('max', max, url);
+           var link2=addParameterToURL('min', min, link1);
+           
+          location.href=link2      
+        }
+        $('.line-page p:nth-child(2) i').click(function(){
+            var link=addParameterToURL('search',$('#search').val(),document.location)
+            location.href=link
+        })
+        $('#selectsp').change(function(){
+            
+                let link=addParameterToURL('sapxep',$(this).val(),document.location)
+                location.href=link
+                
+
+        })
+        $('#selectsp option').removeAttr('selected')
+            $('#selectsp option').each(function(){
+            if($(this).val()==='{{sapxep}}'){
+                $(this).attr('selected', true)// true hoac 'selected'
+            }
+            })
+    </script>
+    
+    <script src="/js/gsap.min.js"></script>
+    <script src="/js/index.js"></script>
+    <script>
+       
+        
+        
+            
+
+        
+    </script>
+    <script src="/js/giohang.js"></script>
+    <script src="/js/xulylink.js"></script>
+     <script src="/js/hieuchinh.js"></script>
+</body>
+</html>

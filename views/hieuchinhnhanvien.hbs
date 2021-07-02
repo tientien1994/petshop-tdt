@@ -20,14 +20,14 @@
        
             if({{suanhanvien}}==true){
             alert('Sửa thành công')
-        }
+            }
         
             if({{themnhanvien}}==true){
             alert('Thêm nhân viên thành công')
-        }
+            }
         if({{xoanhanvien}}==true){
             alert('Xóa thành công')
-        }
+            }
         
 
     </script>
@@ -39,6 +39,12 @@
     <section class="container-fluid main-2">
         {{>header}}
     <section class="container-fluid">
+        <div class="line-page">
+                    <p>
+                        <span><a href="/hieuchinh/nhanvien">Hiệu chỉnh nhân viên</a></span>
+                       
+                    </p>
+                </div>
         <div class="container hieuchinhnhanvien">
             <h5>Hiệu chỉnh nhân viên</h5>
             <a href="/hieuchinh/nhanvien/themnhanvien">Thêm nhân viên</a>

@@ -1,7 +1,6 @@
-    
-    
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,251 +12,335 @@
     <link rel="stylesheet" href="/css/media.css">
     <link rel="stylesheet" href="/css/sploaichinh.css">
     <link rel="stylesheet" href="/font/font-awesome-4.7.0/css/font-awesome.min.css">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Pangolin&family=Roboto:ital,wght@0,100;0,300;1,100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Pangolin&family=Roboto:ital,wght@0,100;0,300;1,100&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
-       
+
     <section class="container-fluid main-2">
-       {{>header}}
+        {{>header}}
         {{>slideBanner}}
-    
-    <section class="container-fluid">
-        <div class="container">
-            
-            {{#each loaitong}}
-            <div class="line-page">
-                <p>   
-                    <span><a href="/sanpham/{{link}}">Sản phẩm {{name}}</a></span>
-                    {{#each Loaichinhs}}
-                    <span><a href="/sanpham/{{../link}}/{{link}}">/{{name}}</a></span>
-                    
-                    {{/each}}
-                    
-                </p>
-                <p>
+
+        <section class="container-fluid">
+            <div class="container">
+
+                {{#each loaitong}}
+                <div class="line-page">
+                    <p>
+                        <span><a href="/sanpham/{{link}}">Sản phẩm {{name}}</a></span>
+                        {{#each Loaichinhs}}
+                        <span><a href="/sanpham/{{../link}}/{{link}}">/{{name}}</a></span>
+
+                        {{/each}}
+
+                    </p>
+                    <p>
                         <input type="text" id='search' placeholder="Tìm kiếm sản phẩm">
                         <i class="fa fa-search"></i>
                     </p>
                     <p>
-                        <select name="" id="selectsp" label="akhf">
+                        <select name="" id="selectsp">
                             <option value='name'>Sắp xếp theo tên</option>
-                            <option value='viewDESC' selected>Sắp xếp lượt xem</option>
-                             <option value='viewASC'>Sắp xếp lượt xem</option>
-                            
+                            <option value='viewDESC' selected>Sắp xếp lượt xem giảm</option>
+                            <option value='viewASC'>Sắp xếp lượt xem tăng</option>
+
                             <option value='DESC'>Giá giảm dần</option>
                             <option value='ASC'>Giá tăng dần</option>
                         </select>
                     </p>
-            </div>
-            {{/each}}
-            <div class="sp-1">
-                <div class="sp-1-list-menu">
-                    <div class="sp-1-menu">
-                        {{#each loaitong}}
+                </div>
+                {{/each}}
+                <div class="sp-1">
+                    <div class="sp-1-list-menu">
+                        <div class="sp-1-menu">
+                            {{#each loaitong}}
                             {{#each Loaichinhs}}
                             <h5>{{name}} {{../name}}</h5>
                             <ul>
-                            {{#each Loaisanphams}}
-                            <li id=''><a href="/sanpham/{{../../link}}/{{../link}}/{{link}}"><i class="fa fa-circle-o"></i>{{name}} <i>({{Sanphams.length}})</i></a></li> </a></li>   
-                             {{/each}} 
+                                {{#each Loaisanphams}}
+                                <li id=''><a href="/sanpham/{{../../link}}/{{../link}}/{{link}}"><i
+                                            class="fa fa-circle-o"></i>{{name}} <i>({{Sanphams.length}})</i></a></li>
+                                </a></li>
+                                {{/each}}
+                                {{/each}}
+                            </ul>
                             {{/each}}
-                        </ul>
-                        {{/each}}
-                    </div>
-                    <div class="sp-1-menu-gia">
-                        <h5>Khoảng giá</h5>
+                        </div>
+                        <div class="sp-1-menu-gia">
+                            <h5>Khoảng giá</h5>
                             <ul>
-                                <li class='locgia' value='1000000' onclick="addParammaxmin(1000000, 0, document.location)"><a><i class="fa fa-circle-o"></i>Dưới 1
+                                <li class='locgia' value='1000000'
+                                    onclick="addParammaxmin(1000000, 0, document.location)"><a><i
+                                            class="fa fa-circle-o"></i>Dưới 1
                                         triệu
                                         <i>({{khoanggia}})</i>
                                     </a></li>
-                                <li class='locgia' value='3000000' onclick="addParammaxmin(3000000, 1000000, document.location)"><a><i class="fa fa-circle-o"></i>1 triệu đến 3 triệu
+                                <li class='locgia' value='3000000'
+                                    onclick="addParammaxmin(3000000, 1000000, document.location)"><a><i
+                                            class="fa fa-circle-o"></i>1 triệu đến 3 triệu
                                         <i>({{khoanggia2}})</i>
                                     </a></li>
-                                <li class='locgia' value='5000000' onclick="addParammaxmin(5000000, 3000000, document.location)"><a><i class="fa fa-circle-o"></i>3 triệu đến 5 triệu
+                                <li class='locgia' value='5000000'
+                                    onclick="addParammaxmin(5000000, 3000000, document.location)"><a><i
+                                            class="fa fa-circle-o"></i>3 triệu đến 5 triệu
                                         <i>({{khoanggia3}})</i>
                                     </a></li>
-                                <li class='locgia' value='7000000' onclick="addParammaxmin(7000000, 5000000, document.location)"><a><i class="fa fa-circle-o"></i>5 triệu đến 7 triệu
+                                <li class='locgia' value='7000000'
+                                    onclick="addParammaxmin(7000000, 5000000, document.location)"><a><i
+                                            class="fa fa-circle-o"></i>5 triệu đến 7 triệu
                                         <i>({{khoanggia4}})</i>
                                     </a></li>
-                                <li class='locgia' value='9000000' onclick="addParammaxmin(9000000, 7000000, document.location)"><a><i class="fa fa-circle-o"></i>7 triệu đến 9 triệu
+                                <li class='locgia' value='9000000'
+                                    onclick="addParammaxmin(9000000, 7000000, document.location)"><a><i
+                                            class="fa fa-circle-o"></i>7 triệu đến 9 triệu
                                         <i>({{khoanggia5}})</i>
                                     </a></li>
-                                <li class='locgia' value='10000000' onclick="addParammaxmin(10000000, 9000000, document.location)"><a><i class="fa fa-circle-o"></i>9 triệu đến 10 triệu
+                                <li class='locgia' value='10000000'
+                                    onclick="addParammaxmin(10000000, 9000000, document.location)"><a><i
+                                            class="fa fa-circle-o"></i>9 triệu đến 10 triệu
                                         <i>({{khoanggia6}})</i>
                                     </a></li>
-                            </ul>     
-                    </div>
-                    <div class="sp-1-thuonghieu">
-                        <h5>Thương hiệu</h5>
-                        <ul>
-                            {{#each thuonghieu}}
-                            {{#if (sosanh ../laythuonghieu id)}}
-                            <li onclick="addthuonghieu('thuonghieu', {{id}}, document.location)"><a><i class="fa fa-circle"></i>{{name}}<i>({{Sanphams.length}})</i></a></li>
-                            {{else}}
-                            <li onclick="addthuonghieu('thuonghieu', {{id}}, document.location)"><a><i class="fa fa-circle-o"></i>{{name}}<i>({{Sanphams.length}})</i></a></li>
-                            {{/if}}
-                            {{/each }}
-                        </ul>
-                    </div>
-                    <div class="sp-1-menu-tintuc">
-                        <h5>Tin tức hot</h5>
-                        {{#each toptintuc}}
-                        <div class="sp-1-menu-tintuc-item">
-                            <div class="sp-1-menu-tintuc-item-img">
-                                <a href="/tintuc/theloaitt{{tlbaivietId}}/{{id}}"><img src="/img/cho.jpg" alt=""></a>
-                            </div>
-                            <div class="sp-1-menu-tintuc-item-text">
-                                <a href="/tintuc/theloaitt{{tlbaivietId}}/{{id}}"><p>{{name}}</p></a>
-                                <p>{{title}}</p>
-                            </div>
-                           
+                            </ul>
                         </div>
-                        {{/each}}
-                        
+                        <div class="sp-1-thuonghieu">
+                            <h5>Thương hiệu</h5>
+                            <ul>
+                                {{#each thuonghieu}}
+                                {{#if (sosanh ../laythuonghieu id)}}
+                                <li onclick="addthuonghieu('thuonghieu', {{id}}, document.location)"><a><i
+                                            class="fa fa-circle"></i>{{name}}<i>({{Sanphams.length}})</i></a></li>
+                                {{else}}
+                                <li onclick="addthuonghieu('thuonghieu', {{id}}, document.location)"><a><i
+                                            class="fa fa-circle-o"></i>{{name}}<i>({{Sanphams.length}})</i></a></li>
+                                {{/if}}
+                                {{/each }}
+                            </ul>
+                        </div>
+                        <div class="sp-1-menu-tintuc">
+                            <h5>Tin tức hot</h5>
+                            {{#each toptintuc}}
+                            <div class="sp-1-menu-tintuc-item">
+                                <div class="sp-1-menu-tintuc-item-img">
+                                    <a href="/tintuc/theloaitt{{tlbaivietId}}/{{id}}"><img
+                                            src="/img/tintuc/{{chialaydu id}}.jpg" alt=""></a>
+                                </div>
+                                <div class="sp-1-menu-tintuc-item-text">
+                                    <a href="/tintuc/theloaitt{{tlbaivietId}}/{{id}}">
+                                        <p>{{name}}</p>
+                                    </a>
+                                    <p>{{title}}</p>
+                                </div>
+
+                            </div>
+                            {{/each}}
+
+                        </div>
                     </div>
-                </div>    
-                <div class="sp-1-otpmenu">
-                    {{#each loaitong}}
+                    <div class="sp-1-otpmenu">
+                        {{#each loaitong}}
                         <select name="" id="sp-1-otpmenu" onchange='location=this.value'>
                             <option value="/sanpham/{{link}}">Tất cả sản phẩm</option>
                             {{#each Loaichinhs}}
                             {{#each Loaisanphams}}
-                            <option value='/sanpham/{{../../link}}/{{../link}}/{{link}}'>{{name}}({{Sanphams.length}})</option>
+                            <option value='/sanpham/{{../../link}}/{{../link}}/{{link}}'>{{name}}({{Sanphams.length}})
+                            </option>
                             {{/each}}
 
                             {{/each}}
                         </select>
                         {{/each}}
-                   
-                </div> 
-                {{#each loaitong}}   
-                <div class="sanphamchinh">
-                    {{#each Loaichinhs}}
-                    
-                    <div class="sanphamchinhitem">
-                        <a href="/sanpham/{{../link}}/{{link}}"><h3>{{name}}</h3></a>
-                        <div class="sanphamchinhitem-line"></div>
-                        <div class="motloaisanphamchinh">
-                                
+
+                    </div>
+                    {{#each loaitong}}
+                    <div class="sanphamchinh">
+                        {{#each Loaichinhs}}
+
+                        <div class="sanphamchinhitem">
+                            <a href="/sanpham/{{../link}}/{{link}}">
+                                <h3>{{name}}</h3>
+                            </a>
+                            <div class="sanphamchinhitem-line"></div>
+                            <div class="motloaisanphamchinh">
+
                         {{/each}}
                     {{/each}}
                                 {{#if sanpham}}
-                              {{#each sanpham}}      
-                              {{#each Sanphams}}
-                              {{>sanpham}}
-                              {{/each}}
-                              {{/each}}
-                              {{else}}
-                              <div class="motsp-error">Không có sản phẩm theo yêu cầu này</div>
-                              {{/if}}
+                                {{#each sanpham}}
+                                {{>sanpham}}
+                                {{/each}}
+                                {{else}}
+                                <div class="motsp-error">Không có sản phẩm theo yêu cầu này</div>
+                                {{/if}}
+                            </div>
+
                         </div>
-                        
+
+
                     </div>
-                    
-                    
                 </div>
-            </div>
-            <div class="sp-pagination">
-                <ul>
-                    <li><a href="">1</a></li>
-                    <li><a href="">2</a></li>
-                    <li><a href="">3</a></li>
-                    <li><a href="">4</a></li>
-                </ul>
-            </div>
-            
-            
-            
-        </div>
+                <script>
+                    if (parseInt({{sanpham.count}})>1) {
+                        document.write(`<div class="sp-pagination">
+                                            <ul>
+                                                <li class='page-giam'><a><<</a></li>`)
+                       for(var i=0;i<parseInt({{sanpham.count}});i++){
+                           document.write(`<li class='page' data-page='${i+1}'><a>${i+1}</a></li>`)
+                       }
 
-    {{>footer}}
-<script src="/js/jquery-3.5.1.min.js"></script>
-     <script>
-        
-        function addParameterToURL(key, value, url) {
-            key = encodeURI(key); value = encodeURI(value);
-            var kvp = url
-            console.log(url)
-            var toanbolink=url.toString().split('?')
-            
-            var link=toanbolink[0]
-            var i = 0;
-            console.log('LIZNKZZZZz'+link)
-            //console.log('111111111111111111'+toanbolink[1])
-            if(toanbolink[1]!=undefined){
-                var kvp = toanbolink[1].toString().split('&');
-                for(;i<kvp.length; i++){
-                var x; 
-                x = kvp[i].split('=');
-                if (x[0] == key) 
-                {
-                    x[1] = value;
-                    kvp[i] = x.join('=');
-                    break;
+                        document.write(`<li class='page-tang'><a>>></a></li>
+                                    </ul>
+                                </div>`)
+            }
+                </script>
+
+
+
+
+            </div>
+
+            {{>footer}}
+            <script src="/js/jquery-3.5.1.min.js"></script>
+            <script>
+
+                function addParameterToURL(key, value, url) {
+                    key = encodeURI(key); value = encodeURI(value);
+                    var kvp = url
+                    var toanbolink = url.toString().split('?')
+
+                    var link = toanbolink[0]
+                    var i = 0;
+
+
+                    if (toanbolink[1] != undefined) {
+                        var kvp = toanbolink[1].toString().split('&');
+                        for (; i < kvp.length; i++) {
+                            var x;
+                            x = kvp[i].split('=');
+                            if (x[0] == key) {
+                                x[1] = value;
+                                kvp[i] = x.join('=');
+                                break;
+                            }
+                        }
+                    }
+                    else {
+                        var kvp = []
+                    }
+
+
+
+
+                    if (i == kvp.length) { kvp[kvp.length] = [key, value].join('='); }
+
+                    //if(kvp[0].toString().length==0){
+                    //kvp.shift()
+                    //}
+                   
+                    urls = link + '?' + kvp.join('&')
+                    console.log(urls)
+                    return urls
                 }
-            }
-            }
-            else{
-                var kvp=[]
-            }
-            
-             
+                function addthuonghieu(key, value, url) {
+                    let linkthuonghieu = addParameterToURL(key, value, url)
+                    location.href = linkthuonghieu
+                }
+                function addParammaxmin(max, min, url) {
+                    var link1 = addParameterToURL('max', max, url);
+                    var link2 = addParameterToURL('min', min, link1);
+                    console.log('link 2  ' + link2)
+                    location.href = link2
 
-            
-            if(i==kvp.length) {kvp[kvp.length] = [key,value].join('=');}
-            
-            //if(kvp[0].toString().length==0){
-                //kvp.shift()
-            //}
-            console.log('kkkkkkkkkkkkkkkkkkkkkkkkk       '+kvp)
-            urls=link+'?'+kvp.join('&')
-            console.log(urls)
-            return urls
-        }
-        function addthuonghieu(key, value, url){
-            let linkthuonghieu=addParameterToURL(key, value, url)
-            console.log('linkthuonghieu:      '+linkthuonghieu)
-            location.href=linkthuonghieu
-            
-        }
-        function addParammaxmin(max,min, url) {
-           var link1=addParameterToURL('max', max, url);
-           var link2=addParameterToURL('min', min, link1);
-           console.log('link 2  '+ link2)
-          location.href=link2
-           
-        }
-        $('.line-page p:nth-child(2) i').click(function(){
-            var link=addParameterToURL('search',$('#search').val(),document.location)
-            location.href=link
-        })
-        $('#selectsp').change(function(){
-            
-                let link=addParameterToURL('sapxep',$(this).val(),document.location)
-                location.href=link
+                }
+                $('.line-page p:nth-child(2) i').click(function () {
+                    var link = addParameterToURL('search', $('#search').val(), document.location)
+                    location.href = link
+                })
+                $('#selectsp').change(function () {
+
+                    let link = addParameterToURL('sapxep', $(this).val(), document.location)
+                    location.href = link
+                })
+                $('#selectsp option').removeAttr('selected')
+                $('#selectsp option').each(function () {
+                    if ($(this).val() === '{{sapxep}}') {
+                        $(this).attr('selected', true)// true hoac 'selected'
+                    }
+                })
+
+                $('.page').click(function () {
+                    let page = $(this).data('page')
+                    let link = addParameterToURL('page', page, document.location)
+                    location.href = link
+
+                })
+                $('.page-giam').click(function () {
+                    var trang=document.location.toString().split('?');
+                    var mangquery=trang[1].split('&')
+                    var giatripage;
+                    for (let i=0; i < mangquery.length; i++) {
+                            var x;
+                            x = mangquery[i].split('=');
+                            if (x[0] == "page") {
+                                giatripage=x[1];
+                                break;
+                            }
+                        }
+                        giatripage=parseInt(giatripage)
+                    if(giatripage>1){
+                        giatripage--
+                    }{
+                        giatripage=1
+                    }
+                    let link = addParameterToURL('page', giatripage, document.location)
+                    location.href = link
+
+                })
                 
-                 
+                $('.page-tang').click(function () {
+                
+                    
+                    var trang=document.location.toString().split('?');
+                    var mangquery=trang[1].split('&')
+                    var giatripage;
+                    for (let i=0; i < mangquery.length; i++) {
+                            var x;
+                            x = mangquery[i].split('=');
+                            if (x[0] == "page") {
+                                giatripage=x[1];
+                                break;
+                            }
+                        }
+                    
+                    giatripage=parseInt(giatripage)
+                    
+                    if(giatripage<{{sanpham.count}}){
+                        giatripage++
+                    }else{
+                        giatripage={{sanpham.count}}
+                    }
+
+                    let link = addParameterToURL('page', giatripage, document.location)
+                    location.href = link
+
+                })
+                
                 
 
+            </script>
+            <script src="/js/index.js"></script>
+            <script>
+
+                $('.locgia').each(function () {
+                    if ($(this).attr('value') == {{ laygiamax }})
+                    {
+                    $(this).addClass('locgia-acc')
+                    }
         })
-        $('#selectsp option').removeAttr('selected')
-            $('#selectsp option').each(function(){
-            if($(this).val()==='{{sapxep}}'){
-                $(this).attr('selected', true)// true hoac 'selected'
-            }
-            })
-    </script>
-    <script src="/js/index.js"></script>
-     <script>
-        console.log($('.locgia'))
-        $('.locgia').each(function(){
-            if($(this).attr('value')=={{laygiamax}}){
-                $(this).addClass('locgia-acc')
-            }
-        }) 
-    </script>
-    <script src="/js/giohang.js"></script>
+            </script>
+            <script src="/js/giohang.js"></script>
 </body>
+
 </html>

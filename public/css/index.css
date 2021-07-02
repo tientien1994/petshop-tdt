@@ -408,7 +408,7 @@ p.nav-tendaydu::before {
 
 .onl i {
     font-size: 44px;
-    color: var(--primary-color);
+    color: var(--five-color);
     width: 50px;
 }
 
@@ -420,7 +420,7 @@ p.nav-tendaydu::before {
     color: var(--secondary-color);
 }
 
-.onl div p:nth-child(1) {color: var(--primary-color);text-transform: uppercase;font-weight: 700;font-size: 14px;}
+.onl div p:nth-child(1) {color: var(--five-color);text-transform: uppercase;font-weight: 700;font-size: 14px;}
 
 .onl:hover div p:nth-child(1),.onl:hover div p:nth-child(2) {
     color: var(--secondary-color);
@@ -453,7 +453,7 @@ p.nav-tendaydu::before {
 
 .giohang i {
     font-size: 44px;
-    color: var(--primary-color);
+    color: var(--four-color);
 }
 
 .giohang div {
@@ -468,6 +468,8 @@ p.nav-tendaydu::before {
     align-items: center;
     border-radius: 15px;
 }
+
+div {}
 
 .giohang div p {
     color: #fff;
@@ -489,7 +491,7 @@ p.nav-tendaydu::before {
 .giohang:hover {transform: scale(1.2);}
 
 .giohang:hover div {
-    background: var(--primary-color);
+    background: var(--four-color);
     transition: 0.5s;
 }
 
@@ -509,14 +511,22 @@ p.nav-tendaydu::before {
 .ktdonhang a i {
     font-size: 44px;
     width: 52px;
-    color: var(--primary-color);
+    color: var(--thir-color);
 }
 
 .ktdonhang a p {
-    color: var(--primary-color);
+    color: var(--thir-color);
 }
 
-
+.line-page p:first-child span:first-child:hover a {
+    color: var(--primary-color);
+}
+.line-page p:first-child span:nth-child(2):hover a {
+    color: var(--four-color);
+}
+.line-page p:first-child span:nth-child(3):hover a {
+    color: var(--five-color);
+}
 
 
 
@@ -2905,7 +2915,7 @@ p.nav-tendaydu-item::before {
 }
 section.nav-main.nav-bar-fix {
     position: fixed;
-    background: var(--primary-color);
+    background: var(--light-primary-color);
     top: 0px;
     width: 100%;
     z-index: 1000;
@@ -3302,4 +3312,38 @@ button#back-to-top i {
 #back-to-top:hover {
     background-color: var(--secondary-color);
   }
+  .nav-bar nav>ul>li a p {
+    color: var(--primary-color);
+}
+.nav-bar nav>ul>li>a {
+    
+    width: 100%;
+}
+.nav-bar nav>ul>li:nth-child(1):hover>a {
+    background: var(--primary-color);
+}
+.nav-bar nav>ul>li:nth-child(2):hover>a {
+    background: var(--light-secondary-color);
+}
+.nav-bar nav>ul>li:nth-child(3):hover>a {
+    background: var(--five-color);
+}
+.nav-bar nav>ul>li:nth-child(4):hover>a {
+    background: var(--four-color);
+}
+.nav-bar nav>ul>li:nth-child(5):hover>a {
+    background: var(--thir-color);
+}
+.nav-bar nav>ul>li:nth-child(6):hover>a {
+    background: var(--light-primary-color);
+}
+.nav-main.nav-bar-fix .nav-bar nav>ul>li>a>p{
+    color: #fff;
+}
+.nav-bar nav>ul>li{ 
+    width: 100%;
+}
+.nav-bar nav>ul{
+    padding: 0 15px;
+}
 

@@ -6,6 +6,16 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+.sp-1-menu {
+    background: #eee;
+}
+
+.sp-1-menu h5 {
+    width: 100%;
+    background: var(--primary-color);
+    padding: 15px;
+}
+
 .sp-1-thuonghieu ul li a {
     font-size: 13px;
 }
@@ -13,13 +23,23 @@
 .sp-1-thuonghieu ul li:hover a i:nth-child(1)::before {
     content: "\f111";
     font-family: 'FontAwesome';
-    color: var(--primary-color);
+    color: var(--four-color);
+    transition:0.5s;
 }
 
-.sp-1-menu-gia ul li a:hover i:nth-child(1)::before {content: "\f111";font-family: 'FontAwesome';color: var(--primary-color);}
 
+
+.sp-1-menu-gia ul li a:hover i:nth-child(1)::before {content: "\f111";font-family: 'FontAwesome';color: var(--thir-color); transition:0.5s}
+.sp-1-menu-gia ul li:hover a{
+    transition: 0.5s;
+    color: var(--thir-color)
+}
 .sp-1-menu-gia ul li a {
     font-size: 13px;
+}
+.sp-1-menu-tintuc-item:hover {
+    background: var(--light-five-color);
+    transition: 0.5s;
 }
 
 .tendaydu {
@@ -101,7 +121,7 @@ select#selectsp {
 li.locgia.locgia-acc a i.fa::before {
     content: "\f111";
     font-family: 'FontAwesome';
-    color: var(--primary-color);
+    color: var(--thir-color);
 }
 
 .motspchinhbtn p:hover {
@@ -208,7 +228,7 @@ li.locgia.locgia-acc a i.fa::before {
     height: auto;
 }
 .sp-1-thuonghieu i.fa-circle{
-    color: var(--primary-color);
+    color: var(--four-color);
 }
 .loaisanpham-active a i.fa-circle{
     color: var(--primary-color);
@@ -216,8 +236,9 @@ li.locgia.locgia-acc a i.fa::before {
 .sp-1-list-menu .sp-1-menu ul li a{
     font-size: 13px;
 }
-.motloaisanphamchinh:hover .giasao>p {
-    color: #fff;
+
+.sp-1-menu-tintuc-item{
+    padding:15px;
 }
 @media screen and (max-width: 375px) {
     .sanphamchinh{width: 100%;}
@@ -245,4 +266,7 @@ li.locgia.locgia-acc a i.fa::before {
     .motloaisanphamchinh-nd{width: 33.33%;}
 
     
+}
+.sp-pagination li{
+    cursor: pointer;
 }

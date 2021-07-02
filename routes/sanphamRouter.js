@@ -61,13 +61,15 @@ router.get('/:loaitong',(req, res, next)=>{
         
     })
     .then(data=>{
-        res.locals.sanphamtheoloaichinh=data
-        //res.send( res.locals.sanphamtheoloaichinh)
+        res.locals.sanphamtheoloaichinh=data.rows
+        
+        
         return tintucController.toptintuc()
         
     })
     .then(data=>{
         res.locals.toptintuc=data
+        
         res.render('loaispchinh');
         //res.send(res.locals.menu)
     })
@@ -127,17 +129,19 @@ router.get('/:loaitong/:loaichinh',(req, res, next)=>{
     })
     .then(data=>{        
         res.locals.loaitong=data
-       
-        return loaichinhController.laysanpham(req.params, req.query)
-       
+        return loaichinhController.laymotloaisanpham(req.params, req.query)
     })
     .then(data=>{
-        res.locals.sanpham=data
-         //res.send(data)
+        res.locals.sanpham=data.rows
+        res.locals.sanpham.count=Math.ceil(data.count/12)
+       
+         
         return tintucController.toptintuc()
     })
     .then(data=>{
         res.locals.toptintuc=data;
+        
+        //res.send(res.locals.sanpham.count.toString());
         res.render('motloaisanpham');
     })
     .catch(err=>{next(err)}) 
@@ -203,11 +207,12 @@ router.get('/:loaitong/:loaichinh/:loaisanpham',(req, res, next)=>{
     })
     .then(data=>{
         res.locals.loaitong=data
-        return loaichinhController.laysanpham(req.params, req.query)
+        return loaichinhController.laymotloaisanpham(req.params, req.query)
        
     })
     .then(data=>{
-        res.locals.sanpham=data
+        res.locals.sanpham=data.rows
+        res.locals.sanpham.count=Math.ceil(data.count/12)
         return menuspchinhController.laymenuloaisanpham(req.params)
     })
     .then(data=>{
@@ -249,7 +254,15 @@ router.get('/:loaitong/:loaichinh/:loaisanpham/:idsp',(req, res, next)=>{
         return menuspchinhController.lay1sanpham(req.params, req.query)
     })
     .then(data =>{
-        data.file=fs.readFileSync(path.join(__dirname,`../public/data/sp/gioithieu/${idsp%10+1}.txt`),'utf8')
+        res.locals.gido=data
+        var lickfile=data[0].Loaichinhs[0].Loaisanphams[0].Sanphams[0].masanpham
+        if(lickfile.length>25){
+            data.file=fs.readFileSync(path.join(__dirname,`../public${lickfile}`),'utf8')
+        }
+        else{
+            data.file=fs.readFileSync(path.join(__dirname,`../public/data/sp/gioithieu/${idsp%10+1}.txt`),'utf8')
+        }
+        
         res.locals.motsanpham=data
         return menuspchinhController.luotxemnhieunhat()
     })
@@ -261,7 +274,7 @@ router.get('/:loaitong/:loaichinh/:loaisanpham/:idsp',(req, res, next)=>{
     .then(data =>{
         res.locals.comment=data
         res.render('motsanpham')
-        //res.send(res.locals.motsanpham.file)
+        //res.json(res.locals.gido[0].Loaichinhs[0].Loaisanphams[0].Sanphams[0].masanpham)
     })
     .catch(err=>{next(err)}) 
     

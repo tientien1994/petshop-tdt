@@ -43,8 +43,8 @@
                     <p>
                         <select name="" id="selectsp">
                             <option value='name'>Sắp xếp theo tên</option>
-                            <option value='viewDESC' selected>Sắp xếp lượt xem</option>
-                             <option value='viewASC'>Sắp xếp lượt xem</option>
+                            <option value='viewDESC' selected>Sắp xếp lượt xem giảm</option>
+                             <option value='viewASC'>Sắp xếp lượt xem tăng</option>
                             
                             <option value='DESC'>Giá giảm dần</option>
                             <option value='ASC'>Giá tăng dần</option>
@@ -111,7 +111,7 @@
                         {{#each toptintuc}}
                         <div class="sp-1-menu-tintuc-item">
                             <div class="sp-1-menu-tintuc-item-img">
-                                <a href="/tintuc/theloaitt{{tlbaivietId}}/{{id}}"><img src="/img/cho.jpg" alt=""></a>
+                                <a href="/tintuc/theloaitt{{tlbaivietId}}/{{id}}"><img src="/img/tintuc/{{chialaydu id}}.jpg" alt=""></a>
                             </div>
                             <div class="sp-1-menu-tintuc-item-text">
                                 <a href="/tintuc/theloaitt{{tlbaivietId}}/{{id}}"><p>{{name}}</p></a>
@@ -147,9 +147,9 @@
                     {{/each}}
                                 {{#if sanpham}}
                               {{#each sanpham}}      
-                              {{#each Sanphams}}
+                              
                               {{>sanpham}}
-                              {{/each}}
+                              
                               {{/each}}
                               {{else}}
                               <div class="motsp-error">Không có sản phẩm theo yêu cầu này</div>
@@ -161,14 +161,20 @@
                     
                 </div>
             </div>
-            <div class="sp-pagination">
-                <ul>
-                    <li><a href="">1</a></li>
-                    <li><a href="">2</a></li>
-                    <li><a href="">3</a></li>
-                    <li><a href="">4</a></li>
-                </ul>
-            </div>
+            <script>
+                    if (parseInt({{sanpham.count}})>1) {
+                        document.write(`<div class="sp-pagination">
+                                            <ul>
+                                                <li class='page-giam'><a><<</a></li>`)
+                       for(var i=0;i<parseInt({{sanpham.count}});i++){
+                           document.write(`<li class='page' data-page='${i+1}'><a>${i+1}</a></li>`)
+                       }
+
+                        document.write(`<li class='page-tang'><a>>></a></li>
+                                    </ul>
+                                </div>`)
+            }
+                </script>
             
             
             
@@ -253,6 +259,62 @@
                 $(this).attr('selected', true)// true hoac 'selected'
             }
             })
+            $('.page').click(function () {
+                    let page = $(this).data('page')
+                    let link = addParameterToURL('page', page, document.location)
+                    location.href = link
+
+                })
+                $('.page-giam').click(function () {
+                    var trang=document.location.toString().split('?');
+                    var mangquery=trang[1].split('&')
+                    var giatripage;
+                    for (let i=0; i < mangquery.length; i++) {
+                            var x;
+                            x = mangquery[i].split('=');
+                            if (x[0] == "page") {
+                                giatripage=x[1];
+                                break;
+                            }
+                        }
+                        giatripage=parseInt(giatripage)
+                    if(giatripage>1){
+                        giatripage--
+                    }{
+                        giatripage=1
+                    }
+                    let link = addParameterToURL('page', giatripage, document.location)
+                    location.href = link
+
+                })
+                
+                $('.page-tang').click(function () {
+                
+                    
+                    var trang=document.location.toString().split('?');
+                    var mangquery=trang[1].split('&')
+                    var giatripage;
+                    for (let i=0; i < mangquery.length; i++) {
+                            var x;
+                            x = mangquery[i].split('=');
+                            if (x[0] == "page") {
+                                giatripage=x[1];
+                                break;
+                            }
+                        }
+                    
+                    giatripage=parseInt(giatripage)
+                    
+                    if(giatripage<{{sanpham.count}}){
+                        giatripage++
+                    }else{
+                        giatripage={{sanpham.count}}
+                    }
+
+                    let link = addParameterToURL('page', giatripage, document.location)
+                    location.href = link
+
+                })
     </script>
     
     <script src="/js/gsap.min.js"></script>

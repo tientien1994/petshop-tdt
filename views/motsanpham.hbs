@@ -30,13 +30,13 @@
             <div class="line-page">
                 <p>
                     {{#each motsanpham}}
-                    <span><a>Sản phẩm {{name}}</a></span>
+                    <span><a href="/sanpham/{{link}}">Sản phẩm {{name}}</a></span>
                     {{#each Loaichinhs}}
-                    <span><a>/{{name}}</a></span>
+                    <span><a href="/sanpham/{{../link}}/{{link}}">/{{name}}</a></span>
                     {{#each Loaisanphams}}
-                    <span><a>/{{name}}</a></span>
+                    <span><a href="/sanpham/{{../../link}}/{{../link}}/{{link}}">/{{name}}</a></span>
                     {{#each Sanphams}}
-                    <span><a>/{{name}} {{id}}</a></span>
+                    <span><a href="/sanpham/{{../../../link}}/{{../../link}}/{{../link}}/{{id}}">/{{name}} {{id}}</a></span>
                     {{/each}}
                     {{/each}}
                     {{/each}}
@@ -55,19 +55,41 @@
                     <div class="asp-left">
                         
                         <div class="asp-galery">
+                            {{#if (tinhlength loaitong)}}
                             <div class="asp-galley-item">
-                                <img src="/img/sp/{{../../../link}}/{{../../link}}/{{chialaydu id}}.jpg" alt="">
+                                    <img src="{{loaitong}}" alt=""></a>
+                            </div>
+                            {{#if (tinhlength loaichinh)}}
+                            <div class="asp-galley-item">
+                                <img src="{{loaichinh}}" alt=""></a>
+                            </div>
+                             {{/if}}
+                             {{#if (tinhlength loaisanpham)}}
+                            <div class="asp-galley-item">
+                                <img src="{{loaisanpham}}" alt=""></a>
+                            </div>
+                            {{/if}}
+                            {{else}}
+                            <div class="asp-galley-item">
+                                    <img src="/img/sp/{{../../../link}}/{{../../link}}/{{chialaydu id}}.jpg" alt="">
                             </div>
                             <div class="asp-galley-item">
-                                <img src="/img/sp/{{../../../link}}/{{../../link}}/{{chialaydu2 id}}.jpg" alt="">
+                                    <img src="/img/sp/{{../../../link}}/{{../../link}}/{{chialaydu2 id}}.jpg" alt="">
                             </div>
                             <div class="asp-galley-item">
-                                <img src="/img/sp/{{../../../link}}/{{../../link}}/{{chialaydu3 id}}.jpg" alt="">
+                                    <img src="/img/sp/{{../../../link}}/{{../../link}}/{{chialaydu3 id}}.jpg" alt="">
                             </div>
+                            {{/if}}
+                             
                         </div>
                         <div class="asp-img" id='asp-img'>
                             <div class="asp-anhzoom"></div>
-                            <img class="asp-anhchinh" src="/img/sp/{{../../../link}}/{{../../link}}/{{chialaydu id}}.jpg" alt="">
+                            {{#if (tinhlength loaitong)}}
+                                    <img class="asp-anhchinh" src="{{loaitong}}" alt=""></a>
+                            {{else}}
+                                    <img  src="/img/sp/{{../../../link}}/{{../../link}}/{{chialaydu id}}.jpg" alt="">
+                            {{/if}}
+                            
                         </div>
                         
                     </div>

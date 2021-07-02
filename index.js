@@ -12,6 +12,7 @@ app.use(express.static(path.join(__dirname, '/public')))
 //app.use('img/nhanvien',express.static(path.join(__dirname, 'public/img/nhanvien')))
 
 let expressHbs=require('express-handlebars');
+let paginateHelper=require('express-handlebars-paginate')
 
 let hbs=expressHbs.create({
     extname:'hbs',
@@ -82,7 +83,17 @@ let hbs=expressHbs.create({
                 return true
             }
             return false
-        }
+        },
+        tinhlength: function(chuoi){
+            if(chuoi){
+                if(chuoi.length>20){
+                    return true
+                }
+            }
+            
+            return false
+        },
+        createPagination: paginateHelper.createPagination
 
     }
 })

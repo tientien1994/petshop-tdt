@@ -83,8 +83,6 @@ router.post('/nhanvien/sua-:idnv',upload.single('fileanh'), (req, res, next)=>{
     if(req.file){
         biennhanvien.diachi="/img/nhanvien/NV"+req.body.idnv+'.jpg'
     }
-    
-
       let nhanvienController = require('../controllers/nhanvienController')
       nhanvienController.motnhanvien(req.params.idnv)
       .then(data=>{
@@ -94,8 +92,7 @@ router.post('/nhanvien/sua-:idnv',upload.single('fileanh'), (req, res, next)=>{
               console.error(err)
               return
             }
-    })
-
+        })
         return nhanvienController.suanhanvien(biennhanvien)
       })
       
@@ -236,20 +233,389 @@ router.post('/nhanvien/themnhanvien',upload.single('fileanh'), (req, res, next)=
 
 
 router.get('/sanpham', (req, res, next)=>{
-    
+    res.locals.suasp= req.session.suansp
+    res.locals.themsp=req.session.themsp
+    res.locals.xoasp=req.session.xoasp
     let spController=require('../controllers/sanphamController.js')
     menuController
     .menu()
     .then(data=>{
         res.locals.menu=data
-        return spController.luotxemnhieunhat()
+        return spController.layhetsanpham(req.params)
     })
     .then(data=>{
-        res.locals.topsanpham=data
-        res.render('hieuchinhchuahoanthanh')
+        res.locals.sanpham=data
+        
+        res.render('hieuchinhsanpham')
+        req.session.suansp=false
+        req.session.themsp=false
+        req.session.xoasp=false
     })
     .catch(err=>{next(err)})
 })
+router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, next)=>{
+    var noidungfile=""; 
+    var biensanpham={
+        id:req.body.idsp,
+        name:req.body.tensanpham,
+        title:req.body.title,
+        gia:req.body.giasanpham,
+        soluong:req.body.soluong,
+        loaisanphamId:req.body.loaisanpham,
+        thuonghieuId:req.body.thuonghieu
+    }
+    var manglinkanh=[];
+    if (req.files) {
+        var files = req.files
+    }
+    if(files[files.length-1]){
+        if(files[files.length-1].mimetype.slice(0,4)=="text"){
+            noidungfile = fs.readFileSync(files[files.length-1].path)
+        }
+    }
+    else{
+        noidungfile = req.body.nhaptructiep
+    }
+   
+        
+    
+    
+    
+    for(var i=0;i<files.length;i++){
+        if(files[i].mimetype.slice(0,5)=="image"){
+            manglinkanh.push(`/img/sanpham/sanphamthu${req.body.idsp}_anh${i+1}.jpg`)
+        }
+    }
+
+    if(manglinkanh[0]){
+        biensanpham.loaitong=manglinkanh[0]
+        ndanh=fs.readFileSync(files[0].path)
+        var duongdananh=path.join(__dirname,`../public${biensanpham.loaitong}`) 
+        fs.writeFile(duongdananh, ndanh , function (err) {
+            if (err) throw err;
+           
+          });
+    }
+    if(manglinkanh[1]){
+        biensanpham.loaichinh=manglinkanh[1]
+        ndanh=fs.readFileSync(files[1].path)
+        var duongdananh=path.join(__dirname,`../public${biensanpham.loaichinh}`) 
+        fs.writeFile(duongdananh, ndanh , function (err) {
+            if (err) throw err;
+            
+          });
+    }
+    if(manglinkanh[2]){
+        ndanh=fs.readFileSync(files[2].path)
+        biensanpham.loaisanpham=manglinkanh[2]
+        var duongdananh=path.join(__dirname,`../public${biensanpham.loaisanpham}`) 
+        fs.writeFile(duongdananh, ndanh , function (err) {
+            if (err) throw err;
+            
+          });
+    }
+     
+    var sanphamController=require('../controllers/sanphamController')
+    sanphamController.laymotsanphamdexoa(biensanpham.id)
+    .then(data=>{
+        var linkmasanpham=data.masanpham
+        if(data.loaitong&&manglinkanh[0]){
+            var duongdanimg=path.join(__dirname,`../public${data.loaitong}`) 
+            fs.unlink(duongdanimg, (err) => {
+                if (err) {
+                  console.error(err)
+                  return
+                }
+            })
+        }
+        if(data.loaichinh&&manglinkanh[1]){
+            var duongdanimg=path.join(__dirname,`../public${data.loaichinh}`) 
+            fs.unlink(duongdanimg, (err) => {
+                if (err) {
+                  console.error(err)
+                  return
+                }
+            })
+        }
+        if(data.loaisanpham&&manglinkanh[2]){
+            var duongdanimg=path.join(__dirname,`../public${data.loaisanpham}`) 
+            fs.unlink(duongdanimg, (err) => {
+                if (err) {
+                  console.error(err)
+                  return
+                }
+            })
+        }
+        if(noidungfile.length>0){
+            biensanpham.masanpham=`/data/sanpham/gioithieusanpham${req.body.idsp}.txt`
+            var duongdan=path.join(__dirname,`../public${linkmasanpham}`) 
+            fs.unlink(duongdan, (err) => {
+            if (err) {
+              console.error(err)
+              return
+            }
+        })
+        }
+        return sanphamController.layloaitongloaichinh(biensanpham.loaisanphamId)
+    })
+    
+    .then(data =>{
+        biensanpham.loaichinhId=data.Loaichinh.id
+        biensanpham.loaitongId=data.Loaichinh.Loaitong.id
+        return sanphamController.suasanpham(biensanpham)
+        
+    })
+    .then(data =>{
+        if(noidungfile.length>0){
+            var duongdansuafile=path.join(__dirname,`../public${biensanpham.masanpham}`) 
+            fs.writeFile(duongdansuafile, noidungfile , function (err) {
+            if (err) throw err;
+            console.log('Luu xong');
+        });
+        }
+        if(manglinkanh[0]){
+            biensanpham.loaitong=manglinkanh[0]
+            ndanh=fs.readFileSync(files[0].path)
+            var duongdananh=path.join(__dirname,`../public${biensanpham.loaitong}`) 
+            fs.writeFile(duongdananh, ndanh , function (err) {
+                if (err) throw err;
+               
+              });
+        }
+        if(manglinkanh[1]){
+            biensanpham.loaichinh=manglinkanh[1]
+            ndanh=fs.readFileSync(files[1].path)
+            var duongdananh=path.join(__dirname,`../public${biensanpham.loaichinh}`) 
+            fs.writeFile(duongdananh, ndanh , function (err) {
+                if (err) throw err;
+                
+              });
+        }
+        if(manglinkanh[2]){
+            ndanh=fs.readFileSync(files[2].path)
+            biensanpham.loaisanpham=manglinkanh[2]
+            var duongdananh=path.join(__dirname,`../public${biensanpham.loaisanpham}`) 
+            fs.writeFile(duongdananh, ndanh , function (err) {
+                if (err) throw err;
+                
+              });
+        }
+        req.session.suansp=true  
+        res.redirect('/hieuchinh/sanpham')
+    })
+    .catch(err =>{next(err)})
+
+})
+router.get('/sanpham/sua-:idsp', (req, res, next)=>{
+    let sanphamController = require('../controllers/sanphamController')
+    let idsp=req.params.idsp;
+    menuController
+    .menu()
+    .then(data=>{
+        res.locals.menu=data
+        return sanphamController.laymotsanpham(idsp)
+    })
+    .then(data=>{
+        res.locals.motsanpham=data
+        return sanphamController.layhetloaisanpham()
+    })
+    .then(data=>{
+        res.locals.loaisanpham=data
+        let thuonghieuController=require('../controllers/thuonghieuController')
+        return thuonghieuController.laythuonghieu(req.params, req.query)
+    })
+    .then(data=>{
+        res.locals.thuonghieu=data
+        res.render('hieuchinhsuasanpham')
+    })
+    .catch(err=>{next(err)})
+})
+
+router.get('/sanpham/xoa-:idsp', (req, res, next)=>{
+    let sanphamController = require('../controllers/sanphamController')
+    let idsp=req.params.idsp;
+    sanphamController
+    .laymotsanphamdexoa(idsp)
+    .then(data=>{
+        if(data.loaitong){
+            if(data.loaitong.length>10){
+                var duongdan=path.join(__dirname,`../public/${data.loaitong}`)
+                fs.unlink(duongdan, (err) => {
+                if (err) {
+                  console.error(err)
+                  return
+                }
+            })
+            }
+        }
+        if(data.loaichinh){
+            if(data.loaichinh.length>15){
+                var duongdan=path.join(__dirname,`../public/${data.loaichinh}`)
+                fs.unlink(duongdan, (err) => {
+                if (err) {
+                  console.error(err)
+                  return
+                }
+            })
+            }
+        }
+        if(data.loaisanpham){
+            if(data.loaisanpham.length>20){
+                var duongdan=path.join(__dirname,`../public/${data.loaisanpham}`)
+                fs.unlink(duongdan, (err) => {
+                if (err) {
+                  console.error(err)
+                  return
+                }
+            })
+            }
+        }
+        
+        return sanphamController.xoasanpham(idsp)
+    })
+    
+    .then(()=>{
+        
+        req.session.xoasp=true
+        res.redirect('/hieuchinh/sanpham')
+    })
+    
+        
+   
+    .catch(err=>{next(err)})
+})
+
+router.get('/sanpham/themsanpham', (req, res, next)=>{
+    res.locals.suasp= req.session.suansp
+    res.locals.themsp=req.session.themsp
+    res.locals.xoasp=req.session.xoasp
+    let sanphamController = require('../controllers/sanphamController')
+   
+    menuController
+    .menu()
+    .then(data=>{
+        res.locals.menu=data
+        return sanphamController.layhetloaisanpham()
+    })
+    .then(data=>{
+        res.locals.loaisanpham=data
+        let thuonghieuController=require('../controllers/thuonghieuController')
+        return thuonghieuController.laythuonghieu(req.params, req.query)
+    })
+    .then(data=>{
+        res.locals.thuonghieu=data
+        res.render('hieuchinhthemsanpham')
+
+    })
+    .catch(err=>{next(err)})
+})
+
+
+
+router.post('/sanpham/themsanpham', upload.array('filesanpham',12), (req, res, next)=>{
+    var noidungfile=""; 
+    var biensanpham={
+        id:req.body.idsp,
+        name:req.body.tensanpham,
+        title:req.body.title,
+        gia:req.body.giasanpham,
+        soluong:req.body.soluong,
+        loaisanphamId:req.body.loaisanpham,
+        thuonghieuId:req.body.thuonghieu,
+        luotxem:0
+        //masanpham: duong dan file san pham
+    }
+    var manglinkanh=[];
+    if (req.files) {
+        var files = req.files
+    }
+    if(files[files.length-1]){
+        if(files[files.length-1].mimetype.slice(0,4)=="text"){
+            noidungfile = fs.readFileSync(files[files.length-1].path)
+        }
+    }
+    else{
+        noidungfile = req.body.nhaptructiep
+    }
+   
+        
+    if(noidungfile.length>0){
+        var time=new Date()
+        var filename=time.getTime()
+
+        biensanpham.masanpham=`/data/sanpham/${filename.toString()}.txt`
+        var duongdan=path.join(__dirname,`../public${biensanpham.masanpham}`) 
+        fs.writeFile(duongdan, noidungfile , function (err) {
+            if (err) throw err;
+            console.log('Luu xong');
+          });
+    }
+    
+    
+    
+    for(var i=0;i<files.length;i++){
+        if(files[i].mimetype.slice(0,5)=="image"){
+            manglinkanh.push(`/img/sanpham/sanphamthu${files[i].filename}.jpg`)
+        }
+    }
+    if(manglinkanh[0]){
+        biensanpham.loaitong=manglinkanh[0]
+        ndanh=fs.readFileSync(files[0].path)
+        var duongdananh=path.join(__dirname,`../public${biensanpham.loaitong}`) 
+        fs.writeFile(duongdananh, ndanh , function (err) {
+            if (err) throw err;
+           
+          });
+    }
+    if(manglinkanh[1]){
+        biensanpham.loaichinh=manglinkanh[1]
+        ndanh=fs.readFileSync(files[1].path)
+        var duongdananh=path.join(__dirname,`../public${biensanpham.loaichinh}`) 
+        fs.writeFile(duongdananh, ndanh , function (err) {
+            if (err) throw err;
+            
+          });
+    }
+    if(manglinkanh[2]){
+        ndanh=fs.readFileSync(files[2].path)
+        biensanpham.loaisanpham=manglinkanh[2]
+        var duongdananh=path.join(__dirname,`../public${biensanpham.loaisanpham}`) 
+        fs.writeFile(duongdananh, ndanh , function (err) {
+            if (err) throw err;
+            
+          });
+    }
+    manglinkanh.push(biensanpham.masanpham)
+    
+    
+    var sanphamController=require('../controllers/sanphamController')
+    sanphamController
+    .layloaitongloaichinh(biensanpham.loaisanphamId)
+    .then(data =>{
+        biensanpham.loaichinhId=data.Loaichinh.id
+        biensanpham.loaitongId=data.Loaichinh.Loaitong.id
+        return sanphamController.themsanpham(biensanpham)
+        
+    })
+    .then(data =>{
+        //res.send(biensanpham.masanpham)
+        
+        req.session.themsp=true;
+        
+        res.redirect('/hieuchinh/sanpham')
+    })
+    .catch(err =>{next(err)})
+
+})
+
+
+
+
+
+
+
+
+
 
 
 
@@ -269,6 +635,11 @@ router.get('/tintuc', (req, res, next)=>{
     })
     .catch(err=>{next(err)})
 })
+
+
+
+
+
 
 
 

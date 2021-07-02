@@ -73,14 +73,7 @@ controller.xoanhanvien=(id)=>{
 controller.themnhanvien=(biennhanvien)=>{
     return new Promise((resolve, reject)=>{
     Nhanvien
-    .create({
-        name:biennhanvien.name,
-        phone:biennhanvien.phone,
-        diachi:biennhanvien.diachi,
-        chinhanhId:biennhanvien.chinhanhId,
-        vitriId:biennhanvien.vitriId,
-        luong:biennhanvien.luong
-    })
+    .create(biennhanvien)
     .then(data=>resolve(data))
     .catch(err=>res.json(err))
     })

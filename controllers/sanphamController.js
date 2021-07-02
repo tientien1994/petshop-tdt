@@ -7,34 +7,7 @@ const { Op } = require("sequelize");
 
 
 
-function removeVietnameseTones(str) {
-    str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a"); 
-    str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e"); 
-    str = str.replace(/ì|í|ị|ỉ|ĩ/g,"i"); 
-    str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o"); 
-    str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u"); 
-    str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y"); 
-    str = str.replace(/đ/g,"d");
-    str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "a");
-    str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "e");
-    str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "i");
-    str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "o");
-    str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "u");
-    str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "y");
-    str = str.replace(/Đ/g, "d");
-    // Some system encode vietnamese combining accent as individual utf-8 characters
-    // Một vài bộ encode coi các dấu mũ, dấu chữ như một kí tự riêng biệt nên thêm hai dòng này
-    str = str.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, ""); // ̀ ́ ̃ ̉ ̣  huyền, sắc, ngã, hỏi, nặng
-    str = str.replace(/\u02C6|\u0306|\u031B/g, ""); // ˆ ̆ ̛  Â, Ê, Ă, Ơ, Ư
-    // Remove extra spaces
-    // Bỏ các khoảng trắng liền nhau
-    str = str.replace(/ + /g," ");
-    str = str.trim();
-    // Remove punctuations
-    // Bỏ dấu câu, kí tự đặc biệt
-    str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g," ");
-    return str;
-}
+
 // lay san pham theo loaichinh
 controller.layluotxem=(idsp)=>{
     return new Promise((resolve, reject) => {
@@ -75,7 +48,7 @@ controller.laysptheoid=(id)=>{
                 id:id
             }
             ,
-            attributes: ['id', 'name', 'loaitong', 'loaichinh','loaisanpham','gia']
+            attributes: ['id', 'name','gia']
         })
         .then(data => resolve(data))
             .catch(err => reject(err))
@@ -120,23 +93,65 @@ controller.lay1sanpham = (params, query) => {
             .catch(err => reject(err))
     })
 }
+controller.laymotsanpham = (id) => {
+    return new Promise((resolve, reject) => {
+        
+        Sanpham
+            .findOne({
+                where: {id:id},
+                include: [{
+                    model: models.Loaisanpham,
+                    attributes: ['id', 'name']
+                }]
+            })
+            .then(data => resolve(data))
+            .catch(err => reject(err))
+    })
+}
 controller.laysanpham = (params, query) => {
+    var page=query.page||1;
     return new Promise((resolve, reject) => {
         options = {
             include: [{
+                model: models.Sanpham,
                 order:[
                     ['id', 'DESC'],
                 ],
-                model: models.Sanpham,
-                attributes: ['id', 'name', 'thuonghieuId', 'gia', 'loaitong', 'loaichinh', 'loaisanpham','luotxem'],
+               // attributes: ['id', 'name', 'gia','luotxem', 'loaitong', 'loaichinh', 'loaisanpham', 'thuonghieuId'],
                 where: {
-                    loaitong: params.loaitong.toString()
+                   
                 },
                 
                 include: [{
                     model: models.Thuonghieu,
                     attributes: ['id', 'name'],
-                }]
+                    where: {
+                        
+                    },
+                },
+                {
+                    model: models.Loaitong,
+                    attributes: ['id', 'name','link'],
+                    where: {
+                        
+                    },
+                },
+                {
+                    model: models.Loaichinh,
+                    attributes: ['id', 'name',"link"],
+                    where: {
+                        
+                    },
+                },
+                {
+                    model: models.Loaisanpham,
+                    attributes: ['id', 'name',"link"],
+                    where: {
+                        
+                    },
+                }],
+                
+                
             }],
             attributes: ['id', 'name', 'link'],
             order:[
@@ -149,13 +164,16 @@ controller.laysanpham = (params, query) => {
             options.include[0].where.gia = { [Op.and]: [{ [Op.gt]: query.min }, { [Op.lt]: query.max }] }
         }
         if (query.thuonghieu) {
-            options.include[0].where.thuonghieuId = query.thuonghieu
+            options.include[0].include[0].where.id = query.thuonghieu
         }
         if (params.loaichinh) {
-            options.include[0].where.loaichinh = params.loaichinh.toString()
+            options.include[0].include[2].where.link = params.loaichinh.toString()
         }
         if (params.loaisanpham) {
-            options.include[0].where.loaisanpham = params.loaisanpham.toString()
+            options.include[0].include[3].where.link = params.loaisanpham.toString()
+        }
+        if (params.loaitong) {
+            options.include[0].include[1].where.link = params.loaitong.toString()
         }
         if (query.search) {
             options.include[0].where.name = {
@@ -184,7 +202,97 @@ controller.laysanpham = (params, query) => {
 
 
         Loaichinh
-            .findAll(options)
+            .findAndCountAll(options)
+            .then(data => resolve(data))
+            .catch(err => reject(err))
+    })
+}
+controller.laymotloaisanpham = (params, query) => {
+    var page=query.page||1;
+    return new Promise((resolve, reject) => {
+        options = {
+            limit:12,
+            offset:(page-1)*12,
+            where: {
+
+            },
+                include: [{
+                    model: models.Thuonghieu,
+                    attributes: ['id', 'name'],
+                    where: {
+                        
+                    },
+                },
+                {
+                    model: models.Loaitong,
+                    attributes: ['id', 'name','link'],
+                    where: {
+                        
+                    },
+                },
+                {
+                    model: models.Loaichinh,
+                    attributes: ['id', 'name',"link"],
+                    where: {
+                        
+                    },
+                },
+                {
+                    model: models.Loaisanpham,
+                    attributes: ['id', 'name',"link"],
+                    where: {
+                        
+                    },
+                }],
+                
+                
+            }
+            
+           
+        
+        if (query.max && query.min) {
+            options.where.gia = { [Op.and]: [{ [Op.gt]: query.min }, { [Op.lt]: query.max }] }
+        }
+        if (query.thuonghieu) {
+            options.include[0].where.id = query.thuonghieu
+        }
+        if (params.loaichinh) {
+            options.include[2].where.link = params.loaichinh.toString()
+        }
+        if (params.loaisanpham) {
+            options.include[3].where.link = params.loaisanpham.toString()
+        }
+        if (params.loaitong) {
+            options.include[1].where.link = params.loaitong.toString()
+        }
+        if (query.search) {
+            options.where.name = {
+                [Op.or]:[{
+                    [Op.iLike]:`%${query.search}%`
+                }]
+            }
+        }
+        if(query.sapxep){
+            if(query.sapxep=='DESC'||query.sapxep=='ASC'){
+                options.order=[['gia',`${query.sapxep}`]]
+            }
+            
+            if(query.sapxep=='viewDESC'){
+                options.order=[['luotxem','DESC']]
+            }
+            if(query.sapxep=='viewASC'){
+                options.order=[['luotxem','ASC']]
+            }
+            if(query.sapxep=='name'){
+                options.order=[['name','ASC']]
+            }
+                
+            
+        }
+
+
+        Sanpham
+            .findAndCountAll(options)
             .then(data => resolve(data))
             .catch(err => reject(err))
     })
@@ -193,19 +301,15 @@ controller.laysanpham = (params, query) => {
 controller.layhetloaitong = (params, query) => {
     return new Promise((resolve, reject) => {
         let options = {
-            attributes: ['id', 'name', 'link'],
+            attributes: ['id', 'name',"link"],
             where: { link: params.loaitong.toString() },
             include: [{
-                attributes: ['id', 'name', 'link'],
+                attributes: ['id', 'name',"link"],
                 model: models.Loaichinh,
-
                 include: [{
                     attributes: ['id', 'name'],
                     model: models.Sanpham,
-
-                    where: {
-                        
-                    }
+                    
                 }]
             }]
         }
@@ -378,13 +482,37 @@ controller.luotxemnhieunhat=()=>{
         Sanpham
     .findAll({
         limit:8,
-        attributes: ['id', 'name', 'thuonghieuId', 'gia', 'loaitong', 'loaichinh', 'loaisanpham','luotxem'],
+        attributes: ['id', 'name', 'thuonghieuId', 'gia','luotxem'],
         order:[
             ['luotxem','DESC']
         ],
         include: [{
             model: models.Thuonghieu,
-            attributes: ['id', 'name']
+            attributes: ['id', 'name'],
+            where: {
+                
+            },
+        },
+        {
+            model: models.Loaitong,
+            attributes: ['id', 'name',"link"],
+            where: {
+                
+            },
+        },
+        {
+            model: models.Loaichinh,
+            attributes: ['id', 'name',"link"],
+            where: {
+                
+            },
+        },
+        {
+            model: models.Loaisanpham,
+            attributes: ['id', 'name',"link"],
+            where: {
+                
+            },
         }]
     })
     .then(data => resolve(data))
@@ -417,6 +545,113 @@ controller.lay9=()=>{
     .catch(err => reject(err))
     })
 }
+controller.layhetloaisanpham=()=>{
+    return new Promise((resolve, reject) => {
+        models.Loaisanpham
+        .findAll({
+            include:[{
+                model: models.Loaitong,
+                attributes: ['id', 'name']
+            }]
+        })
+        .then(data => resolve(data))
+        .catch(err => reject(err))
+    })
+}
+controller.layhetsanpham=()=>{
+    return new Promise((resolve, reject) => {
+        Sanpham
+        .findAll({
+            limit:21,
+            order:[['updatedAt','DESC']],
+            include: [{
+                model: models.Thuonghieu,
+                attributes: ['id', 'name'],
+                where: {
+                    
+                },
+            },
+            {
+                model: models.Loaitong,
+                attributes: ['id', 'name',"link"],
+                where: {
+                    
+                },
+            },
+            {
+                model: models.Loaichinh,
+                attributes: ['id', 'name',"link"],
+                where: {
+                    
+                },
+            },
+            {
+                model: models.Loaisanpham,
+                attributes: ['id', 'name',"link"],
+                where: {
+                    
+                },
+            }]
+            
+        })
+        .then(data => resolve(data))
+        .catch(err => reject(err))
+    })
+}
+controller.layloaitongloaichinh=(id)=>{
+    return new Promise((resolve, reject) => {
+        models.Loaisanpham
+        .findOne({
+            where: {id:id},
+            attributes: ['id', 'name'],
+            include: [{
+                model:Loaichinh,
+                attributes: ['id', 'name'],
+                include: [{
+                    model: models.Loaitong,
+                    attributes: ['id', 'name']
+                }]
+            }]
+        })
+        .then(data => resolve(data))
+        .catch(err => reject(err))
+    })
+}
+controller.suasanpham=(biensanpham)=>{
+    return new Promise((resolve, reject) => {
+        Sanpham
+        .update(
+            biensanpham,
+        {
+            where: {id: parseInt(biensanpham.id)}
+        })
+        .then(data => resolve(data))
+        .catch(err => reject(err))
+    })
+}
+controller.xoasanpham=(id)=>{
+    return new Promise((resolve, reject) => {
+        Sanpham
+        .destroy({where:{id:id}})
+        .then(data => resolve(data))
+        .catch(err=>res.json(err))
+    }) 
+}
+controller.laymotsanphamdexoa=(id)=>{
+    return new Promise((resolve, reject) => {
+        Sanpham
+        .findOne({where:{id:id}})
+        .then(data => resolve(data))
+        .catch(err => reject(err))
+    })
+}
 
-
+controller.themsanpham=(biensanpham)=>{
+    return new Promise((resolve, reject)=>{
+    Sanpham
+    .create(biensanpham)
+    .then(data=>resolve(data))
+    .catch(err=>res.json(err))
+    })
+}
 module.exports = controller;

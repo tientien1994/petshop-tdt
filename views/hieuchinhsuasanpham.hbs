@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>thanh toan</title>
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/sp.css">
+    <link rel="stylesheet" href="/css/motsp.css">
+    <link rel="stylesheet" href="/css/media.css">
+    <link rel="stylesheet" href="/css/giohang.css">
+    <link rel="stylesheet" href="/css/hieuchinh.css">
+    <link rel="stylesheet" href="/font/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Pangolin&family=Roboto:ital,wght@0,100;0,300;1,100&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <section class="container-fluid main-2">
+        {{>header}}
+        <section class="container-fluid">
+            {{>slideBanner}}
+            <div class="container">
+                <div class="line-page">
+                    <p>
+                        <span><a href="/hieuchinh/sanpham">Hiệu chỉnh sản phẩm</a></span> 
+                        <span><a href="/hieuchinh/sanpham/sua-{{motsanpham.id}}">Sửa sản phẩm</a></span> 
+                    </p>
+                </div>
+                
+<form name="formsuasanpham" action="/hieuchinh/sanpham/sua-{{motsanpham.id}}" method="POST" onsubmit="return kiemtragiasanpham()" id='manv-{{nhanvien.id}}' enctype="multipart/form-data">
+                <div class="thanhtoan">
+                    {{#if motsanpham}}
+                    {{#with motsanpham}}
+                    <div class="thanhtoan-form">
+                        <h3>Chỉnh sửa thông tin sản phẩm</h3>
+                        
+                            <label for="">Id sản phẩm:</label>
+                            <input type="text" name="idsp" required placeholder="Không thể sửa id" value="{{id}}" readonly>
+
+                            <label for="" >Tên sản phẩm: </label>
+                            <input type="text" name="tensanpham" required placeholder="Tên sản phẩm" value="{{name}}"><br>
+                            
+                             <label for="">Thương hiệu: </label><br>
+                            <select name="thuonghieu"><br>
+                                    {{#each ../thuonghieu}}
+                                    {{#if (sosanhso id ../../motsanpham.thuonghieuId)}}
+                                    <option value="{{id}}" selected>{{name}}</option>
+                                    {{else}}
+                                    <option value="{{id}}">{{name}}</option>
+                                    {{/if}}
+                                    {{/each}}
+                            </select>
+
+                            <label for="">Giới thiệu ngắn:</label>
+                            <textarea name="title" id="" cols="30" rows="5">{{title}}</textarea>
+
+
+                            <label for="">Giá:</label>
+                            <input type="number" name="giasanpham" required placeholder="Nhập giá" value="{{gia}}"><br>
+                            
+                            
+
+                            <label for="">Sửa ảnh:(Tối đa 3 tấm ảnh)</label>
+                            <input type="file" name="filesanpham" placeholder="Thêm file ảnh" multiple><br>
+
+                            <label for="">Số lượng:</label>
+                            <input type="number" name="soluong" required placeholder="Số lượng sản phẩm" value="{{soluong}}"><br>
+                            <div class="suanhanvien-gioithieu">
+                                <h5>Lựa chon cách tạo nội dung giới thiệu sản phẩm</h5>
+                                <div class="suanhanvien-button">
+                                    <a class='suanhanvien-b1'>Tải file </a>
+                                    <a class='suanhanvien-b2'>Viết trực tiếp </a>
+                                </div>
+                                <div class="suanhanvien-file">
+                                    <div class="taifile">
+                                        <label for="">File giới thiệu chi tiết sản phẩm (được ưu tiên):</label>
+                                    <input id="filegioithieu" type="file" name="filesanpham" placeholder="Dùng file txt có sẵn">
+                                    </div>
+                                    
+                                    <div class="filemau"><a href="/data/filemau.txt" download>mẫu</a></div>
+                                </div>
+                                <div class="suanhanvien-tructiep">
+                                    <label for="">Nhập thông tin chi tiết theo mẫu:</label>
+                                    <textarea name="nhaptructiep" id="nhaptructiep" placeholder="Nhập bài viết giới thiệu sản phẩm trực tiếp"cols="30" rows="10"></textarea>
+                                </div>
+                            </div>
+                            
+
+                            
+
+                            <label for="">Loại sản phẩm: </label><br>
+                            <select name="loaisanpham" ><br>
+                                    {{#each ../loaisanpham}}
+                                    {{#if (sosanhso id ../../motsanpham.Loaisanpham.id)}}
+                                    <option value="{{id}}" selected>{{name}} {{Loaitong.name}}</option>
+                                    {{else}}
+                                    <option value="{{id}}">{{name}} {{Loaitong.name}}</option>
+                                    {{/if}}
+                                    {{/each}}
+                            </select>
+                            
+                            
+                            
+                            <button type="submit">
+                                <div class='table-thanhtoan'>
+                                    <a class="asp-buton thanhtoan">
+                                        <p class="asp-buton">Sửa</p>
+                                    </a>
+                                </div>
+                            </button>
+                        
+                    </div>
+                    {{/with}}
+                    {{else}}
+
+                    <div class="baodong">Không có sản phẩm này</div>
+                    {{/if}}
+                </div>
+</form>
+               
+            </div>
+        </section>
+
+
+
+
+
+        {{>footer}}
+
+
+    </section>
+    
+
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/giohang.js"></script>
+    <script src="/js/hieuchinh.js"></script>
+    {{!-- <script>
+        $(document).ready(function() {
+            // Multiple images preview in browser - trungquandev.com
+            let imagesPreview = function(input, placeToInsertImagePreview) {
+                if (input.files) {
+                    let filesAmount = input.files.length;
+                    for (i = 0; i < filesAmount; i++) {
+                        let reader = new FileReader();
+                        reader.onload = function(event) {
+                            $($.parseHTML("<img>")).attr("src", event.target.result).appendTo(placeToInsertImagePreview);
+                        }
+                        reader.readAsDataURL(input.files[i]);
+                    }
+                }
+            };
+            $("#fileanh").on("change", function() {
+                imagesPreview(this, "div.preview-images");
+            });
+        });
+    </script> --}}
+
+
+</body>
+
+</html>

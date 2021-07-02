@@ -7,6 +7,86 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+.nutthemsanpham {
+    text-align: center;
+    margin-top: 18px;
+}
+
+.nutthemsanpham a {
+    background: var(--five-color);
+    padding: 10px 30px;
+    display: inline-block;
+    color: #fff;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+
+.nutthemsanpham:hover a {
+    background: var(--primary-color);
+    box-shadow: 0 0 5px 5px #aaa;
+}
+
+a {}
+
+a {}
+
+.nutthemsanpham a:before {content: '\f067';font-family: 'FontAwesome';padding-right: 10px;}
+
+.nutthemsanpham {}
+
+.filemau {
+    padding-bottom: 28px;
+    padding-left: 10px;
+}
+
+.filemau:hover a {
+    background: var(--five-color);
+    color: var(--secondary-color);
+    box-shadow: 0px 0px 5px 5px #aaa;
+}
+
+.filemau a {
+    background: var(--primary-color);
+    border-radius: 3px;
+    padding: 10px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    transition: 0.5s;
+}
+
+a {}
+
+.suanhanvien-button {
+    display: flex;
+}
+
+.suanhanvien-button a {
+    width: 46%;
+    display: flex;
+    justify-content: center;
+    background: var(--light-primary-color);
+    padding: 15px;
+    margin: 15px 2%;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+    border: 3px solid var(--four-color);
+}
+
+a.suanhanvien-b1.acc {
+    background: var(--primary-color);
+}
+a.suanhanvien-b2.acc {
+    background: var(--primary-color);
+}
+
+.suanhanvien-button a:hover {
+    box-shadow: 0 0 5px 5px #aaa;
+}
+
 .thanhtoan-form {
     margin: auto;
     width: 600px;
@@ -16,8 +96,6 @@
 .thanhtoan {
     display: block;
 }
-
-.thanhtoan {}
 
 .thanhtoan-form h3 {
     text-align: center;
@@ -31,6 +109,16 @@ h5 {
     font-size: var(--text-large);
     text-align: center;
 }
+
+h5.hieuchinhsanphamtitle {}
+
+h5.hieuchinhsanphamtitle {
+    font-size: 30px;
+}
+
+h5.hieuchinhsanphamtitle {}
+
+h5.hieuchinhsanphamtitle {}
 
 .hieuchinhnhanvien-item:hover .slide-img img {
     filter: brightness(0.3);
@@ -52,7 +140,11 @@ h5 {
     border-radius: 5px;
 }
 
-
+.suanhanvien-file {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
 
 
 .hieuchinhnhanvien-item {
@@ -65,22 +157,35 @@ h5 {
     flex-direction: row;
     flex-wrap: wrap;
 }
+.sanphamchinh{width: 100%;}
 @media screen and (max-width: 375px) {
-    
+    .motloaisanphamchinh-nd{
+        width: 100%;
+    }
 }
 @media screen and (min-width: 375px) {
-   
+    .motloaisanphamchinh-nd{
+        width: 100%;
+    }
 }
 @media screen and (min-width: 600px) {
-    
+    .motloaisanphamchinh-nd{
+        width: 50%;
+    }
 }
 @media screen and (min-width: 769px) {
-    
+    .motloaisanphamchinh-nd{
+        width: 33.33%;
+    }
 }
 @media screen and (min-width: 1024px) {
-    
+    .motloaisanphamchinh-nd{
+        width: 25%;
+    }
     
 }
 @media screen and (min-width: 1200px) {
-    
+    .motloaisanphamchinh-nd{
+        width: 20%;
+    }
 }

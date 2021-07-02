@@ -18,6 +18,9 @@ router.post('/', (req, res, next) => {
     req.session.suanhanvien=false
     req.session.themnhanvien=false;
     req.session.xoanhanvien=false;
+    req.session.suansp=false
+    req.session.themsp=false;
+    req.session.xoasp=false;
     //console.log('return----' +req.session.returnpage)
     if(req.body.dkdn=='dk'){
         let fullname= req.body.fullname
