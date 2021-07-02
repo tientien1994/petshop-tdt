@@ -564,7 +564,7 @@ router.post('/sanpham/themsanpham', upload.array('filesanpham',12), (req, res, n
         var duongdananh=path.join(__dirname,`../public${biensanpham.loaitong}`) 
         fs.writeFile(duongdananh, ndanh , function (err) {
             if (err) throw err;
-           
+            console.log('Luu xong');
           });
     }
     if(manglinkanh[1]){
@@ -573,7 +573,7 @@ router.post('/sanpham/themsanpham', upload.array('filesanpham',12), (req, res, n
         var duongdananh=path.join(__dirname,`../public${biensanpham.loaichinh}`) 
         fs.writeFile(duongdananh, ndanh , function (err) {
             if (err) throw err;
-            
+            console.log('Luu xong');
           });
     }
     if(manglinkanh[2]){
@@ -582,7 +582,7 @@ router.post('/sanpham/themsanpham', upload.array('filesanpham',12), (req, res, n
         var duongdananh=path.join(__dirname,`../public${biensanpham.loaisanpham}`) 
         fs.writeFile(duongdananh, ndanh , function (err) {
             if (err) throw err;
-            
+            console.log('Luu xong');
           });
     }
     manglinkanh.push(biensanpham.masanpham)
