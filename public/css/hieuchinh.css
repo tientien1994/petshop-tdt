@@ -26,13 +26,9 @@
     box-shadow: 0 0 5px 5px #aaa;
 }
 
-a {}
-
-a {}
 
 .nutthemsanpham a:before {content: '\f067';font-family: 'FontAwesome';padding-right: 10px;}
 
-.nutthemsanpham {}
 
 .filemau {
     padding-bottom: 28px;
@@ -55,7 +51,6 @@ a {}
     transition: 0.5s;
 }
 
-a {}
 
 .suanhanvien-button {
     display: flex;
@@ -65,7 +60,7 @@ a {}
     width: 46%;
     display: flex;
     justify-content: center;
-    background: var(--light-primary-color);
+    
     padding: 15px;
     margin: 15px 2%;
     font-size: 14px;
@@ -110,15 +105,13 @@ h5 {
     text-align: center;
 }
 
-h5.hieuchinhsanphamtitle {}
+
 
 h5.hieuchinhsanphamtitle {
     font-size: 30px;
 }
 
-h5.hieuchinhsanphamtitle {}
 
-h5.hieuchinhsanphamtitle {}
 
 .hieuchinhnhanvien-item:hover .slide-img img {
     filter: brightness(0.3);
@@ -188,4 +181,7 @@ h5.hieuchinhsanphamtitle {}
     .motloaisanphamchinh-nd{
         width: 20%;
     }
+}
+a.suanhanvien-b1, .suanhanvien-b2 {
+    background-color: #999;
 }

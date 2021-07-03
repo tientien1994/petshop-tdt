@@ -284,38 +284,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
             if(files[i].mimetype.slice(0,5)=="image"){
                 manglinkanh.push(`/img/sanpham/sanphamthu${req.body.idsp}_anh${i+1}.jpg`)
             }
-        }
-        if(manglinkanh.length>0){
-            if(manglinkanh[0]){
-                biensanpham.loaitong=manglinkanh[0]
-                ndanh=fs.readFileSync(files[0].path)
-                var duongdananh=path.join(__dirname,`../public${biensanpham.loaitong}`) 
-                fs.writeFile(duongdananh, ndanh , function (err) {
-                    if (err) throw err;
-                   
-                  });
-            }
-            if(manglinkanh[1]){
-                biensanpham.loaichinh=manglinkanh[1]
-                ndanh=fs.readFileSync(files[1].path)
-                var duongdananh=path.join(__dirname,`../public${biensanpham.loaichinh}`) 
-                fs.writeFile(duongdananh, ndanh , function (err) {
-                    if (err) throw err;
-                    
-                  });
-            }
-            if(manglinkanh[2]){
-                ndanh=fs.readFileSync(files[2].path)
-                biensanpham.loaisanpham=manglinkanh[2]
-                var duongdananh=path.join(__dirname,`../public${biensanpham.loaisanpham}`) 
-                fs.writeFile(duongdananh, ndanh , function (err) {
-                    if (err) throw err;
-                    
-                  });
-            }
-             
-        }
-        
+        } 
     }
     
     var sanphamController=require('../controllers/sanphamController')
@@ -374,6 +343,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
         
     })
     .then(data =>{
+        
         if(manglinkanh.length>0){
             if(manglinkanh[0]){
                 biensanpham.loaitong=manglinkanh[0]
