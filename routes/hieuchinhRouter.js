@@ -288,11 +288,10 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
     }
     
     var sanphamController=require('../controllers/sanphamController')
-    sanphamController.laymotsanphamdexoa(biensanpham.id)
+    return sanphamController.laymotsanphamdexoa(biensanpham.id)
     .then(data=>{
         if (manglinkanh.length>0&&data.loaitong.length>20){
             if(manglinkanh[0]){
-                var linkmasanpham=data.masanpham
                 var duongdanimg=path.join(__dirname,`../public${data.loaitong}`) 
                 fs.unlink(duongdanimg, (err) => {
                     if (err) {
@@ -300,6 +299,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
                       return
                     }
                 })
+                biensanpham.loaitong=manglinkanh[0]
             }
             if(manglinkanh[1]&&data.loaichinh.length>20){
                 var duongdanimg=path.join(__dirname,`../public${data.loaichinh}`) 
@@ -309,6 +309,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
                       return
                     }
                 })
+                biensanpham.loaichinh=manglinkanh[1]
             }
             if(manglinkanh[2]&&data.loaisanpham.length>20){
                 var duongdanimg=path.join(__dirname,`../public${data.loaisanpham}`) 
@@ -318,17 +319,19 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
                       return
                     }
                 })
+                biensanpham.loaisanpham=manglinkanh[2]
             }
         }
         
-        if(noidungfile.length>0){
-            biensanpham.masanpham=`/data/sanpham/gioithieusanpham${req.body.idsp}.txt`
-            var duongdan=path.join(__dirname,`../public${linkmasanpham}`) 
+        if(noidungfile.length>0&&data.masanpham.length>20){
+            
+            var duongdan=path.join(__dirname,`../public${data.masanpham}`) 
             fs.unlink(duongdan, (err) => {
             if (err) {
               console.error(err)
               return
             }
+            biensanpham.masanpham=`/data/sanpham/gioithieusanpham${req.body.idsp}.txt`
         })
         }
         return sanphamController.layloaitongloaichinh(biensanpham.loaisanphamId)
