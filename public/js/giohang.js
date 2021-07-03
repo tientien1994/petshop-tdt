@@ -78,6 +78,53 @@ function xoahetgiohang(){
         
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$(document).ready(function() {
+    $(".motsp-tenthuonghieu h5").each(function() {
+    var text = $(this).html();
+    if(text.length > 10){
+    text = text.substring(0,10);
+    $(this).html(text+'...');
+    }
+})
+})
+function isNumber(n) { return !isNaN(parseFloat(n)) && !isNaN(n - 0) }
+function kiemtragiatri() {
+    let x = document.forms["formsuanhanvien"]["sodienthoainhanvien"].value;
+
+    if (isNumber(x)&& x.length==10) {
+      
+      return true;
+    }
+    else{
+        alert("Số điện thoai chưa đúng");
+        return false;
+    }
+  }
+
+
+
 $(document).ready(function() {
 
     var galery=$('.asp-galley-item')
@@ -100,21 +147,13 @@ $(document).ready(function() {
         $(this).addClass('active')
         
     })
-
- 
-    
-
-
-
-
    
-    $(document).ready(function(){
         
         var native_width = 0;
         var native_height = 0;
         $(".asp-img").mousemove(function(e){
                 var crschinh=image.find('img').attr('src')
-                $(".asp-anhzoom").css("background-image", "url(" +crschinh+ ")");
+                $(".asp-anhzoom").css("background-image", "url("+crschinh+")");
             if(!native_width && !native_height)
             {
                 var image_object = new Image();
@@ -124,8 +163,6 @@ $(document).ready(function() {
             }
             else
             {
-                
-                
                 var vitrianhchinh = $(this).offset();
                 ///////vi tri con tro trong anh
                 var mx = e.pageX - vitrianhchinh.left;
@@ -157,46 +194,5 @@ $(document).ready(function() {
         })
         
         
-    }) 
+  
 })
-$(document).ready(function() {
-    $(".motsp-tenthuonghieu h5").each(function() {
-    var text = $(this).html();
-    if(text.length > 10){
-    text = text.substring(0,10);
-    $(this).html(text+'...');
-    }
-})
-})
-function isNumber(n) { return !isNaN(parseFloat(n)) && !isNaN(n - 0) }
-function kiemtragiatri() {
-    let x = document.forms["formsuanhanvien"]["sodienthoainhanvien"].value;
-
-    if (isNumber(x)&& x.length==10) {
-      
-      return true;
-    }
-    else{
-        alert("Số điện thoai chưa đúng");
-        return false;
-    }
-  }
-
-//   $('.thanhtoan').click(function(){
-//     $.ajax({
-//         url: '/thanhtoan/hoanthanh',
-//         type: 'UPDATE',
-//         data: {  },
-//         success: function(result){
-//             $('#sluong').html(result.toanbosoluong+" vnd");
-//             $('#toanbogia').html(result.toanbogiaformat+" vnd");
-//             if(result.toanbosoluong>1){
-//                 $(`#item${id}`).remove();
-//             }
-//             else{
-//                 $('#khungsanpham').html("<div class='saukhixoahetsanpham'>Giỏ hàng được dọn dẹp, <a href='/'>Quay về trang chủ và chọn sản phẩm</a></div>");
-//             }
-            
-//         }
-//     })
-//   })

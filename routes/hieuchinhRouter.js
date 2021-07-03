@@ -272,15 +272,13 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
         thuonghieuId:req.body.thuonghieu
     }
     var manglinkanh=[];
+    var noidungfile = req.body.nhaptructiep
     if (req.files) {
         var files = req.files
         if(files[files.length-1]){
             if(files[files.length-1].mimetype.slice(0,4)=="text"){
                 noidungfile = fs.readFileSync(files[files.length-1].path)
             }
-        }
-        else{
-            noidungfile = req.body.nhaptructiep
         }
         for(var i=0;i<files.length;i++){
             if(files[i].mimetype.slice(0,5)=="image"){
@@ -292,8 +290,8 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
     var sanphamController=require('../controllers/sanphamController')
     return sanphamController.laymotsanphamdexoa(biensanpham.id)
     .then(data=>{
-        if (manglinkanh.length>0&&data.loaitong!=null){
-            if(manglinkanh[0]){
+        if (manglinkanh.length>0){
+            if(manglinkanh[0]&&data.loaitong!=null&&data.loaitong.length>20){
                 var duongdanimg=path.join(__dirname,`../public${data.loaitong}`) 
                 fs.unlink(duongdanimg, (err) => {
                     if (err) {
@@ -304,7 +302,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
                 biensanpham.loaitong=manglinkanh[0]
             }
             if(manglinkanh[1]&&data.loaichinh!=null){
-                var duongdanimg=path.join(__dirname,`../public${data.loaichinh}`) 
+                var duongdanimg=path.join(__dirname,`../public${data.loaichinh.length>20}`) 
                 fs.unlink(duongdanimg, (err) => {
                     if (err) {
                       console.error(err)
@@ -314,7 +312,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
                 biensanpham.loaichinh=manglinkanh[1]
             }
             if(manglinkanh[2]&&data.loaisanpham!=null){
-                var duongdanimg=path.join(__dirname,`../public${data.loaisanpham}`) 
+                var duongdanimg=path.join(__dirname,`../public${data.loaisanpham.length>20}`) 
                 fs.unlink(duongdanimg, (err) => {
                     if (err) {
                       console.error(err)
@@ -326,29 +324,24 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
         }
         
         if(noidungfile.length>0&&data.masanpham!=null){
-            
-            var duongdan=path.join(__dirname,`../public${data.masanpham}`) 
+            if(data.masanpham.length>10){
+                var duongdan=path.join(__dirname,`../public${data.masanpham}`) 
             fs.unlink(duongdan, (err) => {
             if (err) {
               console.error(err)
               return
             }
-            biensanpham.masanpham=`/data/sanpham/gioithieusanpham${req.body.idsp}.txt`
         })
+            
         }
+    }
+    
         return sanphamController.layloaitongloaichinh(biensanpham.loaisanphamId)
     })
-    
     .then(data =>{
         biensanpham.loaichinhId=data.Loaichinh.id
         biensanpham.loaitongId=data.Loaichinh.Loaitong.id
         req.session.suansp=true  
-        return sanphamController.suasanpham(biensanpham)
-        
-        
-    })
-    .then(data =>{
-        
         if(manglinkanh.length>0){
             if(manglinkanh[0]){
                 biensanpham.loaitong=manglinkanh[0]
@@ -379,12 +372,20 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
             }
         }
         if(noidungfile.length>0){
+            biensanpham.masanpham=`/data/sanpham/gioithieusanpham${req.body.idsp}.txt`
             var duongdansuafile=path.join(__dirname,`../public${biensanpham.masanpham}`) 
             fs.writeFile(duongdansuafile, noidungfile , function (err) {
             if (err) throw err;
             console.log('Luu xong');
         });
         }
+        return sanphamController.suasanpham(biensanpham)
+        
+        
+    })
+    .then(data =>{
+        
+        
         
         
         res.redirect('/hieuchinh/sanpham')
@@ -392,6 +393,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
     .catch(err =>{next(err)})
 
 })
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 router.get('/sanpham/sua-:idsp', (req, res, next)=>{
     let sanphamController = require('../controllers/sanphamController')
     let idsp=req.params.idsp;

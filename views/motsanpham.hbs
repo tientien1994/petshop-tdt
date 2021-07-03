@@ -53,7 +53,6 @@
             <div class="chitietsp">
                 <div class="chitietsp-top">
                     <div class="asp-left">
-                        
                         <div class="asp-galery">
                             {{#if (tinhlength loaitong)}}
                             <div class="asp-galley-item">
@@ -87,7 +86,7 @@
                             {{#if (tinhlength loaitong)}}
                                     <img class="asp-anhchinh" src="{{loaitong}}" alt=""></a>
                             {{else}}
-                                    <img  src="/img/sp/{{../../../link}}/{{../../link}}/{{chialaydu id}}.jpg" alt="">
+                                    <img class="asp-anhchinh" src="/img/sp/{{../../../link}}/{{../../link}}/{{chialaydu id}}.jpg" alt="">
                             {{/if}}
                             
                         </div>
@@ -163,7 +162,7 @@
                                 <p class="gioithieusanpham-title">
                                     {{name}} {{id}}
                                 </p>
-                               {{{../../../../motsanpham.file}}}
+                               {{{../../../../file}}}
                             </div>
                             <div class="asp-tab-item">
                                 <div class="baohanhsanpham">
@@ -338,7 +337,8 @@
                   $('#tennguoitraloi').html("") 
                  $('#parent').val('');
                  $('#dongtraloi').hide()
-              }                            
+              }   
+                                       
     </script>
 </body>
 </body>

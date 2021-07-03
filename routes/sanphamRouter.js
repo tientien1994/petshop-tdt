@@ -255,13 +255,16 @@ router.get('/:loaitong/:loaichinh/:loaisanpham/:idsp',(req, res, next)=>{
     })
     .then(data =>{
         res.locals.gido=data
-        var lickfile=data[0].Loaichinhs[0].Loaisanphams[0].Sanphams[0].masanpham
-        if(lickfile!=null){
-            if(lickfile.length>25){
-                data.file=fs.readFileSync(path.join(__dirname,`../public${lickfile}`),'utf8')
+        //res.locals.linkfile=data[0].Loaichinhs[0].Loaisanphams[0].Sanphams[0].masanpham
+        res.locals.linkfile=data[0].Loaichinhs[0].Loaisanphams[0].Sanphams[0].masanpham
+        var linkfile=data[0].Loaichinhs[0].Loaisanphams[0].Sanphams[0].masanpham
+        if(linkfile!=null){
+            if(linkfile.length>20){
+                res.locals.file=fs.readFileSync(path.join(__dirname,`../public${linkfile}`),'utf8')
+                
             }
             else{
-                data.file=fs.readFileSync(path.join(__dirname,`../public/data/sp/gioithieu/${idsp%10+1}.txt`),'utf8')
+                res.locals.file=fs.readFileSync(path.join(__dirname,`../public/data/sp/gioithieu/${idsp%10+1}.txt`),'utf8')
             }
         }
         
@@ -277,7 +280,7 @@ router.get('/:loaitong/:loaichinh/:loaisanpham/:idsp',(req, res, next)=>{
     .then(data =>{
         res.locals.comment=data
         res.render('motsanpham')
-        //res.json(res.locals.gido[0].Loaichinhs[0].Loaisanphams[0].Sanphams[0].masanpham)
+        //res.json(`${res.locals.file}`)
     })
     .catch(err=>{next(err)}) 
     
