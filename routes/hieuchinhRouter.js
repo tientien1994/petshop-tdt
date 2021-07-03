@@ -86,22 +86,25 @@ router.post('/nhanvien/sua-:idnv',upload.single('fileanh'), (req, res, next)=>{
       let nhanvienController = require('../controllers/nhanvienController')
       nhanvienController.motnhanvien(req.params.idnv)
       .then(data=>{
-        var duongdan=path.join(__dirname,`../public/${data.diachi}`)
+          if(req.file){
+            var duongdan=path.join(__dirname,`../public/${data.diachi}`)
         fs.unlink(duongdan, (err) => {
             if (err) {
               console.error(err)
               return
             }
         })
+          }
+        
         return nhanvienController.suanhanvien(biennhanvien)
       })
       
       .then(() =>{
           if(req.file){
             var duongdan=path.join(__dirname,`../public/img/nhanvien/NV${req.body.idnv}.jpg`)
-        //data.file=fs.readFileSync(path.join(__dirname,`../public/data/tintuc/${req.params.idtheloai}/${req.params.idbaiviet}.txt`),'utf8')
-        var img = fs.readFileSync(req.file.path);
-        fs.writeFile(duongdan, img , function (err) {
+       
+            var img = fs.readFileSync(req.file.path);
+            fs.writeFile(duongdan, img , function (err) {
             if (err) throw err;
             console.log('Luu xong');
           });
@@ -318,8 +321,9 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
     var sanphamController=require('../controllers/sanphamController')
     sanphamController.laymotsanphamdexoa(biensanpham.id)
     .then(data=>{
-        var linkmasanpham=data.masanpham
-        if(data.loaitong&&manglinkanh[0]){
+        
+        if(manglinkanh[0]){
+            var linkmasanpham=data.masanpham
             var duongdanimg=path.join(__dirname,`../public${data.loaitong}`) 
             fs.unlink(duongdanimg, (err) => {
                 if (err) {
@@ -328,7 +332,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
                 }
             })
         }
-        if(data.loaichinh&&manglinkanh[1]){
+        if(manglinkanh[1]){
             var duongdanimg=path.join(__dirname,`../public${data.loaichinh}`) 
             fs.unlink(duongdanimg, (err) => {
                 if (err) {
@@ -337,7 +341,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
                 }
             })
         }
-        if(data.loaisanpham&&manglinkanh[2]){
+        if(manglinkanh[2]){
             var duongdanimg=path.join(__dirname,`../public${data.loaisanpham}`) 
             fs.unlink(duongdanimg, (err) => {
                 if (err) {
@@ -486,9 +490,7 @@ router.get('/sanpham/xoa-:idsp', (req, res, next)=>{
 })
 
 router.get('/sanpham/themsanpham', (req, res, next)=>{
-    res.locals.suasp= req.session.suansp
-    res.locals.themsp=req.session.themsp
-    res.locals.xoasp=req.session.xoasp
+    
     let sanphamController = require('../controllers/sanphamController')
    
     menuController
@@ -522,69 +524,75 @@ router.post('/sanpham/themsanpham', upload.array('filesanpham',12), (req, res, n
         soluong:req.body.soluong,
         loaisanphamId:req.body.loaisanpham,
         thuonghieuId:req.body.thuonghieu,
-        luotxem:0
+        luotxem:0,
+        loaitong:'',
+        loaichinh:'',
+        loaisanpham:''
         //masanpham: duong dan file san pham
     }
     var manglinkanh=[];
     if (req.files) {
         var files = req.files
-    }
-    if(files[files.length-1]){
-        if(files[files.length-1].mimetype.slice(0,4)=="text"){
-            noidungfile = fs.readFileSync(files[files.length-1].path)
+        if(files[files.length-1]){
+            if(files[files.length-1].mimetype.slice(0,4)=="text"){
+                noidungfile = fs.readFileSync(files[files.length-1].path)
+            }
+        }
+        else{
+            noidungfile = req.body.nhaptructiep
+        }
+        if(noidungfile.length>0){
+            var time=new Date()
+            var filename=time.getTime()
+    
+            biensanpham.masanpham=`/data/sanpham/${filename.toString()}.txt`
+            var duongdan=path.join(__dirname,`../public${biensanpham.masanpham}`) 
+            fs.writeFile(duongdan, noidungfile , function (err) {
+                if (err) throw err;
+                console.log('Luu xong');
+              });
+        }
+        for(var i=0;i<files.length;i++){
+            if(files[i].mimetype.slice(0,5)=="image"){
+                manglinkanh.push(`/img/sanpham/sanphamthu${files[i].filename}.jpg`)
+            }
+        }
+        if(manglinkanh[0]){
+            biensanpham.loaitong=manglinkanh[0]
+            ndanh=fs.readFileSync(files[0].path)
+            var duongdananh=path.join(__dirname,`../public${biensanpham.loaitong}`) 
+            fs.writeFile(duongdananh, ndanh , function (err) {
+                if (err) throw err;
+                console.log('Luu xong');
+              });
+        }
+        if(manglinkanh[1]){
+            biensanpham.loaichinh=manglinkanh[1]
+            ndanh=fs.readFileSync(files[1].path)
+            var duongdananh=path.join(__dirname,`../public${biensanpham.loaichinh}`) 
+            fs.writeFile(duongdananh, ndanh , function (err) {
+                if (err) throw err;
+                console.log('Luu xong');
+              });
+        }
+        if(manglinkanh[2]){
+            ndanh=fs.readFileSync(files[2].path)
+            biensanpham.loaisanpham=manglinkanh[2]
+            var duongdananh=path.join(__dirname,`../public${biensanpham.loaisanpham}`) 
+            fs.writeFile(duongdananh, ndanh , function (err) {
+                if (err) throw err;
+                console.log('Luu xong');
+              });
         }
     }
-    else{
-        noidungfile = req.body.nhaptructiep
-    }
-   
-        
-    if(noidungfile.length>0){
-        var time=new Date()
-        var filename=time.getTime()
-
-        biensanpham.masanpham=`/data/sanpham/${filename.toString()}.txt`
-        var duongdan=path.join(__dirname,`../public${biensanpham.masanpham}`) 
-        fs.writeFile(duongdan, noidungfile , function (err) {
-            if (err) throw err;
-            console.log('Luu xong');
-          });
-    }
+    
+      
     
     
     
-    for(var i=0;i<files.length;i++){
-        if(files[i].mimetype.slice(0,5)=="image"){
-            manglinkanh.push(`/img/sanpham/sanphamthu${files[i].filename}.jpg`)
-        }
-    }
-    if(manglinkanh[0]){
-        biensanpham.loaitong=manglinkanh[0]
-        ndanh=fs.readFileSync(files[0].path)
-        var duongdananh=path.join(__dirname,`../public${biensanpham.loaitong}`) 
-        fs.writeFile(duongdananh, ndanh , function (err) {
-            if (err) throw err;
-            console.log('Luu xong');
-          });
-    }
-    if(manglinkanh[1]){
-        biensanpham.loaichinh=manglinkanh[1]
-        ndanh=fs.readFileSync(files[1].path)
-        var duongdananh=path.join(__dirname,`../public${biensanpham.loaichinh}`) 
-        fs.writeFile(duongdananh, ndanh , function (err) {
-            if (err) throw err;
-            console.log('Luu xong');
-          });
-    }
-    if(manglinkanh[2]){
-        ndanh=fs.readFileSync(files[2].path)
-        biensanpham.loaisanpham=manglinkanh[2]
-        var duongdananh=path.join(__dirname,`../public${biensanpham.loaisanpham}`) 
-        fs.writeFile(duongdananh, ndanh , function (err) {
-            if (err) throw err;
-            console.log('Luu xong');
-          });
-    }
+    
+    
+    
     manglinkanh.push(biensanpham.masanpham)
     
     
