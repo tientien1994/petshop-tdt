@@ -3361,3 +3361,12 @@ button#back-to-top i {
     color: var(--primary-color);
     background-color: var(--light2-primary-color);
 }
+nav>ul>li:nth-child(2) .nav-chitiet a.jfc-start:hover {
+    background-color: var(--light-secondary-color);
+}
+nav>ul>li:nth-child(3) .nav-chitiet a.jfc-start:hover {
+    background: var(--five-color);
+}
+nav>ul>li:last-child .nav-chitiet a.jfc-start:hover {
+    background: var(--light-primary-color);
+}

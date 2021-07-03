@@ -165,7 +165,7 @@ table {
 .thanhtoan-bill .table-thanhtoan {width: 100%;display: flex;justify-content: flex-end;margin-top: 15px;}
 
 .thanhtoan-form {
-    background: var(--light-primary-color);
+    background: var(--light-five-color);
     height: fit-content;
 
 }

@@ -313,7 +313,30 @@ controller.layhetloaitong = (params, query) => {
                 }]
             }]
         }
-        
+        if (query.search) {
+            options.where.name = {
+                [Op.or]:[{
+                    [Op.iLike]:`%${query.search}%`
+                }]
+            }
+        }
+        if(query.sapxep){
+            if(query.sapxep=='DESC'||query.sapxep=='ASC'){
+                options.order=[['gia',`${query.sapxep}`]]
+            }
+            
+            if(query.sapxep=='viewDESC'){
+                options.order=[['luotxem','DESC']]
+            }
+            if(query.sapxep=='viewASC'){
+                options.order=[['luotxem','ASC']]
+            }
+            if(query.sapxep=='name'){
+                options.order=[['name','ASC']]
+            }
+                
+            
+        }
         
         Loaitong
             .findAll(options)
@@ -559,43 +582,58 @@ controller.layhetloaisanpham=()=>{
     })
 }
 controller.layhetsanpham=(param,query)=>{
-    page=query.page||1;
+    var options={
+        limit:50,
+        order:[['updatedAt','DESC']],
+        where:{
+
+        },
+        include: [{
+            model: models.Thuonghieu,
+            attributes: ['id', 'name'],
+            where: {
+                
+            },
+        },
+        {
+            model: models.Loaitong,
+            attributes: ['id', 'name',"link"],
+            where: {
+                
+            },
+        },
+        {
+            model: models.Loaichinh,
+            attributes: ['id', 'name',"link"],
+            where: {
+                
+            },
+        },
+        {
+            model: models.Loaisanpham,
+            attributes: ['id', 'name',"link"],
+            where: {
+                
+            },
+        }]
+    };
+    if(query.page){
+        options.offset = (page-1)*50
+    }
+    else{
+        options.offset=0
+    }
+    if (query.search) {
+        options.where.name = {
+            [Op.or]:[{
+                [Op.iLike]:`%${query.search}%`
+            }]
+        }
+    }
+
     return new Promise((resolve, reject) => {
         Sanpham
-        .findAndCountAll({
-            limit:50,
-            offset:(page-1)*50,
-            order:[['updatedAt','DESC']],
-            include: [{
-                model: models.Thuonghieu,
-                attributes: ['id', 'name'],
-                where: {
-                    
-                },
-            },
-            {
-                model: models.Loaitong,
-                attributes: ['id', 'name',"link"],
-                where: {
-                    
-                },
-            },
-            {
-                model: models.Loaichinh,
-                attributes: ['id', 'name',"link"],
-                where: {
-                    
-                },
-            },
-            {
-                model: models.Loaisanpham,
-                attributes: ['id', 'name',"link"],
-                where: {
-                    
-                },
-            }]
-            
-        })
+        .findAndCountAll(options)
         .then(data => resolve(data))
         .catch(err => reject(err))
     })

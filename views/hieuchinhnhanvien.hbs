@@ -39,15 +39,20 @@
     <section class="container-fluid main-2">
         {{>header}}
     <section class="container-fluid">
-        <div class="line-page">
+        
+        <div class="container hieuchinhnhanvien">
+            <div class="line-page">
                     <p>
                         <span><a href="/hieuchinh/nhanvien">Hiệu chỉnh nhân viên</a></span>
                        
                     </p>
                 </div>
-        <div class="container hieuchinhnhanvien">
+                
             <h5>Hiệu chỉnh nhân viên</h5>
-            <a href="/hieuchinh/nhanvien/themnhanvien">Thêm nhân viên</a>
+            <div class="nutthemsanpham">
+                            <a href="/hieuchinh/nhanvien/themnhanvien">Thêm nhân viên</a>
+                    </div>
+            
             <div class="hieuchinhnhanvien-col">
                 <div class="hieuchinhnhanvien-nd">
                     {{#each tatcanhanvien}}

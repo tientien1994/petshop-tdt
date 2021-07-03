@@ -301,7 +301,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
                 })
                 biensanpham.loaitong=manglinkanh[0]
             }
-            if(manglinkanh[1]&&data.loaichinh!=null){
+            if(manglinkanh[1]&&data.loaichinh!=null&&data.loaichinh.length>20){
                 var duongdanimg=path.join(__dirname,`../public${data.loaichinh.length>20}`) 
                 fs.unlink(duongdanimg, (err) => {
                     if (err) {
@@ -311,7 +311,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
                 })
                 biensanpham.loaichinh=manglinkanh[1]
             }
-            if(manglinkanh[2]&&data.loaisanpham!=null){
+            if(manglinkanh[2]&&data.loaisanpham!=null&&data.loaisanpham.length>20){
                 var duongdanimg=path.join(__dirname,`../public${data.loaisanpham.length>20}`) 
                 fs.unlink(duongdanimg, (err) => {
                     if (err) {
