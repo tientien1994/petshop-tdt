@@ -321,7 +321,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
     var sanphamController=require('../controllers/sanphamController')
     sanphamController.laymotsanphamdexoa(biensanpham.id)
     .then(data=>{
-        if (manglinkanh.length>0){
+        if (manglinkanh.length>0&&data.loaitong.length>20){
             if(manglinkanh[0]){
                 var linkmasanpham=data.masanpham
                 var duongdanimg=path.join(__dirname,`../public${data.loaitong}`) 
@@ -332,7 +332,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
                     }
                 })
             }
-            if(manglinkanh[1]){
+            if(manglinkanh[1]&&data.loaichinh.length>20){
                 var duongdanimg=path.join(__dirname,`../public${data.loaichinh}`) 
                 fs.unlink(duongdanimg, (err) => {
                     if (err) {
@@ -341,7 +341,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
                     }
                 })
             }
-            if(manglinkanh[2]){
+            if(manglinkanh[2]&&data.loaisanpham.length>20){
                 var duongdanimg=path.join(__dirname,`../public${data.loaisanpham}`) 
                 fs.unlink(duongdanimg, (err) => {
                     if (err) {
