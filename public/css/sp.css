@@ -243,6 +243,7 @@
 .sp-pagination {
     display: flex;
     justify-content: flex-end;
+    padding-right: 15px;
 }
 
 .sp-pagination ul {

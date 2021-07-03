@@ -172,7 +172,7 @@
                                 {{>sanpham}}
                                 {{/each}}
                                 {{else}}
-                                <div class="motsp-error">Không có sản phẩm theo yêu cầu này</div>
+                                <div class="error">Không có sản phẩm theo yêu cầu này</div>
                                 {{/if}}
                             </div>
 
@@ -307,7 +307,6 @@
                     var trang = document.location.toString().split('?');
                     var giatripage = 2;
 
-console.log(trang[1])
                     if (trang[1]) {
                         var mangquery = trang[1].split('&')
                         for (let i = 0; i < mangquery.length; i++) {
@@ -323,13 +322,16 @@ console.log(trang[1])
                         }
                         if (giatripage < {{sanpham.count}}){
                                     giatripage++
-                                }else {
+                                }
+                                else 
+                                {
                                     giatripage = {{ sanpham.count }}
                                 }
                             }
                 let link = addParameterToURL('page', giatripage, document.location)
                 location.href = link
                 })
+                
 
 
 

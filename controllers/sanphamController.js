@@ -558,11 +558,13 @@ controller.layhetloaisanpham=()=>{
         .catch(err => reject(err))
     })
 }
-controller.layhetsanpham=()=>{
+controller.layhetsanpham=(param,query)=>{
+    page=query.page||1;
     return new Promise((resolve, reject) => {
         Sanpham
-        .findAll({
-            limit:21,
+        .findAndCountAll({
+            limit:50,
+            offset:(page-1)*50,
             order:[['updatedAt','DESC']],
             include: [{
                 model: models.Thuonghieu,

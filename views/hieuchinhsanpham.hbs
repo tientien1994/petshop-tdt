@@ -71,7 +71,25 @@
                             <a href="/hieuchinh/sanpham/themsanpham">Thêm một sản phẩm</a>
                     </div>
                     
-                    <script>
+                    <div class="sanphamchinhitem">
+                        <div class="motloaisanphamchinh">
+                          
+                                {{#if sanpham}}
+                              {{#each sanpham}}      
+                              {{>sanphamhieuchinh}}
+                              
+                              {{/each}}
+                              {{else}}
+                              <div class="error">Không có sản phẩm theo yêu cầu này</div>
+                              {{/if}}
+                        </div>
+                        
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            <script>
                     if (parseInt({{sanpham.count}}) > 1) {
                         document.write(`<div class="sp-pagination">
                                             <ul>
@@ -85,18 +103,6 @@
                                 </div>`)
             }
                 </script>
-                    
-                    
-                </div>
-            </div>
-            <div class="sp-pagination">
-                <ul>
-                    <li><a href="">1</a></li>
-                    <li><a href="">2</a></li>
-                    <li><a href="">3</a></li>
-                    <li><a href="">4</a></li>
-                </ul>
-            </div>
             
             
             
@@ -181,12 +187,10 @@
                 $(this).attr('selected', true)// true hoac 'selected'
             }
             })
-    </script>
-    
-    <script src="/js/gsap.min.js"></script>
-    <script src="/js/index.js"></script>
-    <script>
-       $('.page').click(function () {
+
+
+            
+                $('.page').click(function () {
                     let page = $(this).data('page')
                     let link = addParameterToURL('page', page, document.location)
                     location.href = link
@@ -223,7 +227,6 @@
                     var trang = document.location.toString().split('?');
                     var giatripage = 2;
 
-console.log(trang[1])
                     if (trang[1]) {
                         var mangquery = trang[1].split('&')
                         for (let i = 0; i < mangquery.length; i++) {
@@ -239,19 +242,21 @@ console.log(trang[1])
                         }
                         if (giatripage < {{sanpham.count}}){
                                     giatripage++
-                                }else {
+                                }
+                                else 
+                                {
                                     giatripage = {{ sanpham.count }}
                                 }
                             }
                 let link = addParameterToURL('page', giatripage, document.location)
                 location.href = link
                 })
-        
-        
-            
-
-        
+                
     </script>
+    
+    <script src="/js/gsap.min.js"></script>
+    <script src="/js/index.js"></script>
+   
     <script src="/js/giohang.js"></script>
     <script src="/js/xulylink.js"></script>
      <script src="/js/hieuchinh.js"></script>
