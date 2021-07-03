@@ -165,8 +165,8 @@
                             <div class="sanphamchinhitem-line"></div>
                             <div class="motloaisanphamchinh">
 
-                        {{/each}}
-                    {{/each}}
+                                {{/each}}
+                                {{/each}}
                                 {{#if sanpham}}
                                 {{#each sanpham}}
                                 {{>sanpham}}
@@ -182,15 +182,15 @@
                     </div>
                 </div>
                 <script>
-                    if (parseInt({{sanpham.count}})>1) {
+                    if (parseInt({{sanpham.count}}) > 1) {
                         document.write(`<div class="sp-pagination">
                                             <ul>
                                                 <li class='page-giam'><a><<</a></li>`)
-                       for(var i=0;i<parseInt({{sanpham.count}});i++){
-                           document.write(`<li class='page' data-page='${i+1}'><a>${i+1}</a></li>`)
-                       }
+                        for (var i = 0; i < parseInt({{sanpham.count}}); i++) {
+                        document.write(`<li class='page' data-page='${i + 1}'><a>${i + 1}</a></li>`)
+                    }
 
-                        document.write(`<li class='page-tang'><a>>></a></li>
+                    document.write(`<li class='page-tang'><a>>></a></li>
                                     </ul>
                                 </div>`)
             }
@@ -238,7 +238,7 @@
                     //if(kvp[0].toString().length==0){
                     //kvp.shift()
                     //}
-                   
+
                     urls = link + '?' + kvp.join('&')
                     console.log(urls)
                     return urls
@@ -274,60 +274,64 @@
                     let page = $(this).data('page')
                     let link = addParameterToURL('page', page, document.location)
                     location.href = link
-
                 })
+
                 $('.page-giam').click(function () {
-                    var trang=document.location.toString().split('?');
-                    var mangquery=trang[1].split('&')
-                    var giatripage;
-                    for (let i=0; i < mangquery.length; i++) {
+                    var trang = document.location.toString().split('?');
+                    var giatripage = 1;
+
+
+                    if (trang[1]) {
+                        var mangquery = trang[1].split('&')
+
+                        for (let i = 0; i < mangquery.length; i++) {
                             var x;
                             x = mangquery[i].split('=');
                             if (x[0] == "page") {
-                                giatripage=x[1];
+                                giatripage = x[1];
                                 break;
                             }
                         }
-                        giatripage=parseInt(giatripage)
-                    if(giatripage>1){
-                        giatripage--
-                    }{
-                        giatripage=1
+                        if (giatripage > 1) {
+                            giatripage--
+                        } {
+                            giatripage = 1
+                        }
                     }
+
                     let link = addParameterToURL('page', giatripage, document.location)
                     location.href = link
-
                 })
-                
+
                 $('.page-tang').click(function () {
-                
-                    
-                    var trang=document.location.toString().split('?');
-                    var mangquery=trang[1].split('&')
-                    var giatripage;
-                    for (let i=0; i < mangquery.length; i++) {
+                    var trang = document.location.toString().split('?');
+                    var giatripage = 2;
+
+console.log(trang[1])
+                    if (trang[1]) {
+                        var mangquery = trang[1].split('&')
+                        for (let i = 0; i < mangquery.length; i++) {
                             var x;
                             x = mangquery[i].split('=');
                             if (x[0] == "page") {
-                                giatripage=x[1];
+                                giatripage = x[1];
                                 break;
                             }
+                            else {
+                                giatripage = 2;
+                            }
                         }
-                    
-                    giatripage=parseInt(giatripage)
-                    
-                    if(giatripage<{{sanpham.count}}){
-                        giatripage++
-                    }else{
-                        giatripage={{sanpham.count}}
-                    }
-
-                    let link = addParameterToURL('page', giatripage, document.location)
-                    location.href = link
-
+                        if (giatripage < {{sanpham.count}}){
+                                    giatripage++
+                                }else {
+                                    giatripage = {{ sanpham.count }}
+                                }
+                            }
+                let link = addParameterToURL('page', giatripage, document.location)
+                location.href = link
                 })
-                
-                
+
+
 
             </script>
             <script src="/js/index.js"></script>
@@ -335,9 +339,9 @@
 
                 $('.locgia').each(function () {
                     if ($(this).attr('value') == {{ laygiamax }})
-                    {
+                {
                     $(this).addClass('locgia-acc')
-                    }
+                }
         })
             </script>
             <script src="/js/giohang.js"></script>

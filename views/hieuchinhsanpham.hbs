@@ -71,20 +71,20 @@
                             <a href="/hieuchinh/sanpham/themsanpham">Thêm một sản phẩm</a>
                     </div>
                     
-                    <div class="sanphamchinhitem">
-                        <div class="motloaisanphamchinh">
-                          
-                                {{#if sanpham}}
-                              {{#each sanpham}}      
-                              {{>sanphamhieuchinh}}
-                              
-                              {{/each}}
-                              {{else}}
-                              <div class="motsp-error">Không có sản phẩm theo yêu cầu này</div>
-                              {{/if}}
-                        </div>
-                        
-                    </div>
+                    <script>
+                    if (parseInt({{sanpham.count}}) > 1) {
+                        document.write(`<div class="sp-pagination">
+                                            <ul>
+                                                <li class='page-giam'><a><<</a></li>`)
+                        for (var i = 0; i < parseInt({{sanpham.count}}); i++) {
+                        document.write(`<li class='page' data-page='${i + 1}'><a>${i + 1}</a></li>`)
+                    }
+
+                    document.write(`<li class='page-tang'><a>>></a></li>
+                                    </ul>
+                                </div>`)
+            }
+                </script>
                     
                     
                 </div>
@@ -186,7 +186,66 @@
     <script src="/js/gsap.min.js"></script>
     <script src="/js/index.js"></script>
     <script>
-       
+       $('.page').click(function () {
+                    let page = $(this).data('page')
+                    let link = addParameterToURL('page', page, document.location)
+                    location.href = link
+                })
+
+                $('.page-giam').click(function () {
+                    var trang = document.location.toString().split('?');
+                    var giatripage = 1;
+
+
+                    if (trang[1]) {
+                        var mangquery = trang[1].split('&')
+
+                        for (let i = 0; i < mangquery.length; i++) {
+                            var x;
+                            x = mangquery[i].split('=');
+                            if (x[0] == "page") {
+                                giatripage = x[1];
+                                break;
+                            }
+                        }
+                        if (giatripage > 1) {
+                            giatripage--
+                        } {
+                            giatripage = 1
+                        }
+                    }
+
+                    let link = addParameterToURL('page', giatripage, document.location)
+                    location.href = link
+                })
+
+                $('.page-tang').click(function () {
+                    var trang = document.location.toString().split('?');
+                    var giatripage = 2;
+
+console.log(trang[1])
+                    if (trang[1]) {
+                        var mangquery = trang[1].split('&')
+                        for (let i = 0; i < mangquery.length; i++) {
+                            var x;
+                            x = mangquery[i].split('=');
+                            if (x[0] == "page") {
+                                giatripage = x[1];
+                                break;
+                            }
+                            else {
+                                giatripage = 2;
+                            }
+                        }
+                        if (giatripage < {{sanpham.count}}){
+                                    giatripage++
+                                }else {
+                                    giatripage = {{ sanpham.count }}
+                                }
+                            }
+                let link = addParameterToURL('page', giatripage, document.location)
+                location.href = link
+                })
         
         
             

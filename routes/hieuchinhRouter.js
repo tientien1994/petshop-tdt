@@ -513,7 +513,6 @@ router.get('/sanpham/themsanpham', (req, res, next)=>{
 })
 
 
-
 router.post('/sanpham/themsanpham', upload.array('filesanpham',12), (req, res, next)=>{
     var noidungfile=""; 
     var biensanpham={

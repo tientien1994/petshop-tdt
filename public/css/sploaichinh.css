@@ -28,7 +28,7 @@
 }
 
 
-
+/*  */
 .sp-1-menu-gia ul li a:hover i:nth-child(1)::before {content: "\f111";font-family: 'FontAwesome';color: var(--thir-color); transition:0.5s}
 .sp-1-menu-gia ul li:hover a{
     transition: 0.5s;
@@ -41,9 +41,10 @@
     background: var(--light-five-color);
     transition: 0.5s;
 }
-.sp-1-menu ul li a:hover i:before {
+.sp-1-menu ul li a:hover>i:nth-child(1)::before {
     content: '\f111';
     color: var(--primary-color);
+    font-family: 'FontAwesome';
     transition: 0.5s;
 }
 .tendaydu {
