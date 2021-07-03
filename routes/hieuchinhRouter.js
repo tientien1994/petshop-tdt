@@ -520,6 +520,53 @@ router.post('/sanpham/themsanpham', upload.array('filesanpham',12), (req, res, n
         else{
             noidungfile = req.body.nhaptructiep
         }
+        
+        for(var i=0;i<files.length;i++){
+            if(files[i].mimetype.slice(0,5)=="image"){
+                manglinkanh.push(`/img/sanpham/sanphamthu${files[i].filename}.jpg`)
+            }
+        }
+        
+    }
+    
+    manglinkanh.push(biensanpham.masanpham)
+    
+    
+    var sanphamController=require('../controllers/sanphamController')
+    sanphamController
+    .layloaitongloaichinh(biensanpham.loaisanphamId)
+    .then(data =>{
+        biensanpham.loaichinhId=data.Loaichinh.id
+        biensanpham.loaitongId=data.Loaichinh.Loaitong.id
+        if(manglinkanh.length>0){
+            if(manglinkanh[0]){
+                biensanpham.loaitong=manglinkanh[0]
+                ndanh=fs.readFileSync(files[0].path)
+                var duongdananh=path.join(__dirname,`../public${biensanpham.loaitong}`) 
+                fs.writeFile(duongdananh, ndanh , function (err) {
+                    if (err) throw err;
+                    console.log('Luu xong');
+                  });
+            }
+            if(manglinkanh[1]){
+                biensanpham.loaichinh=manglinkanh[1]
+                ndanh=fs.readFileSync(files[1].path)
+                var duongdananh=path.join(__dirname,`../public${biensanpham.loaichinh}`) 
+                fs.writeFile(duongdananh, ndanh , function (err) {
+                    if (err) throw err;
+                    console.log('Luu xong');
+                  });
+            }
+            if(manglinkanh[2]){
+                ndanh=fs.readFileSync(files[2].path)
+                biensanpham.loaisanpham=manglinkanh[2]
+                var duongdananh=path.join(__dirname,`../public${biensanpham.loaisanpham}`) 
+                fs.writeFile(duongdananh, ndanh , function (err) {
+                    if (err) throw err;
+                    console.log('Luu xong');
+                  });
+            }
+        }
         if(noidungfile.length>0){
             var time=new Date()
             var filename=time.getTime()
@@ -531,56 +578,6 @@ router.post('/sanpham/themsanpham', upload.array('filesanpham',12), (req, res, n
                 console.log('Luu xong');
               });
         }
-        for(var i=0;i<files.length;i++){
-            if(files[i].mimetype.slice(0,5)=="image"){
-                manglinkanh.push(`/img/sanpham/sanphamthu${files[i].filename}.jpg`)
-            }
-        }
-        if(manglinkanh[0]){
-            biensanpham.loaitong=manglinkanh[0]
-            ndanh=fs.readFileSync(files[0].path)
-            var duongdananh=path.join(__dirname,`../public${biensanpham.loaitong}`) 
-            fs.writeFile(duongdananh, ndanh , function (err) {
-                if (err) throw err;
-                console.log('Luu xong');
-              });
-        }
-        if(manglinkanh[1]){
-            biensanpham.loaichinh=manglinkanh[1]
-            ndanh=fs.readFileSync(files[1].path)
-            var duongdananh=path.join(__dirname,`../public${biensanpham.loaichinh}`) 
-            fs.writeFile(duongdananh, ndanh , function (err) {
-                if (err) throw err;
-                console.log('Luu xong');
-              });
-        }
-        if(manglinkanh[2]){
-            ndanh=fs.readFileSync(files[2].path)
-            biensanpham.loaisanpham=manglinkanh[2]
-            var duongdananh=path.join(__dirname,`../public${biensanpham.loaisanpham}`) 
-            fs.writeFile(duongdananh, ndanh , function (err) {
-                if (err) throw err;
-                console.log('Luu xong');
-              });
-        }
-    }
-    
-      
-    
-    
-    
-    
-    
-    
-    manglinkanh.push(biensanpham.masanpham)
-    
-    
-    var sanphamController=require('../controllers/sanphamController')
-    sanphamController
-    .layloaitongloaichinh(biensanpham.loaisanphamId)
-    .then(data =>{
-        biensanpham.loaichinhId=data.Loaichinh.id
-        biensanpham.loaitongId=data.Loaichinh.Loaitong.id
         return sanphamController.themsanpham(biensanpham)
         
     })
