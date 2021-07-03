@@ -344,31 +344,53 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
         req.session.suansp=true  
         if(manglinkanh.length>0){
             if(manglinkanh[0]){
-                biensanpham.loaitong=manglinkanh[0]
-                ndanh=fs.readFileSync(files[0].path)
-                var duongdananh=path.join(__dirname,`../public${biensanpham.loaitong}`) 
-                fs.writeFile(duongdananh, ndanh , function (err) {
-                    if (err) throw err;
-                   
-                  });
+                let callback=(duongdananh, ndanh)=>{
+                    fs.writeFile(duongdananh, ndanh , function (err) {
+                        if (err) throw err;
+                        console.log('Luu xong');
+                      });
+                }
+                let laylink=(callback)=>{
+                    biensanpham.loaitong=manglinkanh[0]
+                    ndanh=fs.readFileSync(files[0].path)
+                    var duongdananh=path.join(__dirname,`../public${biensanpham.loaitong}`) 
+                    callback(duongdananh, ndanh)
+                }
+                laylink(callback)
             }
+
+
             if(manglinkanh[1]){
-                biensanpham.loaichinh=manglinkanh[1]
-                ndanh=fs.readFileSync(files[1].path)
-                var duongdananh=path.join(__dirname,`../public${biensanpham.loaichinh}`) 
-                fs.writeFile(duongdananh, ndanh , function (err) {
-                    if (err) throw err;
-                    
-                  });
+                let callback=(duongdananh, ndanh)=>{
+                    fs.writeFile(duongdananh, ndanh , function (err) {
+                        if (err) throw err;
+                        console.log('Luu xong');
+                      });
+                }
+                let laylink=(callback)=>{
+                    biensanpham.loaichinh=manglinkanh[1]
+                    ndanh=fs.readFileSync(files[1].path)
+                    var duongdananh=path.join(__dirname,`../public${biensanpham.chinh}`) 
+                    callback(duongdananh, ndanh)
+                }
+                laylink(callback)
             }
+
+
             if(manglinkanh[2]){
-                ndanh=fs.readFileSync(files[2].path)
-                biensanpham.loaisanpham=manglinkanh[2]
-                var duongdananh=path.join(__dirname,`../public${biensanpham.loaisanpham}`) 
-                fs.writeFile(duongdananh, ndanh , function (err) {
-                    if (err) throw err;
-                    
-                  });
+                let callback=(duongdananh, ndanh)=>{
+                    fs.writeFile(duongdananh, ndanh , function (err) {
+                        if (err) throw err;
+                       console.log('Luu xong');
+                      });
+                }
+                let laylink=(callback)=>{
+                    biensanpham.loaitong=manglinkanh[2]
+                    ndanh=fs.readFileSync(files[2].path)
+                    var duongdananh=path.join(__dirname,`../public${biensanpham.loaitong}`) 
+                    callback(duongdananh, ndanh)
+                }
+                laylink(callback)
             }
         }
         if(noidungfile.length>0){
