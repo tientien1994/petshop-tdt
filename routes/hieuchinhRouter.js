@@ -236,13 +236,14 @@ router.post('/nhanvien/themnhanvien',upload.single('fileanh'), (req, res, next)=
 
 
 router.get('/sanpham', (req, res, next)=>{
-    res.locals.suasp= req.session.suansp
-    res.locals.themsp=req.session.themsp
-    res.locals.xoasp=req.session.xoasp
+    
     let spController=require('../controllers/sanphamController.js')
     menuController
     .menu()
     .then(data=>{
+        res.locals.suasp= req.session.suansp
+    res.locals.themsp=req.session.themsp
+    res.locals.xoasp=req.session.xoasp
         res.locals.menu=data
         return spController.layhetsanpham(req.params, req.query)
     })
@@ -317,12 +318,6 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
         
     }
     
-   
-        
-    
-    
-    
-    
     var sanphamController=require('../controllers/sanphamController')
     sanphamController.laymotsanphamdexoa(biensanpham.id)
     .then(data=>{
@@ -373,7 +368,9 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
     .then(data =>{
         biensanpham.loaichinhId=data.Loaichinh.id
         biensanpham.loaitongId=data.Loaichinh.Loaitong.id
+        req.session.suansp=true  
         return sanphamController.suasanpham(biensanpham)
+        
         
     })
     .then(data =>{
@@ -414,7 +411,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
         });
         }
         
-        req.session.suansp=true  
+        
         res.redirect('/hieuchinh/sanpham')
     })
     .catch(err =>{next(err)})

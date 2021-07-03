@@ -256,12 +256,15 @@ router.get('/:loaitong/:loaichinh/:loaisanpham/:idsp',(req, res, next)=>{
     .then(data =>{
         res.locals.gido=data
         var lickfile=data[0].Loaichinhs[0].Loaisanphams[0].Sanphams[0].masanpham
-        if(lickfile.length>25){
-            data.file=fs.readFileSync(path.join(__dirname,`../public${lickfile}`),'utf8')
+        if(lickfile!=null){
+            if(lickfile.length>25){
+                data.file=fs.readFileSync(path.join(__dirname,`../public${lickfile}`),'utf8')
+            }
+            else{
+                data.file=fs.readFileSync(path.join(__dirname,`../public/data/sp/gioithieu/${idsp%10+1}.txt`),'utf8')
+            }
         }
-        else{
-            data.file=fs.readFileSync(path.join(__dirname,`../public/data/sp/gioithieu/${idsp%10+1}.txt`),'utf8')
-        }
+        
         
         res.locals.motsanpham=data
         return menuspchinhController.luotxemnhieunhat()
