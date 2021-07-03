@@ -323,7 +323,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
             }
         }
         
-        if(noidungfile.length>0&&data.masanpham!=null){
+        if(noidungfile.length>0&&data.masanpham!=null&&data.masanpham.length>20){
             if(data.masanpham.length>10){
                 var duongdan=path.join(__dirname,`../public${data.masanpham}`) 
             fs.unlink(duongdan, (err) => {
