@@ -249,8 +249,7 @@ router.get('/sanpham', (req, res, next)=>{
     })
     .then(data=>{
         res.locals.sanpham=data.rows
-        res.locals.sanpham.count=Math.ceil(data.count/50)/////////////////////////////////////////////////////////////
-        
+        res.locals.sanpham.count=Math.ceil(data.count/50)
         res.render('hieuchinhsanpham')
         req.session.suansp=false
         req.session.themsp=false
@@ -258,6 +257,9 @@ router.get('/sanpham', (req, res, next)=>{
     })
     .catch(err=>{next(err)})
 })
+
+
+////////////////////////////////////////////////////////////
 router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, next)=>{
     var noidungfile=""; 
     var biensanpham={
@@ -311,7 +313,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
                 })
                 biensanpham.loaichinh=manglinkanh[1]
             }
-            if(manglinkanh[2]&&data.loaisanpham.length!=null){
+            if(manglinkanh[2]&&data.loaisanpham!=null){
                 var duongdanimg=path.join(__dirname,`../public${data.loaisanpham}`) 
                 fs.unlink(duongdanimg, (err) => {
                     if (err) {
@@ -323,7 +325,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
             }
         }
         
-        if(noidungfile.length>0&&data.masanpham.length!=null){
+        if(noidungfile.length>0&&data.masanpham!=null){
             
             var duongdan=path.join(__dirname,`../public${data.masanpham}`) 
             fs.unlink(duongdan, (err) => {
