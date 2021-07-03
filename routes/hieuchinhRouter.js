@@ -290,7 +290,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
     var sanphamController=require('../controllers/sanphamController')
     return sanphamController.laymotsanphamdexoa(biensanpham.id)
     .then(data=>{
-        if (manglinkanh.length>0&&data.loaitong.length>20){
+        if (manglinkanh.length>0&&data.loaitong!=null){
             if(manglinkanh[0]){
                 var duongdanimg=path.join(__dirname,`../public${data.loaitong}`) 
                 fs.unlink(duongdanimg, (err) => {
@@ -301,7 +301,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
                 })
                 biensanpham.loaitong=manglinkanh[0]
             }
-            if(manglinkanh[1]&&data.loaichinh.length>20){
+            if(manglinkanh[1]&&data.loaichinh!=null){
                 var duongdanimg=path.join(__dirname,`../public${data.loaichinh}`) 
                 fs.unlink(duongdanimg, (err) => {
                     if (err) {
@@ -311,7 +311,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
                 })
                 biensanpham.loaichinh=manglinkanh[1]
             }
-            if(manglinkanh[2]&&data.loaisanpham.length>20){
+            if(manglinkanh[2]&&data.loaisanpham.length!=null){
                 var duongdanimg=path.join(__dirname,`../public${data.loaisanpham}`) 
                 fs.unlink(duongdanimg, (err) => {
                     if (err) {
@@ -323,7 +323,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
             }
         }
         
-        if(noidungfile.length>0&&data.masanpham.length>20){
+        if(noidungfile.length>0&&data.masanpham.length!=null){
             
             var duongdan=path.join(__dirname,`../public${data.masanpham}`) 
             fs.unlink(duongdan, (err) => {
@@ -570,7 +570,6 @@ router.post('/sanpham/themsanpham', upload.array('filesanpham',12), (req, res, n
         if(noidungfile.length>0){
             var time=new Date()
             var filename=time.getTime()
-    
             biensanpham.masanpham=`/data/sanpham/${filename.toString()}.txt`
             var duongdan=path.join(__dirname,`../public${biensanpham.masanpham}`) 
             fs.writeFile(duongdan, noidungfile , function (err) {
