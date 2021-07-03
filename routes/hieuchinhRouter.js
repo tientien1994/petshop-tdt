@@ -370,7 +370,7 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
                 let laylink=(callback)=>{
                     biensanpham.loaichinh=manglinkanh[1]
                     ndanh=fs.readFileSync(files[1].path)
-                    var duongdananh=path.join(__dirname,`../public${biensanpham.chinh}`) 
+                    var duongdananh=path.join(__dirname,`../public${biensanpham.loaichinh}`) 
                     callback(duongdananh, ndanh)
                 }
                 laylink(callback)
@@ -385,9 +385,9 @@ router.post('/sanpham/sua-:idsp', upload.array('filesanpham',12), (req, res, nex
                       });
                 }
                 let laylink=(callback)=>{
-                    biensanpham.loaitong=manglinkanh[2]
+                    biensanpham.loaisanpham=manglinkanh[2]
                     ndanh=fs.readFileSync(files[2].path)
-                    var duongdananh=path.join(__dirname,`../public${biensanpham.loaitong}`) 
+                    var duongdananh=path.join(__dirname,`../public${biensanpham.loaisanpham}`) 
                     callback(duongdananh, ndanh)
                 }
                 laylink(callback)
