@@ -7,6 +7,10 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+.slide-title p {
+    text-align: center;
+}
+
 .nutthemsanpham {
     text-align: center;
     margin-top: 18px;
@@ -98,6 +102,11 @@ a.suanhanvien-b2.acc {
 
 .hieuchinhnhanvien {
     margin: 30px auto;
+}
+
+.container.hieuchinhnhanvien h5 {
+    font-size: 30px;
+    padding-top: 30px;
 }
 
 h5 {
