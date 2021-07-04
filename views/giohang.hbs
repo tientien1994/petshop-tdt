@@ -52,18 +52,24 @@
                             <tr class='table-motsp' id='item{{item.id}}'>
                                 <td class='table-sp'>
                                     <div class="table-img">
-                                        <div class="table-img-flex">
-                                            <img src="/img/sp/{{item.loaitong}}/{{item.loaichinh}}/{{chialaydu item.id}}.jpg" alt="">
+                                        {{#if (tinhlength item.loaitong)}}
+                                            <div class="table-img-flex">
+                                            <img src="{{item.loaitong}}" alt="">
                                         </div>
+                                        {{else}}
+                                            <div class="table-img-flex">
+                                            <img src="/img/sp/{{item.Loaitong.link}}/{{item.Loaichinh.link}}/{{chialaydu item.id}}.jpg" alt="">
+                                        </div>
+                                        {{/if}}
                                         <div class="table-text">
-                                            <a href="/sanpham/{{item.loaitong}}/{{item.loaichinh}}/{{item.loaisanpham}}/{{item.id}}"><p>{{item.name}} {{item.id}}</p></a>
+                                            <a href="/sanpham/{{item.Loaitong.link}}/{{item.Loaichinh.link}}/{{item.Loaisanpham.link}}/{{item.id}}"><p>{{item.name}} {{item.id}}</p></a>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="table-gia">{{tien item.gia}} vnd</td>
                                 <td class="table-soluong">
                                     <div class="asp-soluong">
-                                        <label for="">Số lượng</label>
+                                        
                                         <div class="asp-soluong-input">
                                             <p class="inputc" onclick="
                                             var result = document.getElementById('sll{{item.id}}'); 
@@ -89,16 +95,19 @@
                             {{/each}}
                             <tr class='table-motsp'>
                                 <td class='table-sp'>
-                                    <a href="" class="asp-buton" onclick="xoahetgiohang()">
+                                    <a class="asp-buton" onclick="xoahetgiohang()">
                                         <p class="asp-buton">Xóa tất cả</p>
                                     </a>
                                 </td>
-                                <td class="table-gia" colspan="2">
-                                    <form action="">
+                                <td class="table-gia magiamgia" colspan="2">
+                                
                                         <label for="">Mã giảm giá</label>
                                         <input type="text" placeholder="Nhập mã giảm giá">
-                                    </form>
+                                    
                                 </td>
+                                <td class="" >
+                                </td>
+                                
                                 
                                 <td class='table-tongtien'>
                                     Tổng tiền: <p class="table-sum" id="toanbogia">
@@ -112,7 +121,7 @@
                                 <td class="table-gia">
                                     
                                 </td>
-                                <td class=table-soluong>
+                                <td class="table-soluong">
                                     
                                     
                                 </td>

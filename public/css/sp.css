@@ -279,9 +279,7 @@
     color: var(--primary-color);
 }
 
-.line-page p:nth-child(1) {
-    width: 80%;
-}
+
 
 .line-page p:nth-child(2) {
     width: 20%;
@@ -548,14 +546,74 @@ li.locgia.locgia-acc a i.fa::before {
   footer{
       margin-top: 0;
   }
+  .line-page {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
   @media screen and (max-width: 375px){
     .sp-1-sp{
         column-count:1;
     }
+    .lh-chinhanh, .lh-form{
+        width: 100%;
+    }
+    .lh-form form .lh-form-input label{
+        text-align: start;
+    }
+    .lh-form form .lh-form-input{
+        flex-direction: column;
+    }
+    .lh-form form .lh-form-input label{
+        width: 100%;
+    }
+    .lh-form form .lh-form-input input, .lh-form form .lh-form-input textarea{
+        width: 100%;
+    }
+    .line-page p:nth-child(1) {
+        width: 100%;
+        padding-bottom: 30px;
+    }
+    .line-page p:nth-child(2) {
+        width: 50%;
+    }
+    .line-page p:nth-child(3) {
+        width: 50%;
+        padding-left: 15px;
+    }
+    
 }
 @media screen and (min-width: 376px){
     .sp-1-sp{
         column-count:2;
+    }
+    .lh-chinhanh, .lh-form{
+        width: 100%;
+    }
+    .lh-form form .lh-form-input label{
+        text-align: start;
+    }
+    .lh-form form .lh-form-input{
+        flex-direction: column;
+    }
+    .lh-form form .lh-form-input label{
+        width: 100%;
+    }
+    .lh-form form .lh-form-input input, .lh-form form .lh-form-input textarea{
+        width: 100%;
+    }
+    .line-page p:nth-child(1) {
+        width: 100%;
+        padding-bottom: 30px;
+    }
+    .line-page p:nth-child(2) {
+        width: 50%;
+    }
+    .line-page p:nth-child(3) {
+        width: 50%;
+        padding-left: 15px;
     }
 }
 
@@ -563,12 +621,65 @@ li.locgia.locgia-acc a i.fa::before {
     .sp-1-sp{
         column-count:2;
     }
+    .lh-chinhanh, .lh-form{
+        width: 50%;
+    }
+    .lh-form form .lh-form-input label{
+        text-align: right;
+    }
+    .lh-form form .lh-form-input{
+        flex-direction: row;
+    }
+    .lh-form form .lh-form-input label{
+        width: 30%;
+    }
+    .lh-form form .lh-form-input input, .lh-form form .lh-form-input textarea{
+        width: 70%;
+    }
+    .line-page p:nth-child(1) {
+        width: 60%;
+        padding-bottom: 0px;
+    }
+    .line-page p:nth-child(2) {
+        width: 20%;
+    }
+    .line-page p:nth-child(3) {
+        width: 20%;
+        padding-left: 15px;
+    }
 }
 
 
  @media screen and (min-width: 1080px){
     .sp-1-sp{
         column-count:3;
+    }
+    .lh-chinhanh, .lh-form{
+        width: 50%;
+    }
+    .lh-form form .lh-form-input label{
+        text-align: right;
+    }
+    .lh-form form .lh-form-input{
+        flex-direction: row;
+    }
+    .lh-form form .lh-form-input label{
+        width: 30%;
+    }
+    .lh-form form .lh-form-input input, .lh-form form .lh-form-input textarea{
+        width: 70%;
+    }
+    .line-page p:nth-child(1) {
+        width: 60%;
+        padding-bottom: 0px;
+        
+    }
+    .line-page p:nth-child(2) {
+        width: 20%;
+    }
+    .line-page p:nth-child(3) {
+        width: 20%;
+        padding-left: 15px;
     }
 }
 header{

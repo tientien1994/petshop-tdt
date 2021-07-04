@@ -140,7 +140,10 @@ app.use('/sanpham',require('./routes/sanphamRouter'))
 
 app.use('/comment', require('./routes/commentRouter'))
 
-app.use('/hieuchinh', require('./routes/hieuchinhRouter'))
+
+    app.use('/hieuchinh', require('./routes/hieuchinhRouter'))
+
+
 
 app.use('/tintuc', require('./routes/tintucRouter'))
 
@@ -231,7 +234,15 @@ app.get('/sync', (req, res)=>{
 // })
 
 
-//tao port
+
+app.use(function(req, res){
+    res.redirect('/')
+})
+app.use(function(error,req, res, next){
+    console.log(error)
+    res.status(500).send('Lỗi từ phía server')
+})
+
 app.set('port', process.env.PORT||5000)
 
 app.listen(app.get('port'), function() {

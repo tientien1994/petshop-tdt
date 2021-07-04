@@ -49,6 +49,7 @@ module.exports = function Cart(oldCart) {
         storedItem.item.gia = parseFloat(storedItem.item.gia);
         storedItem.soluong += parseInt(soluong);
         storedItem.tonggia = parseFloat(storedItem.item.gia * storedItem.soluong);
+        storedItem.item.loaitong=storedItem.item.loaitong
         this.toanbosoluong = this.gettoanbosoluong();
         this.toanbogia = this.gettoanbogia();
         this.toanbogiaformat=this.gettoanbogiaformat()

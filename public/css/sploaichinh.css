@@ -81,13 +81,14 @@ p.tendaydu::before {
 }
 
 select#selectsp {
-    width: 150px;
+    
     height: 24px;
-    margin: 0 0 0 20px;
+    width: 100%;
     outline: none;
     border: none;
     cursor: pointer;
 }
+
 
 .motspbtn-p {
     display: flex;
@@ -154,14 +155,15 @@ li.locgia.locgia-acc a i.fa::before {
 }
 
 .motloaisanphamchinh-nd:hover .motspchinh {
-    background: var(--primary-color);
+    border:1px solid #999;
     transition: 0.5s;
+    transform: scale(1.1)
 }
 
 .motspchinh {
     /* width: 33.33%; */
     padding: 15px;
-    border: 1px solid #ddd;
+    transition: 0.5s;
     border-radius: 8px;
 }
 

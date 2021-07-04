@@ -72,7 +72,7 @@ router.post('/', (req, res, next) => {
                     return res.render('/')
                 }else{
                     return res.render('dangnhapdangki',{
-                        thongbao:'Đăng kí thanh công, đăng nhập ngay bây giờ',
+                        thongbao:'Đăng kí thành công, đăng nhập ngay bây giờ',
                         type:'baodongxanhla',
                         hientrang:'dndk-acc',
                         vitriformdangnhap:'form-dangnhap-acc',

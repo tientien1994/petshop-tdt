@@ -2,6 +2,12 @@ let express=require('express')
 let router=express.Router()
 
 router.get('/',(req, res, next) =>{
+    if(req.session.hieuungbandau==false){
+        res.locals.hieuungbandau=false
+    }else{
+        res.locals.hieuungbandau=true
+    }
+    
     let menuController=require('../controllers/menuController.js')
     menuController
     .menu()
@@ -26,7 +32,9 @@ router.get('/',(req, res, next) =>{
     })
     .then(data=>{
         res.locals.topbaiviet=data
+        
         res.render('index')
+        req.session.hieuungbandau=false
         //res.send(data)
     })
         .catch(err=>next(err)) 

@@ -3,7 +3,8 @@
         <div class="container">
             <div class="header-nd">
                 <div class="lo">
-                    <a href="/"><img src="/img/logo.gif" alt=""></a>
+                    <a href="/">LOGO</a>
+                    <div></div>
 
                 </div>
                 <div class="find">
@@ -15,7 +16,7 @@
                     </form>
                 </div>
                 <div class="ktdonhang">
-                    <a href="">
+                    <a>
                         <i class='fa fa-list-alt'></i>
                         <p>Kiểm tra <br> đơn hàng</p>
                     </a>
@@ -129,39 +130,21 @@
                                 </div>
                             </div>
                         </div>
-                    
-                    {{/if}}
-                    </li>
-                    {{else}}
-                    <li><a href="/dndk">
-                            <p>Đăng nhập</p>
-                        </a>
+                        {{else}}
                         {{!-- //////////////////////////////// --}}
                         <div class="nav-chitiet">
                             <div class="nav-chitiet-col">
                                 <div class="nav-chitiet-col-item">
-                                    <a href="/hieuchinh/nhanvien" class="jfc-start">
-                                        <h5>Nhân viên</h5>
-                                        <p class="nav-tendaydu">Thêm, sửa, xóa nhân viên</p>
-                                    </a>
+                                    
                                 </div>
                                 <div class="nav-chitiet-col-item">
-                                    <a href="/hieuchinh/sanpham" class="jfc-start">
-                                        <h5>Sản phẩm</h5>
-                                        <p class="nav-tendaydu">Thêm sửa xóa sản phẩm</p>
-                                    </a>
+                                    
                                 </div>
                                 <div class="nav-chitiet-col-item">
-                                    <a href="/hieuchinh/tintuc" class="jfc-start">
-                                        <h5>Tin tức</h5>
-                                        <p class="nav-tendaydu">Thêm, sửa, xóa tin tức</p>
-                                    </a>
+                                    
                                 </div>
                                 <div class="nav-chitiet-col-item">
-                                    <a href="/hieuchinh/chinhanh" class="jfc-start">
-                                        <h5>Chi nhánh</h5>
-                                        <p class="nav-tendaydu">Thêm, sửa, xóa chi nhánh</p>
-                                    </a>
+                                    
                                 </div>
                                 <div class="nav-chitiet-col-item">
                                     <a href="/dndk/dangxuat" class="jfc-start">
@@ -172,6 +155,14 @@
                             </div>
                         </div>
                         {{!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ --}}
+                    
+                    {{/if}}
+                    </li>
+                    {{else}}
+                    <li><a href="/dndk">
+                            <p>Đăng nhập</p>
+                        </a>
+                        
                         </li>
                     {{/if}}
 
@@ -198,7 +189,11 @@
                 </div>
                 <ul>
                     <li class="left-logo">
-                        <a>LOGO</a>
+                        <div class="lo">
+                    <a href="/">LOGO</a>
+                    <div></div>
+
+                </div>
                     </li>
                     <li>
                         <a href="/">Trang chủ</a>
@@ -224,9 +219,34 @@
                     <li>
                         <a href="/bando">Liên hệ</a>
                     </li>
-                    <li>
+                    {{#if trangthaidangnhap}}
+                        <li>
+                        <a>{{tenuser}}</a>
+                        <i class="fa fa-chevron-down"></i>
+
+                        <div class="nav-chitiet2">
+                            <ul>
+                                {{#if isadmin}}
+                                <li><a href="/hieuchinh/nhanvien">Nhân viên</a></li>
+                                <li><a href="/hieuchinh/sanpham">Sản phẩm</a></li>
+                                <li><a href="/hieuchinh/tintuc">Tin tức</a></li>
+                                <li><a href="/hieuchinh/chinhanh">Chi nhánh</a></li>
+
+                                    <li><a href="/dndk/dangxuat">Đăng xuất</a></li>
+                                {{else}}
+                                    <li><a href="/dndk/dangxuat">Đăng xuất</a></li>
+                                {{/if}}
+                                
+                            </ul>
+                        </div>
+                    </li>
+
+                    {{else}}
+                        <li>
                         <a href="/dndk">Đăng nhập</a>
                     </li>
+                    {{/if}}
+                    
                 </ul>
             </nav>
         </div>

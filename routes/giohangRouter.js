@@ -29,7 +29,7 @@ router.get('/abc', (req, res, next)=>{
     .menu()
     .then(data=>{
         res.locals.menu=data
-        res.render('giohang'); 
+        //res.render('giohang'); 
         res.send(cart)
     })
     .catch(error=>next(error));

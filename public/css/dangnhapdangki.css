@@ -374,3 +374,15 @@ justify-content: center;
 
     
 }
+.thongbaodangki.baodongdo {
+    border: 1px solid var(--primary-color);
+    font-size: 11px;
+    padding: 5px;
+    border-radius: 5px;
+    background: #ff000045;}
+    .thongbaodangki.baodongxanhla {
+        border: 1px solid var(--five-color);
+        font-size: 11px;
+        padding: 5px;
+        border-radius: 5px;
+        background: var(--light-five-color);}

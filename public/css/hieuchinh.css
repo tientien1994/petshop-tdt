@@ -155,32 +155,38 @@ h5.hieuchinhsanphamtitle {
     .motloaisanphamchinh-nd{
         width: 100%;
     }
+    .hieuchinhnhanvien-item{width:100%}
 }
 @media screen and (min-width: 375px) {
     .motloaisanphamchinh-nd{
         width: 100%;
     }
+    .hieuchinhnhanvien-item{width:100%}
 }
 @media screen and (min-width: 600px) {
     .motloaisanphamchinh-nd{
         width: 50%;
     }
+    .hieuchinhnhanvien-item{width:50%}
 }
 @media screen and (min-width: 769px) {
     .motloaisanphamchinh-nd{
         width: 33.33%;
     }
+    .hieuchinhnhanvien-item{width:33.33%}
 }
 @media screen and (min-width: 1024px) {
     .motloaisanphamchinh-nd{
         width: 25%;
     }
+    .hieuchinhnhanvien-item{width:25%}
     
 }
 @media screen and (min-width: 1200px) {
     .motloaisanphamchinh-nd{
         width: 20%;
     }
+    .hieuchinhnhanvien-item{width:20%}
 }
 a.suanhanvien-b1, .suanhanvien-b2 {
     background-color: #999;

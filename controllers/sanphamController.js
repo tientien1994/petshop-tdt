@@ -46,9 +46,22 @@ controller.laysptheoid=(id)=>{
         .findOne({
             where:{
                 id:id
+            }, 
+            attributes: ['id', 'name', 'gia','loaitong'],
+            include: [
+            {
+                model: models.Loaitong,
+                attributes: ['link']
+            },
+            {
+                model: models.Loaichinh,
+                attributes: ["link"]
+            },
+            {
+                model: models.Loaisanpham,
+                attributes: ["link"]
             }
-            ,
-            attributes: ['id', 'name','gia']
+        ]
         })
         .then(data => resolve(data))
             .catch(err => reject(err))

@@ -1,3 +1,5 @@
+
+
 waiting=new TimelineMax();
 
      waiting.from($('.wait'),0.7,{opacity:0.3})
@@ -17,6 +19,8 @@ waiting=new TimelineMax();
      .to($('.wait'),1.5,{x:"100%"})
      .then($('.main-2'),2,{x:"-100%"})
 
+
+     
      waiting_2=new TimelineMax();
      waiting_2.from($('.main, .main-2'),1.5,{x:"-100%", delay:6.6})
 
@@ -26,4 +30,5 @@ waiting=new TimelineMax();
         
      },
      6800)
+   
      

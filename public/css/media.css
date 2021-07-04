@@ -36,15 +36,15 @@
     .nd13-col-item{width:100%}
     .nd1-but{top: 105px;;right: 50%; transform:translateX(50%)}
     .f-greet, .f-exp, .f-contact, .f-news{
-        width: 50%;
+        width: 100%;
     }
     .tintuc-nd-left{width: 100%;}
     .tintuc-nd-right{width:100%;}
     .dem-chinhsach{width: 100%;}
-    .dem-chinhsach-item{width:25%}
+    .dem-chinhsach-item{width:50%}
     .dem-banner{width:100%}
-    .header-nd .lo{width: 30%; display: block;}
-    .header-nd .find{width: 50%; display: block;}
+    .header-nd .lo{width: 30%; display: none;}
+    .header-nd .find{width: 70%; display: block;}
     .header-nd .ktdonhang{display: none;}
     .header-nd .giohang{display: block;}
     .header-nd .onl{display: none}
@@ -65,7 +65,15 @@
     }
     .nd4-bg{padding-bottom: 150px;}
     .nd11-img {width: 100%}
-    
+    .layer1 {
+        top: -11%;
+        left: 33%;
+        padding: 95px 23% 1px 51px;
+    }
+    .layer1 p:last-child{
+        padding-top: 40px;
+        padding-left: 7px;
+    }
 
 }
 @media screen and (min-width: 375px) {
@@ -103,15 +111,15 @@
     .nd13-col-item{width:100%}
     .nd1-but{top: 105px;right: 50%; transform:translateX(50%)}
     .f-greet, .f-exp, .f-contact, .f-news{
-        width: 50%;
+        width: 100%;
     }
     .tintuc-nd-left{width: 100%;}
     .tintuc-nd-right{width:100%;}
     .dem-chinhsach{width: 100%;}
-    .dem-chinhsach-item{width:25%}
+    .dem-chinhsach-item{width:50%}
     .dem-banner{width:100%}
-    .header-nd .lo{width: 30%; display: block;}
-    .header-nd .find{width: 50%; display: block;}
+    .header-nd .lo{width: 30%; display: none;}
+    .header-nd .find{width: 70%; display: block;}
     .header-nd .ktdonhang{display: none;}
     .header-nd .giohang{display: block;margin-right: 21px;}
     .header-nd .onl{display: none}
@@ -133,7 +141,15 @@
     }
     .nd4-bg{padding-bottom: 150px;}
     .nd11-img {width: 100%}
-    
+    .layer1 {
+        top: -8%;
+        left: 37%;
+        padding: 95px 15% 1px 51px;
+    }
+    .layer1 p:last-child{
+        padding-top: 40px;
+        padding-left: 4px;
+    }
 
 }
 @media screen and (min-width: 600px) {
@@ -178,9 +194,9 @@
     .dem-chinhsach{width: 100%;}
     .dem-chinhsach-item{width:25%}
     .dem-banner{width:100%}
-    .header-nd .lo{width: 30%; display: block;}
-    .header-nd .find{width: 40%; display: block;}
-    .header-nd .ktdonhang{display: none;}
+    .header-nd .lo{width: 30%; display: none;}
+    .header-nd .find{width: 60%; display: block;}
+    .header-nd .ktdonhang{display: block;}
     .header-nd .giohang{display: block;margin-right: 38px;}
     .header-nd .onl{display: none}
     .sp-1-list-menu{display:none;width: 100%;}
@@ -200,7 +216,15 @@
     }
     .nd4-bg{padding-bottom: 90px;}
     .nd11-img {width: 50%;}
-    
+    .layer1 {
+        top: -16%;
+        left: 55%;
+        padding: 95px 57% 1px 51px;
+    }
+    .layer1 p:last-child{
+        padding-top: 40px;
+    padding-left: 139px;
+    }
     
 }
 @media screen and (min-width: 769px) {
@@ -245,11 +269,11 @@
     .dem-chinhsach{width: 100%;}
     .dem-chinhsach-item{width:25%}
     .dem-banner{width:100%}
-    .header-nd .lo{width: 20%; display: block;}
-    .header-nd .find{width: 30%; display: block;}
+    .header-nd .lo{width: 20%; display: none;}
+    .header-nd .find{width: 50%; display: block;}
     .header-nd .ktdonhang{display: block;}
     .header-nd .giohang{display: block;margin-right: 38px;}
-    .header-nd .onl{display: none}
+    .header-nd .onl{display: block}
     .sp-1-list-menu{display:block;width: 25%;}
     .sp-1-otpmenu{display:none;width: 25%;}
     .sp-1-sp{width: 75%;}
@@ -266,7 +290,15 @@
         padding: 0 15px;
     }
     .nd11-img {width: 50%;}
-    
+    .layer1 {
+        top: -16%;
+        left: 55%;
+        padding: 95px 52% 1px 51px;
+    }
+    .layer1 p:last-child{
+        padding-top: 40px;
+        padding-left: 204px;
+    }
     
 }
 @media screen and (min-width: 1024px) {
@@ -332,7 +364,15 @@
         padding: 0 15px;
     }
     .nd11-img {width: 50%;}
-    
+    .layer1 {
+        top: -16%;
+        left: 55%;
+        padding: 95px 57% 1px 51px;
+    }
+    .layer1 p:last-child{
+        padding-top: 40px;
+        padding-left: 295px;
+    }
 
     
 }
@@ -400,6 +440,14 @@
     }
     .nd11-img {width: 50%;}
     
-
+    .layer1 {
+        top: -16%;
+        left: 55%;
+        padding: 95px 57% 1px 51px;
+    }
+    .layer1 p:last-child{
+        padding-top: 40px;
+    padding-left: 139px;
+    }
     
 }

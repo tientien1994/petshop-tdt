@@ -311,6 +311,17 @@ td.table-gia {
     display: flex;
 }
 
+td.table-gia.magiamgia {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+td.table-gia.magiamgia label {
+    padding-left: 15px;
+    padding-bottom: 10px;
+}
+
 table.table thead tr th:nth-child(1) {
     width: 40%;
     /* display: flex; */
